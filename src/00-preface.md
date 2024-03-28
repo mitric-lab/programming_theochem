@@ -19,6 +19,15 @@ will be available for questions and help.
 We will then find a date where some of you will present 
 their solutions to the class.
 
+The topic accouncement and the discussion will take place on
+- mondays 10:15&ndash;11:45 
+
+or
+- thursdays 12:15&ndash;13:45
+
+in the seminar room 03.013 in building 42 (Theoretische Chemie),
+Campus Nord.
+
 You will be graded based on the quality of your solutions and
 your presentation. The final grade will be based on the average
 of all problem sets.
