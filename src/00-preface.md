@@ -21,7 +21,6 @@ their solutions to the class.
 
 The topic accouncement and the discussion will take place on
 - mondays 10:15&ndash;11:45 
-
 or
 - thursdays 12:15&ndash;13:45
 
