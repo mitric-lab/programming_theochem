@@ -1,4 +1,4 @@
-# Programmierkurs für Chemiker
+# Programming in Theoretical Chemistry
 
 [![Deploy](https://github.com/mitric-lab/programming_tc_ss24/workflows/Deploy/badge.svg)](https://github.com/mitric-lab/programming_tc_ss24/actions/workflows/deploy.yml)
 
