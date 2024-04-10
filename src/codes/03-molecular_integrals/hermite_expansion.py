@@ -2,10 +2,10 @@
 
 ### ANCHOR: hermite_expansion
 import sympy as sp
-from functools import lru_cache
+from functools import cache
 
 
-@lru_cache(maxsize=None)
+@cache
 def get_ckn(k, n, p):
     """
     Calculate the expansion coefficient C_{k,n} for a 

@@ -1,4 +1,4 @@
-# Testing on molecules
+## Testing on molecules
 
 > From now on, we will define several classes to help us with the 
 > calculation of molecular integrals. We will start with the minimal 
@@ -16,7 +16,7 @@ Chemists work often with atomic symbols, which are not intuitive for
 computers. They would prefer atomic numbers. Therefore, we at first define 
 a dictionary which has atomic symbols as keys and atomic numbers as values:
 ```python
-{{#include ../code/ch03/atomic_data.py:atomic_number}}
+{{#include ../codes/03-molecular_integrals/atomic_data.py:atomic_number}}
 ```
 We save this dictionary in a file called `atomic_data.py`.
 
@@ -33,10 +33,10 @@ with the given symbol and coordinate. The optional argument `unit` specifies
 the unit of the given coordinates and can be either `A` (&#8491;ngström) or 
 `B` (Bohr).
 ```python
-{{#include ../code/ch03/atom.py:imports}}
+{{#include ../codes/03-molecular_integrals/atom.py:imports}}
 ```
 ```python
-{{#include ../code/ch03/atom.py:atom_class}}
+{{#include ../codes/03-molecular_integrals/atom.py:atom_class}}
 ```
 This class is saved in a file called `atom.py`.
 
@@ -55,13 +55,13 @@ basis functions of the molecule.
 - `S`: A matrix representing the overlap integrals between basis functions.
 
 ```python
-{{#include ../code/ch03/molecule.py:imports}}
+{{#include ../codes/03-molecular_integrals/molecule.py:imports}}
 ```
 ```python
-{{#include ../code/ch03/molecule.py:molecule_base}}
+{{#include ../codes/03-molecular_integrals/molecule.py:molecule_base}}
 ```
 ```python
-{{#include ../code/ch03/molecule.py:molecule_overlap}}
+{{#include ../codes/03-molecular_integrals/molecule.py:molecule_overlap}}
 ```
 
 We have utilized the `BasisSet` class to initialize basis sets for our 
@@ -72,24 +72,41 @@ The `BasisSet` class should contain a set of GTOs and be able to calculate
 molecular integrals between them. Therefore, we shall define the 
 `Gaussian` class at first for the integral handling.
 ```python
-{{#include ../code/ch03/basis_set.py:imports_base}}
+{{#include ../codes/03-molecular_integrals/basis_set.py:imports_base}}
 ```
 ```python
-{{#include ../code/ch03/basis_set.py:imports_overlap}}
+{{#include ../codes/03-molecular_integrals/basis_set.py:imports_overlap}}
 ```
 ```python
-{{#include ../code/ch03/basis_set.py:gaussian_base}}
+{{#include ../codes/03-molecular_integrals/basis_set.py:gaussian_base}}
 ```
 ```python
-{{#include ../code/ch03/basis_set.py:gaussian_overlap}}
+{{#include ../codes/03-molecular_integrals/basis_set.py:gaussian_overlap}}
 ```
+
+```admonish info
 Currently, this class can only calculate overlap integrals. We will extend 
 this class with other molecular integrals in the comming lectures.
+```
 
 We can now construct the `BasisSet` class. It should be able to read 
 basis sets in [JSON format](https://en.wikipedia.org/wiki/JSON) and 
 instance objects from the `Gaussian` class.
 ```python
-{{#include ../code/ch03/basis_set.py:basis_set_class}}
+{{#include ../codes/03-molecular_integrals/basis_set.py:basis_set_class}}
 ```
+
+You can download various basis sets from the
+[Basis Set Exchange](https://www.basissetexchange.org/)
+website. Make sure to download the basis sets in the JSON format.
+
+You can also download some common basis sets from the list
+- <a href="../assets/basis_sets/sto-3g.json" download>STO-3G</a>: 
+  A minimal basis set.
+- <a href="../assets/basis_sets/6-31g.json" download>6-31G</a>: 
+  A Pople basis set.
+- <a href="../assets/basis_sets/6-31g_st.json" download>6-31G*</a>: 
+  A Pople basis set with polarization functions.
+- <a href="../assets/basis_sets/cc-pvdz.json" download>cc-pVDZ</a>:
+  A Dunning basis set (with polarization functions).
 

@@ -38,9 +38,9 @@ updated throughout the semester according to the progress of the lecture.
 
 | Week|Weekday| Date     | Type         | Topic           |
 |:---:|:-----:|:--------:|--------------|-----------------|
-|  1  | Mon.  | April 15 | Lecture      | Fundamentals    |
+|  1  | Mon.  | April 15 | Lecture      | Fundamentals & <br> Symbolic Computation |
 |  1  | Thur. | April 18 |              |                 |
-|  2  | Mon.  | April 22 | Lecture      | Symbolc Computation |
+|  2  | Mon.  | April 22 |              |                 |
 |  2  | Thur. | April 25 |              |                 |
 |  3  | Mon.  | April 29 | Exercise     | Exercise 0      
 |  3  | Thur. | May 2    | Lecture      | Molecular Integrals I |
