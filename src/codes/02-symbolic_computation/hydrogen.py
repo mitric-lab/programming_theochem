@@ -1,3 +1,4 @@
+import numpy as np
 import sympy as sp
 
 # ANCHOR: radial
@@ -69,20 +70,33 @@ ax.set_ylabel(r"electron probability ($r^2 |R(r)|^2$)")
 fig.show()
 # ANCHOR_END: plot_radial
 
-# ANCHOR: plot_spherical_harmonics1
-from sympy.functions.special.spherical_harmonics import Ynm
-import sympy as sp
+# %config InlineBackend.figure_formats = ['svg']
+# ANCHOR: define_Ylm
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
-%config InlineBackend.figure_formats = ['svg']
+import sympy as sp
+from sympy.functions.special.spherical_harmonics import Ynm
 
 l, m, theta, phi = sp.symbols("l m theta phi")
 Ylm_sym = Ynm(l, m, theta, phi).expand(func=True)
 
 Ylm = sp.lambdify((l, m, theta, phi), Ylm_sym)
-# ANCHOR_END: plot_spherical_harmonics1
-# ANCHOR: plot_spherical_harmonics2
+# ANCHOR_END: define_Ylm
+
+# ANCHOR: define_real_Ylm
+def real_Ylm(l, m, theta, phi):
+    if m < 0:
+        return 1.0j * (1.0 / np.sqrt(2)) \
+            * (Ylm(l, -m, theta, phi) - (-1)**m * Ylm(l, m, theta, phi))
+    elif m == 0:
+        return Ylm(l, m, theta, phi)
+    else:
+        return (1.0 / np.sqrt(2)) \
+            * (Ylm(l, -m, theta, phi) + (-1)**m * Ylm(l, m, theta, phi))
+# ANCHOR_END: define_real_Ylm
+
+# ANCHOR: calculate_Ylm
 N = 1000
 theta = np.linspace(0, np.pi, N)
 phi = np.linspace(0, 2*np.pi, N)
@@ -90,18 +104,16 @@ theta, phi = np.meshgrid(theta, phi)
 
 l = 3
 m = 0
-Ylm_num = 1/2 * np.abs(
-    Ylm(l, m, theta, phi) + np.conjugate(Ylm(l, m, theta, phi))
-)
-# ANCHOR_END: plot_spherical_harmonics2
+Ylm_num = np.abs(real_Ylm(l, m, theta, phi))
+# ANCHOR_END: calculate_Ylm
 
-# ANCHOR: plot_spherical_harmonics3
+# ANCHOR: convert_to_cartesian
 x = np.cos(phi) * np.sin(theta) * Ylm_num
 y = np.sin(phi) * np.sin(theta) * Ylm_num
 z = np.cos(theta) * Ylm_num
-# ANCHOR_END: plot_spherical_harmonics3
+# ANCHOR_END: convert_to_cartesian
 
-# ANCHOR: plot_spherical_harmonics4
+# ANCHOR: plot_spherical_harmonics
 colors = Ylm_num / (Ylm_num.max() - Ylm_num.min())
 
 fig = plt.figure(figsize=(10, 10))
@@ -112,6 +124,6 @@ ax.plot_surface(x, y, z, facecolors=cm.seismic(colors))
 ax.set_xlim([-1, 1])
 ax.set_ylim([-1, 1])
 ax.set_zlim([-1, 1])
-fig.show()
-# ANCHOR_END: plot_spherical_harmonics4
+plt.show()
+# ANCHOR_END: plot_spherical_harmonics
 

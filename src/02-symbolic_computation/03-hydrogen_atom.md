@@ -84,17 +84,33 @@ In the next step, we want to graph the spherical harmonics. To do
 this, we first import all the necessary modules and then define first the
 symbolic spherical harmoncis, `Ylm_sym`, and then the numerical function `Ylm`.  
 ```python
-{{#include ../codes/02-symbolic_computation/hydrogen.py:plot_spherical_harmonics1}} 
+{{#include ../codes/02-symbolic_computation/hydrogen.py:define_Ylm}}
 ``` 
 The variable `Ylm` now contains a Python function with 4 arguments (`l`, `m`,
 `theta`, `phi`) and returns the numeric value (complex number, type: `complex`)
-of the spherical harmonics. To be able to display the function graphically,
+of the spherical harmonics. Since we want to represent the values of the
+spherical harmonics as the distance from the origin, which is a positive real
+number, we should use the absolute value of the spherical harmonics. The real
+spherical harmonics $\widetilde{Y}_{l,m}$ can be obtained by
+$$
+  \widetilde{Y}_{l,m} = \begin{cases}
+    \iu \frac{1}{\sqrt{2}} \left( Y_{l,-m} - (-1)^m Y_{l,m} \right) & m > 0 \\
+    Y_{l,0} & m = 0 \\
+    \frac{1}{\sqrt{2}} \left( Y_{l,-m} + (-1)^m Y_{l,m} \right) & m < 0
+  \end{cases}\,.
+$$
+This can be implemented as follows:
+```python
+{{#include ../codes/02-symbolic_computation/hydrogen.py:define_real_Ylm}}
+```
+
+To be able to display the function graphically,
 however, we have to evaluate the function not only at one point, but on a
 two-dimensional grid (\\(\theta, \phi\\)) and then display the values on this
 grid. Therefore, we define the grid for \\(\theta\\) and \\(\phi\\) and evaluate
 the \\(Y_{lm} \\) for each point on this grid. 
 ```python
-{{#include ../codes/02-symbolic_computation/hydrogen.py:plot_spherical_harmonics2}} 
+{{#include ../codes/02-symbolic_computation/hydrogen.py:calculate_Ylm}}
 ```
 Now, however, we still have a small problem because we want to represent
 our data points in a Cartesian coordinate system, but our grid points are
@@ -102,15 +118,17 @@ defined in spherical coordinates. Therefore it is necessary to transform the
 calculated values of Ylm into the Cartesian coordinate system. The
 transformation reads:
 ```python
-{{#include ../codes/02-symbolic_computation/hydrogen.py:plot_spherical_harmonics3}} 
+{{#include ../codes/02-symbolic_computation/hydrogen.py:convert_to_cartesian}}
 ```
+We took the absolute value of the real spherical harmonics to make sure that
+we have a positive real number. 
 Now we have everything we need to represent the spherical harmonics in 3
 dimensions. We do a little trick and map the data points to a number range from
 0 to 1 and store these values in the variable `colors`. This allows us to
 color the spherical harmonics with a [colormap](https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html)
 from Matplotlib. 
 ```python 
-{{#include ../codes/02-symbolic_computation/hydrogen.py:plot_spherical_harmonics4}} 
+{{#include ../codes/02-symbolic_computation/hydrogen.py:plot_spherical_harmonics}} 
 ```
 For the above example with \\( Y_{30}\\), the graph should look like 
 ![Y30](../assets/figures/02-symbolic_computation/hydrogen_Y30.png)
