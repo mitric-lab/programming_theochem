@@ -5,7 +5,7 @@ def factorial_recursive(n):
     if n == 0:
         return 1
     else:
-        return n * factorial(n - 1)
+        return n * factorial_recursive(n - 1)
 ### ANCHOR_END: factorial_recursive
 
 ### ANCHOR: factorial_iterative
