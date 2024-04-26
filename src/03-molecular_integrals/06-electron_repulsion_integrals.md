@@ -53,13 +53,13 @@ This expression will only become more complicated when we go to higher
 angular momenta. So let us use SymPy to generate the formulae symbolically.
 
 ### Code Generation
-Again, we start by importing necessary modules, including our function 
+Again, we start by importing the necessary modules, including our function 
 for calculating Hermite expansion coefficients. It is assumed here that 
 this function is called `get_ckn` and located in the file `hermite_expansion.py`.
 ```python
 {{#include ../codes/03-molecular_integrals/electron_repulsion_generator.py:imports}}
 ```
-Afterwards, we define some symbols for SymPy. We now have four 3D-Gaussians, 
+Afterwards, we define some symbols for SymPy. We now have four 3D Gaussians, 
 so a bit more symbols are needed.
 ```python
 {{#include ../codes/03-molecular_integrals/electron_repulsion_generator.py:define_symbols}}
@@ -88,7 +88,7 @@ Afterwards, we define the ERI between four s-orbitals:
 ```
 
 Now we can proceed to the generation of ERIS between higher angular momenta. 
-Like we have always done, start with ERIs between Hermite Gaussians:
+As we have always done, start with ERIs between Hermite Gaussians:
 ```python
 {{#include ../codes/03-molecular_integrals/electron_repulsion_generator.py:hermite_electron_repulsion}}
 ```
@@ -105,18 +105,17 @@ generate the ERIs:
 {{#include ../codes/03-molecular_integrals/electron_repulsion_generator.py:generate_electron_repulsion}}
 ```
 
-Again, we want to write a function to export the generated expressions to 
-a python file
+Again, we want to write a function to export the generated expressions to a Python file
 ```python
 {{#include ../codes/03-molecular_integrals/electron_repulsion_generator.py:write_electron_repulsions_py}}
 ```
-and setup a `NumPyPrinter` to convert the symbolic expressions into 
+and set up a `NumPyPrinter` to convert the symbolic expressions into 
 Python code with functions with proper aliasing:
 ```python
 {{#include ../codes/03-molecular_integrals/electron_repulsion_generator.py:setup_printer}}
 ```
 
-Finally, we can generate the python file with all the integral expressions:
+Finally, we can generate the Python file with all the integral expressions:
 ```python
 {{#include ../codes/03-molecular_integrals/electron_repulsion_generator.py:write_electron_repulsions}}
 ```
@@ -124,7 +123,7 @@ This will generate a file called `ERI.py` with the integrals we want.
 
 ### Testing on Molecules
 In order to test our generated expressions for electron repulsion integrals, 
-we have to extend our `Gaussian` class and `Molecule` class to accomodate 
+we have to extend our `Gaussian` class and `Molecule` class to accommodate 
 this. For the `Gaussian` class, we extend it with the `twoel` method:
 ```python
 {{#include ../codes/03-molecular_integrals/basis_set.py:imports_electron_repulsion}}
@@ -144,8 +143,8 @@ pig to test our generated expressions. You can download the xyz-file for
 ethene from 
 <a href="https://codinginchemistry.com/files_SS23/molecular_integrals/ethene.xyz" download>here</a>.
 
-After importing the necceary modules, we 
-load the molecule from a xyz-file and calculate the electron repulsion 
+After importing the necessary modules, we 
+load the molecule from an xyz-file and calculate the electron repulsion 
 integrals using the method `get_twoel()`:
 ```python
 {{#include ../codes/03-molecular_integrals/electron_repulsion_ethene.py:imports}}

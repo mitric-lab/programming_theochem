@@ -1,6 +1,6 @@
 ## How to interact with this website
 
-This section gives an introduction on how to interact with the lecture notes.
+This section gives an introduction to how to interact with the lecture notes.
 These are organized into *chapters*.
 Each chapter is a separate page.
 Chapters are nested into a hierarchy of sub-chapters.
@@ -38,7 +38,7 @@ Tapping the menu bar will scroll the page to the top.
 
 The lecture notes have a built-in search system.
 Pressing the search icon (<i class="fa fa-search"></i>) in the menu bar or pressing the `S` key on the keyboard will open an input box for entering search terms.
-Typing any terms will show matching chapters and sections in real time.
+Typing any terms will show matching chapters and sections in real-time.
 
 Clicking any of the results will jump to that section.
 The up and down arrow keys can be used to navigate the results, and enter will open the highlighted section.
@@ -61,7 +61,7 @@ the value of a variable. Since the code blocks in this document are not
 interactive  (you can not simply execute them in your browser), it is
 not possible to print the value of the variable to the screen. 
 Therefore, we ensure for you that all code blocks in these lecture notes 
-run without errors and in this way we can represent the value of a
+run without errors and in this way, we can represent the value of a
 variable through the use of `assert`. 
 The following code block for example shows that the variable `a` has
 the value 2:
@@ -71,6 +71,6 @@ a = 2
 assert a == 2
 ```
 
-If the condition would evaluate to `False`, the `assert` statement would
+If the condition is evaluated as `False`, the `assert` statement would
 raise an `AssertionError`. 
 

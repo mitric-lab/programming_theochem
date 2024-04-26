@@ -2,9 +2,9 @@
 
 ### Python Distribution
 
-We highly recommend to use the 
+We highly recommend using the 
 [Miniforge](https://github.com/conda-forge/miniforge) distribution.
-If you already have the installed the 
+If you already have installed the 
 [Anaconda](https://www.anaconda.com) distribution,
 you can also use it for this course. 
 Follow the instructions below to install Miniforge. 
@@ -15,7 +15,7 @@ You should use a Python version of 3.9 or higher.
    [here](https://github.com/conda-forge/miniforge#miniforge3).
 2. Execute the installer:
     - Unix-like platforms (Mac OS & Linux):
-        Open the terminal, navigate to your Downloads folder and call
+        Open the terminal, navigate to your Downloads folder, and call
         ```bash
         bash [Miniforge-Installer].sh
         ```
@@ -64,7 +64,7 @@ jupyter notebook
 in your terminal. This will open a new tab in your web browser where you
 can navigate to the folder where the Jupyter Notebook is located and open
 it. If your installation was successful, you should be able to execute
-all code cells in the notebook without any errors. You can can find many
+all code cells in the notebook without any errors. You can find many
 more tutorials on the internet, e.g. 
 [here](https://www.dataquest.io/blog/jupyter-notebook-tutorial/).
 
@@ -83,7 +83,7 @@ specialised editors here besides Jupyter Notebook.
     - lightweight and easy to configure
 
 - [Visual Studio Code](https://code.visualstudio.com)
-    - one of the most used editors despite its lightweightness
+    - one of the most used editors despite its lightweight
     - almost all features of an IDE although it is officially not one
 
 - [PyCharm](https://www.jetbrains.com/de-de/pycharm/)

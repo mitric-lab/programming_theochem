@@ -23,7 +23,7 @@ not factorizable because of the factor $1/r_C$. Therefore, we have
 to use some tricks.
 
 ### Evaluation of $V_{000,000}^{A,B}(C)$
-Remember the 1D gaussian integral
+Remember the 1D Gaussian integral
 $$
 \int \eu^{-\alpha x^2} \ \du x = \sqrt{\frac{\pi}{\alpha}}
 $$
@@ -82,8 +82,8 @@ V_p(C) &=
 $$
 with $R_{PC} = \vec{P} - \vec{C}$. Note that we have assumed that 
 [Fubini's theorem](https://en.wikipedia.org/wiki/Fubini%27s_theorem) holds.
-The vector $\vec{S}$ is just like $\vec{P}$ for our first product 
-gaussian, but its exact form is not important, because it just represents 
+The vector $\vec{S}$ is just like $\vec{P}$ for our first product Gaussian, 
+but its exact form is not important, because it just represents 
 a constant translation in $\vec{r}$ and we are going to integrate over 
 the whole space anyway.
 
@@ -148,7 +148,7 @@ Although the last expression we derived does not have any integral signs,
 the Boys function is still an integral. So what did we achieve? We started 
 from a 3-dimensional integral over the whole space and could reduce it to a 
 1-dimensional integral over the interval $[0, 1]$. This is a huge 
-simplification, since such 1D integrals can be efficiently approximated using 
+simplification since such 1D integrals can be efficiently approximated using 
 techniques like series expansion.
 
 Substituting all variables back, we obtain the final expression for $V_p(C)$:
@@ -197,7 +197,7 @@ to evaluate Boys function numerically.
 
 Now we can differentiate $V_p(C)$ with respect to $A_x$ and $B_x$ 
 according to the desired angular momenta to obtain arbitrary nuclear attraction 
-integrals between Hermite Gaussians . To obtain nuclear attraction integrals 
+integrals between Hermite Gaussians. To obtain nuclear attraction integrals 
 between Cartesian Gaussians, $V_{ijk,lmn}^{A,B}(C)$, we simply use 
 Hermite Gaussian expansion:
 $$
@@ -215,24 +215,24 @@ if you had to evaluate them by hand. So let us use SymPy to generate the
 formulae symbolically and let the computer do the work for us.
 
 ### Code Generation
-Again, we start by importing necessary modules, including our function 
+Again, we start by importing the necessary modules, including our function 
 for calculating Hermite expansion coefficients. It is assumed here that 
 this function is called `get_ckn` and located in the file `hermite_expansion.py`.
 ```python
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_generator.py:imports}}
 ```
 Afterwards, we define some symbols for SymPy. Since we are now dealing with 
-3-dimentional Gaussians, we need a bit more symbols than before.
+3-dimensional Gaussians, we need a bit more symbols than before.
 ```python
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_generator.py:define_symbols}}
 ```
 
-Because Boys function is not (yet) implemented in SymPy, we have to do it 
-ourselfves:
+Because the Boys function is not (yet) implemented in SymPy, we have to do it 
+ourselves:
 ```python
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_generator.py:define_boys}}
 ```
-We have left out the `eval` method, because we will never use SymPy to 
+We have left out the `eval` method because we will never use SymPy to 
 evaluate Boys functions, for which this method is needed. The `fdiff` method, 
 however, is important, because it tells SymPy how to evaluate derivatives of 
 Boys functions.
@@ -243,12 +243,12 @@ Now we can define $V_p(C)$:
 ```
 
 Because we have to work with all three components of angular momentum, 
-it would we very wasteful to iterate over all indices independently. 
+it would be very wasteful to iterate over all indices independently. 
 Suppose we want to calculate the nuclear attraction integrals for just 
 s- and p-orbitals, which means that the maximum angular momentum is 1. 
-If we iterate over $i$, $j$ and $k$ independently from 0 to 1, 
+If we iterate over $i$, $j$, and $k$ independently from 0 to 1, 
 we will end up with orbitals with $(i,j,k)=(1,1,1)$, which is definitely 
-not s- or p-orbital. Because the symbolic gereration of nuclear attraction 
+not s- or p-orbital. Because the symbolic generation of nuclear attraction 
 integrals can be rather time-consuming, we want to avoid such unnecessary 
 calculations. Furthermore, because we want to calculate the integrals for 
 Cartesian Gaussians using a linear combination of integrals for Hermite 
@@ -285,12 +285,12 @@ up to a maximum angular momentum:
 ```
 
 Again, we want to write a function to export the generated expressions to 
-a python file:
+a Python file:
 ```python
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_generator.py:write_nuclear_attractions_function}}
 ```
 
-Because we import NumPy the alias `np`, we setup a `NumPyPrinter` to convert 
+Because we import NumPy with the alias `np`, we set up a `NumPyPrinter` to convert 
 the symbolic expressions into Python code with functions beginning with this 
 alias:
 ```python
@@ -301,7 +301,7 @@ set the option `allow_unknown_functions` to `True`. It is now our
 responsibility to ensure that all the other functions are supported by 
 NumPy or native Python.
 
-Finally, we can generate the python file with all the integral expressions:
+Finally, we can generate the Python file with all the integral expressions:
 ```python
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_generator.py:write_nuclear_attractions}}
 ```
@@ -309,7 +309,7 @@ This will generate a file called `V.py` with the integrals we want.
 
 ### Testing on Molecules
 In order to test our generated expressions for nuclear attraction integrals, 
-we have to extend our `Gaussian` class and `Molecule` class to accomodate 
+we have to extend our `Gaussian` class and `Molecule` class to accommodate 
 this. For the `Gaussian` class, we extend it with the `VC` method:
 ```python
 {{#include ../codes/03-molecular_integrals/basis_set.py:imports_nuclear_attraction}}
@@ -330,8 +330,8 @@ an example molecule, say, ethene. You can download the xyz-file for ethene
 from 
 <a href="../assets/xyzs/ethene.xyz" download>here</a>.
 
-After importing the necceary modules, we 
-load the molecule from a xyz-file and calculate the nuclear attraction 
+After importing the necessary modules, we 
+load the molecule from an xyz-file and calculate the nuclear attraction 
 integrals using the method `get_V()`:
 ```python
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_ethene.py:imports}}
@@ -340,7 +340,7 @@ integrals using the method `get_V()`:
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_ethene.py:calculate_nuclear_attractions}}
 ```
 
-Instead of printing the individual integrals, we can visulize the whole 
+Instead of printing the individual integrals, we can visualise the whole 
 matrix using a heatmap:
 ```python
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_ethene.py:plot_nuclear_attractions}}

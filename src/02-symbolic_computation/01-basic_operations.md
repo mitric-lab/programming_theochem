@@ -17,8 +17,8 @@ x = sp.Symbol('x')
 This defines the Python variable `x` as a SymPy `Symbol` with the representation
 'x'. If you print the variable in a Jupyter cell, you should see a rendered 
 symbol like: \\( x \\).
-Since it might be annoying to define a lot variables, SymPy provides a another
-function, which can initialize a arbitrary number of symbols. 
+Since it might be annoying to define a lot of variables, SymPy provides another
+function that can initialize an arbitrary number of symbols. 
 ```python
 x, y, t, omega = sp.symbols('x y t omega')
 ```
@@ -28,7 +28,7 @@ x, y, t, omega = [sp.Symbol(n) for n in ('x', 'y', 't', 'omega')]
 ```
 Note that it is important to separate each symbol in the `sp.symbols()` call
 with a space. 
-SymPy also provides often used symbols (Latin and Greek letters) as predefined 
+SymPy also provides often-used symbols (Latin and Greek letters) as predefined 
 variables. They are located in the submodule called `abc` 
 and can be imported by calling
 ```python
@@ -47,7 +47,7 @@ SymPy allows us to write this expression in Python as we would do on paper:
 ```
 If you now print `f` in Jupyter cell you should see the same rendered equation
 as above. 
-Lets assume we want to multiply our expression not by \\( x \\). We can 
+Let us assume we want to multiply our expression by $x$. We can 
 just do the following: 
 ```python
 {{#include ../codes/02-symbolic_computation/basic_operations.py:f_times_x}}
@@ -89,13 +89,13 @@ We can also write more complicated functions using elementary functions:
 Note that since the division operator `/` on a number produces 
 floating-point numbers, we should modify numbers with the function `sympify`. 
 When dealing with rationals like `2/5`, we can use `sp.Rational(2, 5)` instead. 
-If you print f the rendered equation should look like:
+If you print f the rendered equation should look like 
 $$
 \frac{\sqrt{2} e^{-t} \cos \left( \omega t \right)}{2}
 $$
 On some platforms, you may get a nicely rendered expression. While other 
-platforms does not support LaTeX-rendering, you could try to turn on
-unicode support by executing
+platforms do not support LaTeX rendering, you could try to turn on
+Unicode support by executing
 ```python
 sp.init_printing(use_unicode=True)
 ```
@@ -129,19 +129,20 @@ This gives us:
 $$
 \frac{\sqrt{2} \cos (\omega)}{2 e}
 $$ 
-We can also call our second function, which takes 2 arguments (\\(t\\), and \\(\omega\\)).
+We can also call our second function, which takes 2 arguments ($t$, and $\omega$).
 ```python
 {{#include ../codes/02-symbolic_computation/basic_operations.py:function_call_two}}
 ```
-Which will result in:
+Which will result in
 $$
 \frac{\sqrt{2} \cos \left(\frac{1}{2}\right)}{2 e^{\frac{1}{2}}}
 $$
-Note: We have now eliminated all variables and are left with an exact number, but this still
-a SymPy object. You might wonder how we can transform this to a numerical value which 
-can be use by other Python modules. SymPy provides this transformation with the function
-`lambdify`, this looks similar to the `Lambda` function and also returns a Python function, that
-we can call. However, the returned value of this function is now numerical value. 
+Note: We have now eliminated all variables and are left with an exact number, 
+but this still a SymPy object. You might wonder how we can transform this into 
+a numerical value that can be used by other Python modules. SymPy provides 
+this transformation with the function `lambdify`, which looks similar to the 
+`Lambda` function and also returns a Python function, that we can call. 
+However, the returned value of this function is now a numerical value. 
 
 ```python
 {{#include ../codes/02-symbolic_computation/basic_operations.py:numeric_function}}
@@ -157,9 +158,9 @@ SymPy also offers us a way to convert an expression to a float (or complex):
 ```python
 {{#include ../codes/02-symbolic_computation/basic_operations.py:expression_to_sympy_float}}
 ```
-Although `f_01_expr_num` gives us the same result as the python float in the 
+Although `f_01_expr_num` gives us the same result as the python float at 
 first glance, its type is not ´float´, but rather `sympy.core.numbers.Float`. 
-Note the capital F. This is a floating point data type from sympy, which has 
+Note the capital F. This is a floating point data type from SymPy, which has 
 arbitrary precision. The last line, for example, evaluates the expression 
 with 50 valid decimal places instead of the standard 15 or 16 of Python's 
 built-in `float`.

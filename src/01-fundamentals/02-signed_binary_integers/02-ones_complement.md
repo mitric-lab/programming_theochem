@@ -7,11 +7,11 @@ One wants to flip the sign of an integer by inverting all its bits.
 This inversion is also known as taking the complement of the bits. 
 The implication of this idea is, that the first bit, the MSB, also 
 represents just the sign as in the *Sign and Magnitude* case. 
-However, the decimal value of all other bits are now dependent of 
-the MSB bit state. It might be easier to understand this behavior 
+However, the decimal value of all other bits is now dependent on 
+the MSB bit state. It might be easier to understand this behaviour 
 by a simple example that outlines the motivation again.
 
-We want that our binary representation behaves like:
+We want our binary representation to behave like this:
 
 <p align="center"> <img src="../../assets/figures/01-fundamentals/ones_1.svg" alt="Ones' Complement 1"/> </p>
 

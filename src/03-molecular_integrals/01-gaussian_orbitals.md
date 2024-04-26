@@ -13,19 +13,19 @@ $a$ stands for Bohr radius.
 Ignoring the normalisation constant and the polynomial factor, 
 the wavefunction boils down to $\exp(-\zeta r)$. One may assume 
 that all atomic orbitals have this general form, the so-called 
-Slater type orbitals (STO). These orbitals have a cusp in the origin, 
+Slater-type orbitals (STO). These orbitals have a cusp in the origin, 
 which accurately describes the electron distribution at nuclei. 
 
 STOs, however, are not very easy to integrate. Analytically expressions 
 of one-electron integrals involving STOs can be obtained, though they 
 are rather cumbersome. Two-electron integrals involving STOs cannot be 
-solved analytically, so ei)ther numerical integration or approximations 
-must be applied. This make the use of STOs in quantum chemistry very 
+solved analytically, so either numerical integration or approximations 
+must be applied. This makes the use of STOs in quantum chemistry very 
 impractical. 
 
-Instead, the Gaussian type orbitals (GTO), which has the general form 
-$\exp(-\alpha r^2)$, is widely used for quantum chemistry. Although 
-it does not accurately represents the correct electronic density at nuclei, 
+Instead, the Gaussian type orbitals (GTO), which have the general form 
+$\exp(-\alpha r^2)$, are widely used for quantum chemistry. Although 
+it does not accurately represent the correct electronic density at nuclei, 
 relatively simple analytical expressions for molecular integrals involving 
 GTOs, including two-electron integrals, exist, even for two-electron integrals
 
@@ -38,7 +38,7 @@ g_{nl}(\vec{r};\alpha, \vec{A}) =
   \ \eu^{-\alpha \| \vec{r}-\vec{A} \|^2}
 $$
 with the nucleus sitting at $\vec{A}$ and $l_x + l_y + l_z = l$. 
-Some examples values of $l$ and the corresponding atomic orbitals are 
+Some example values of $l$ and the corresponding atomic orbitals are 
 shown in the following table:
 
 | $l_x$ | $l_y$ | $l_z$ | Orbital |
@@ -106,12 +106,12 @@ g(x;\alpha,A_x) \cdot g(x;\beta,B_x) = g(x;p,P_x) \exp\left( -\mu X_{AB}^2 \righ
 $$
 a new Gaussian at the "center of mass" $P_x$ with the total exponent 
 $p$, scaled by $\exp\left( \mu X_{AB}^2 \right)$. Since Gaussian 
-orbitals can be easily factored into Cartesian directions, a proof for 
-3D-Gaussians follow trivially from the proof for 1D-Gaussians.
+orbitals can be easily factored into Cartesian directions, a proof 
+for 3D-Gaussians follows trivially from the proof for 1D-Gaussians.
 
 ### Contracted Gaussians
 Because Gaussians do differ quite a bit from Slater functions, we can make 
-them more accurate by using a linear comination of Gaussians, i.e.
+them more accurate by using a linear combination of Gaussians, i.e.
 $$
 G(x; {\alpha_i}, {c_i}, \vec{A}) = \sum_{i=1}^N c_i g(\vec{x}; \alpha_i, \vec{A})
 $$
@@ -129,8 +129,8 @@ g_{l}(\vec{r};\alpha, \vec{A}) =
 $$
 Note that the factor $\|\vec{r} - \vec{A}\|^{n-l-1}$ is gone and the 
 orbital no longer depends on the principal quantum number $n$. Because 
-we can now omit the index $n$ on $g$, we can use $i$, $j$ 
-and $k$ instead of the verbose $l_x$, $l_y$ and $l_z$, which 
+we can now omit the index $n$ on $g$, we can use $i$, $j$, and $k$ 
+instead of the verbose $l_x$, $l_y$, and $l_z$, which 
 are difficult to read when written as exponents. Such Cartesian Gaussians 
 can thus be written as
 $$
@@ -139,8 +139,8 @@ g_{ijk}(\vec{r};\alpha, \vec{A}) =
   \ \eu^{-\alpha \| \vec{r}-\vec{A} \|^2}
 $$
 
-This simplification can be done out of two reasons: On the one hand, 
-the radial nodes are located in the neighborhood of core orbitals, which 
+This simplification can be done for two reasons: On the one hand, 
+the radial nodes are located in the neighbourhood of core orbitals, which 
 do not contribute much to chemical bonding. On the other hand, a linear 
 combination of primitive Gaussians with some negative contraction coefficients 
 can approximate an atomic orbital with nodes.

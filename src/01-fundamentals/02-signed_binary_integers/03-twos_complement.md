@@ -9,8 +9,8 @@ complement representation.
 
 This can also be thought of as the most significant bit representing the
 inverse of its value in an unsigned integer; in an 8-bit unsigned byte,
-the most significant bit represents the number 128, where in two's
-complement that bit would represent −128.
+the most significant bit represents the number 128, whereas in two's 
+complement, that bit would represent −128.
 
 <p align="center"> <img src="../../assets/figures/01-fundamentals/twos_1.svg" alt="Two's Complement 1"/></p>
 
@@ -31,9 +31,9 @@ complement that bit would represent −128.
 
 In two's-complement, there is only one zero, represented as 00000000.
 Negating a number (whether negative or positive) is done by inverting
-all the bits and then adding one to that result. 
+all the bits and then adding one to that result.
 
-Addition of a pair of two's-complement integers is the same as addition
+The addition of a pair of two's-complement integers is the same as the addition
 of a pair of unsigned numbers. The same is true for subtraction and even
 for the \(N\) lowest significant bits of a product (value of multiplication).
 For instance, a two's-complement addition of 127 and −128 gives the same

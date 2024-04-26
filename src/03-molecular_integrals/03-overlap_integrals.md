@@ -1,7 +1,7 @@
 ## Overlap Integrals
 
 We can now proceed to calculate molecular integrals, starting with 
-overlap integrals. An overlap integral between two centers $A$ and 
+overlap integrals. An overlap integral between two centres $A$ and 
 $B$ are defined as
 $$
 S_{ijk,lmn}^{A,B} = 
@@ -99,20 +99,19 @@ as well as the overlap $E_{00}^{A_x, B_x}$
 {{#include ../codes/03-molecular_integrals/overlap_generator.py:define_s00}}
 ```
 
-Since we need Hermite Gaussian overlaps upto a certain maximum 
+Since we need Hermite Gaussian overlaps up to a certain maximum 
 value of angular momentum, we shall write a function to generate them:
 ```python
 {{#include ../codes/03-molecular_integrals/overlap_generator.py:hermite_overlap_function}}
 ```
 
 One specific overlap integral between two Cartesian Gaussians with 
-angular momenta `i` and `j` can them be calculated using the following function:
+angular momenta `i` and `j` can then be calculated using the following function:
 ```python
 {{#include ../codes/03-molecular_integrals/overlap_generator.py:single_overlap_function}}
 ```
 
-We can then write a function to generate all Cartesian Gaussian overlaps 
-upto a certain maximum angular momentum:
+We can then write a function to generate all Cartesian Gaussian overlaps up to a certain maximum angular momentum:
 ```python
 {{#include ../codes/03-molecular_integrals/overlap_generator.py:generate_overlaps_function}}
 ```
@@ -121,12 +120,12 @@ We can then set
 ```python
 {{#include ../codes/03-molecular_integrals/overlap_generator.py:define_lmax}}
 ```
-and generate formulas for all possible overlaps upto `LMAX`.
+and generate formulas for all possible overlaps up to `LMAX`.
 
 By inspecting the generated expressions, one might realize that some 
 expressions occur very frequently, e.g. `AX - BX`, or `alpha + beta`. 
 We can calculate these expressions once and store the value to avoid 
-repeated calculations. To achieve this, we can substite these expressions 
+repeated calculations. To achieve this, we can substitute these expressions 
 with some new symbols:
 ```python
 {{#include ../codes/03-molecular_integrals/overlap_generator.py:substitute_repeated_expressions}}
@@ -141,16 +140,16 @@ function:
 
 In this function, we have imported NumPy with the alias `np`. To convert 
 the symbolic expressions into Python code with functions beginning with this 
-alias, we setup a `NumPyPrinter`:
+alias, we set up a `NumPyPrinter`:
 ```python
 {{#include ../codes/03-molecular_integrals/overlap_generator.py:setup_printer}}
 ```
 
-And finally, we can generate the python file with all the integral expressions:
+And finally, we can generate the Python file with all the integral expressions:
  ```python
 {{#include ../codes/03-molecular_integrals/overlap_generator.py:write_overlaps}}
 ```
-The path `'.'` stands for the location where you execute your python script. 
+The path `'.'` stands for the location where you execute your Python script. 
 You can replace this with any valid path in your computer to generate 
 `S.py` there.
 

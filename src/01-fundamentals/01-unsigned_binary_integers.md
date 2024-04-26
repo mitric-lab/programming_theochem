@@ -14,7 +14,7 @@ alongside their decimal counterparts.
 As a human on earth, you should have some familiarity with the
 decimal system. For instance, to represent the positive integer one
 hundred and twenty-five as a decimal number, we can write (with the
-postive sign implied):
+positive sign implied):
 
 $$ 125_{10} = 1 \cdot 100 + 2 \cdot 10 + 5 \cdot 1 = 1 \cdot 10^2 + 2
 \cdot 10^1 + 5 \cdot 10^0 $$
@@ -50,9 +50,9 @@ $$ 86_{10}=1010110_{2} $$
 The subscript 2 denotes a binary number. Each digit in a binary number
 is called a bit. The number 1010110 is represented by 7 bits. Any
 number can be broken down this way by finding all of the powers of 2
-that add up to the number in question (in this case \\(2^6\\), 2\\(^4\\), 2\\(^2\\) and
-2\\(^1\\)). You can see this is exactly analogous to the decimal
-deconstruction of the number 125 that we have done earlier. Likewise we
+that add up to the number in question (in this case $2^6$, $2^4$, $2^2$, 
+and $2^1$). You can see this is exactly analogous to the decimal
+deconstruction of the number 125 that we have done earlier. Likewise, we
 can make a similar set of observations:
 
 - To multiply a number by 2, you can simply shift it to the left by one
@@ -61,10 +61,10 @@ can make a similar set of observations:
   digit. 
 - To see how many digits a number has, you can simply take the
   logarithm (base 2) of the number, and add 1 to it. The integral part
-  of the result is the number of digits. For instance, \\(\log_{2}(86) + 1 =
-  7.426.\\) The integral part of that is 7, so 7 digits are needed. With \\(n\\)
-  digits, \\(2^n\\) unique numbers (from 0 to \\(2^n - 1\\)) can be represented. 
-  If \\(n=8\\), 256 (\\(=2^8\\)) numbers can be represented (0-255).
+  of the result is the number of digits. For instance, $\log_{2}(86) + 1 =
+  7.426$. The integral part of that is 7, so 7 digits are needed. With $n$
+  digits, $2^n$ unique numbers (from 0 to $2^n - 1$) can be represented. 
+  If $n=8$, 256 ($=2^8$) numbers can be represented (0-255).
 
 <p align="center"> <img src="../assets/figures/01-fundamentals/binary_counter.gif" alt="Binary counter"/> </p>
 

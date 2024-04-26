@@ -23,9 +23,9 @@ definition directly and substitute \\(n\\) with an integer, e.g. 5:
 This outputs \\(\frac{11}{2}\\). Note that atomic units are used for 
 simplicity. 
 
-In order to evaluate the wave function, we have to at first compute the 
+In order to evaluate the wave function, we have to first compute the 
 Hermite polynomial. There are multiple ways to do it. The first is to use 
-its definition directly and compute higher order derivatives of the 
+its definition directly and compute higher-order derivatives of the 
 exponential function:
 ```python
 {{#include ../codes/02-symbolic_computation/harmonic_oscillator.py:hermite_definition}}
@@ -50,7 +50,7 @@ its wave function by
 Further substituting `x` with any numerical value would evaluate the 
 wave function at that point.  
 
-We can again convert the sympy expression to a numpy function 
+We can again convert the SymPy expression to a NumPy function 
 and plot some wavefunctions.
 ```python
 {{#include ../codes/02-symbolic_computation/harmonic_oscillator.py:wave_function_param_plot}}
@@ -61,7 +61,7 @@ This code block produces
 Sometimes one might just want to use SymPy to generate symbolic expressions 
 to be used in functions. Instead of typing the results in by hand, one could 
 use one of SymPy's built-in printers. Here, we shall use `NumPyPrinter`, 
-which converts a SymPy expression to a string of python code:
+which converts a SymPy expression to a string of Python code:
 ```python
 {{#include ../codes/02-symbolic_computation/harmonic_oscillator.py:numpy_printer}}
 ```

@@ -9,20 +9,20 @@ familiar with the basic principles of Python and the numerical
 algorithms explained there. 
 
 According to the current planning, the lecture will be held in
-form of a practical course. This means that the lecturer will
-announce a topic and explain the theoretical background. 
+the form of a practical course. This means that the lecturer will
+announce a topic and explain the theoretical background.
 Afterwards, you will have to study the topic in more detail
-yourself with the help of this lecture note, and solve the
+yourself with the help of this lecture note and solve the
 problem set that is associated with the topic until a given
 deadline. During the time solving the problem set, the lecturer
 will be available for questions and help.
-We will then find a date where some of you will present 
+We will then find a date when some of you will present 
 their solutions to the class.
 
-The topic accouncement and the discussion will take place on
-- mondays 10:15&ndash;11:45 
+The topic announcement and the discussion will take place on
+- Mondays 10:15&ndash;11:45 
 or
-- thursdays 12:15&ndash;13:45
+- Thursdays 12:15&ndash;13:45
 
 in the seminar room 03.013 in building 42 (Theoretische Chemie),
 Campus Nord.

@@ -15,7 +15,7 @@ does not have a fixed number of bits to represent the number, but will
 dynamically use as many bits as needed to represent the
 number. Therefore, [integer overflows](https://en.wikipedia.org/wiki/Integer_overflow) 
 cannot occur in Python.
-This doesn't hold for `floats`, which have fixed size of 64 bit and 
+This doesn't hold for `floats`, which have a fixed size of 64 bits and 
 __can overflow__. 
 ```
 

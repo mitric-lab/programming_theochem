@@ -22,7 +22,7 @@ determined variationally by solving the Schrödinger equation.
 
 Since the wavefunction given above contains all possible Slater determinants 
 (within) a basis set, it is referred to as the full CI (FCI) wavefunction. By 
-inspecting the wavefunction expansion, it might beome obvious that the number 
+inspecting the wavefunction expansion, it might become obvious that the number 
 of determinants grows rapidly with the size of the system. To be precise, for 
 a system with \\(M\\) spin-orbitals, \\(N_\alpha\\) \\(\alpha\\)-spin 
 electrons and \\(N_\beta\\) \\(\beta\\)-spin electrons, the number of 

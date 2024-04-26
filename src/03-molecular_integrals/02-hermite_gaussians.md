@@ -18,12 +18,12 @@ h_{ijk}(\vec{r}; \alpha, \vec{A}) =
   \eu^{-\alpha \| \vec{r} - \vec{A} \|^2}
 $$
 
-Although it might look very complicated in the first glance, it is 
+Although it might look very complicated at first glance, it is 
 essentially a Cartesian Gaussian with the Cartesian polynomial part 
 replaced by a polynomial obtained through differentiation of an s-type 
 Gaussian, or the Hermite polynomial. 
 
-Just like their Cartisian counterparts, the Hermite Gaussians can also be 
+Just like their Cartesian counterparts, the Hermite Gaussians can also be 
 factored into Cartesian directions. A 1D Hermite Gaussian of degree $k$ 
 can thus be expressed as
 $$
@@ -33,7 +33,7 @@ h_{k}(x; \alpha, A_x) =
 $$
 
 ### Recurrence Relations
-While it is straight-forward to generate a Cartesian Gaussian of degree 
+While it is straightforward to generate a Cartesian Gaussian of degree 
 $n + 1$ from a degree $n$ one by just multiplying $x - A_x$ 
 to it, i.e.
 $$
@@ -82,18 +82,18 @@ $$
 h_{k+1}(x) =  2\alpha \left[ (x - A_x)\ h_k(x) - k\ h_{k-1}(x) \right]
 $$
 We can thus get the Hermite Gaussian of order $k+1$ with Hermite Gaussians 
-of order $k$ and $k-1$. This kind of relations, where an object with 
-one or several indices is related to objects with smaller indices, are called 
-recurrence relations.
+of order $k$ and $k-1$. This kind of relation, where an object with 
+one or several indices is related to objects with smaller indices, 
+is called a recurrence relation.
 
 The recurrence relation for Hermite Gaussians is often expressed as
 $$(x - A_x) h_{k}(x) = \frac{1}{2 \alpha} h_{k+1}(x) + k h_{k-1}(x)$$
-which is obtained by simple algebraic manupulation from the recurrence 
+which is obtained by simple algebraic manipulation from the recurrence 
 relation above.
 
 Why are Hermite Gaussians useful? suppose we want to evaluate an integral 
 involving a $k$-th order Hermite Gaussian, we can reduce it to an integral 
-involving an zeroth order Hermite Gaussian as follows
+involving a zeroth order Hermite Gaussian as follows
 $$
 \begin{align}
 \int h_k(x) f(x)\ \mathrm{d}x
@@ -146,5 +146,5 @@ Such recurrence relations can be intuitively implemented in a recursive manner:
 {{#include ../codes/03-molecular_integrals/hermite_expansion.py:hermite_expansion}}
 ```
 
-The function decorater `cache` is used to speed up the execution.
+The function decorator `cache` is used to speed up the execution.
 

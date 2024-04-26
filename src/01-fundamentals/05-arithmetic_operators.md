@@ -1,7 +1,7 @@
 ## Arithmetic Operators
 
 Arithmetic operators are used to perform mathematical operations 
-like addition, subtraction, multiplication and division. 
+like addition, subtraction, multiplication, and division. 
 In Python (>3.5), 7 arithmetic operators are defined:
 
 | Operator | Name           | Example  | Output (x=7, y=2)|
@@ -18,7 +18,8 @@ In Python (>3.5), 7 arithmetic operators are defined:
 The `+` (addition) operator yields the sum of its arguments. 
 
 The arguments must **either both be numbers or both be sequences** of the same type. 
-Only in the former case, the numbers are converted to a common type and a arithmetic addition is performed. 
+Only in the former case, the numbers are converted to a common type, 
+and an arithmetic addition is performed. 
 In the latter case, the sequences are concatenated, e.g.
 ```python
 a = [1, 2, 3]
@@ -35,7 +36,7 @@ Note: In contrast to the addition, the subtraction operator cannot be applied to
 ### Multiplication
 
 The `*` (multiplication) operator yields the product of its arguments.
-The arguments must **both be numbers**, or alternatively, **one argument must be an integer while the other must be a sequence**.
+The arguments must **both be numbers** or alternatively, **one argument must be an integer while the other must be a sequence**.
 In the former case, the numbers are converted to a common type and then multiplied together. 
 In the latter case, sequence repetition is performed; e.g. 
 ```python
@@ -54,8 +55,8 @@ assert (-2 * a) == []
 The `/` (division) and `//` (floor division) operators yield the 
 quotient of their arguments. 
 The numeric arguments are first converted to a common type. 
-Beaware that **division of integers yields a float**, 
-while **floor division of integers results in an integer**.
+Be aware that the **division of integers yields a float**, 
+while the **floor division of integers results in an integer**.
 The result of the floor division operator is that of mathematical division 
 with the `floor` function applied to the result. 
 Division by zero raises a `ZeroDivisionError` exception.
@@ -64,7 +65,7 @@ Division by zero raises a `ZeroDivisionError` exception.
 
 The `%` (modulo) operator yields the remainder from the division of the first argument by the second. 
 The numeric arguments are first converted to a common type. 
-A zero right argument raises the `ZeroDivisionError` exception. 
+A right-side argument of zero raises the `ZeroDivisionError` exception. 
 The arguments may even be floating point numbers, e.g., 
 ```python
 import math 
@@ -101,7 +102,7 @@ type is that of the arguments after coercion.
 If the result is not expressible in that type, 
 (as in raising an integer to a negative power)
 the result is expressed as a float (or complex). 
-In an unparenthesized sequence of power and unary operators, the operators are evaluated from right to left
+In an unparenthesised sequence of power and unary operators, the operators are evaluated from right to left
  (this does not constrain the evaluation order for the operands), e.g.
 ```python
 assert 2**2**3 == 2**(2**3) == 2**8 == 256

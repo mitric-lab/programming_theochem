@@ -1,6 +1,6 @@
 # Molecular Integrals
 
-In quantum chemistry, the very well known Hartree-Fock (HF) method is used to 
+In quantum chemistry, the very well-known Hartree-Fock (HF) method is used to 
 approximate the ground-state electronic structure of a molecule. The method 
 involves solving the HF equation, which is given by
 $$
@@ -21,25 +21,25 @@ stands for the number of electrons.
 
 Since $\hat{h}^{\mathrm{core}}$ contains differential operators and 
 $\hat{J}_j$ and $\hat{K}_j$ have integrals in them, the HF equation 
-is an integro-differential equation, for which a closed-form solution 
-is extremly difficult to obtain and analytical solutions are only known for 
+is an integro-differential equation, for which a closed-form solution is 
+extremely difficult to obtain and analytical solutions are only known for 
 the simplest cases. 
 
 Therefore, we utilize numerical methods to solve the HF equation. 
-Though popular in other fields, a discretization is very impractical hier. 
+Though popular in other fields, discretisation is very impractical here. 
 Considering the rapid change of electronic density from nuclei to bonds and 
 bond lengths of roughly 1 Å, at least 4 points per Å should be used for a 
 crude representation of the wavefunction. Also, we should add a boundary to 
 properly describe the fall-off of the wavefunction. For a medium-sized molecule, 
 e.g. porphin, which is around 10 Å across, a box of the dimension 
 15 Å × 15 Å × 5 Å would be appropriate, which translates to 60 × 60 × 20 = 72000 
-grid points. This is far from practical. If we wish a finer granulated grid, or 
+grid points. This is far from practical. If we wish for a finer granulated grid or 
 calculations for larger molecules, discretization will become infeasible rather quickly.
 
 So, the spatial grid is a very inefficient basis for the HF equation. Because 
 the molecule consists of atoms, it should be possible to represent the 
-molecular orbitals with some sort of combinations of atomic orbitals. The simplest 
-combination is the linear combination. In this case, our basis are 
+molecular orbitals with some sort of combination of atomic orbitals. The simplest 
+combination is the linear combination. In this case, our basis is 
 *atom-centered wavefunctions* $\chi_\mu$, and the molecular orbitals can be 
 expressed as
 $$
@@ -61,8 +61,8 @@ $\vec{c}_i$ is the coefficient vector of the $i$-th molecular orbital,
 $\mathbf{S}$ is the overlap matrix, 
 and $\epsilon_i$ is the energy of the $i$-th molecular orbital.
 
-The new equation is called Roothaan-Hall equation, where the difficult 
-derivatives and integrals of the unknown molecular orbitals is reduced to 
+The new equation is called the Roothaan-Hall equation, where the difficult 
+derivatives and integrals of the unknown molecular orbitals are reduced to 
 derivatives and integrals of known basis functions. After evaluating these 
 integrals in $\mathbf{F}$ and $\mathbf{S}$, the actual solving step 
 is easily done using some linear algebra.
@@ -74,7 +74,7 @@ reveals that four types of molecular integrals exist:
 - nuclear attraction integrals: $\langle \chi_\mu | -Z_{\mathrm{nuc}}/R_{\mathrm{nuc}} | \chi_\nu \rangle$
 - electron repulsion integrals: $\langle \mu \nu | \lambda \sigma \rangle$
 
-In this chapter, some basis concepts of basis functions will be introduced, 
+In this chapter, some basic concepts of basis functions will be introduced, 
 followed by symbolic calculation of closed-form expressions for molecular 
 integrals. In the end, we will use these expressions to generate a module, 
 which performs all these integrals.

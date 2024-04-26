@@ -7,14 +7,14 @@
 > [4.4.1](ch03-04a-latest_classes.md]).
 
 We have written our own routine for calculating overlap integrals. To confirm 
-its functionality, we shall do some tesing on real molecules. For this, we 
+its functionality, we shall do some testing on real molecules. For this, we 
 define several [classes](https://docs.python.org/3/tutorial/classes.html) to 
 make a convenient interface for molecules and basis sets.
 
 ### The `Atom` Class
 Chemists work often with atomic symbols, which are not intuitive for 
-computers. They would prefer atomic numbers. Therefore, we at first define 
-a dictionary which has atomic symbols as keys and atomic numbers as values:
+computers. They would prefer atomic numbers. Therefore, we first define 
+a dictionary that has atomic symbols as keys and atomic numbers as values:
 ```python
 {{#include ../codes/03-molecular_integrals/atomic_data.py:atomic_number}}
 ```
@@ -41,7 +41,7 @@ the unit of the given coordinates and can be either `A` (&#8491;ngström) or
 This class is saved in a file called `atom.py`.
 
 Because we are chemists, we are not satisfied with only atoms. We want to 
-combined them into molecules, hence a `Molecule` class is needed.
+combine them into molecules, hence a `Molecule` class is needed.
 
 
 ### The `Molecule` Class
@@ -69,8 +69,8 @@ molecule, which we will define now.
 
 ### The `BasisSet` Class
 The `BasisSet` class should contain a set of GTOs and be able to calculate 
-molecular integrals between them. Therefore, we shall define the 
-`Gaussian` class at first for the integral handling.
+molecular integrals between them. Therefore, we shall define the `Gaussian` 
+class first for the integral handling.
 ```python
 {{#include ../codes/03-molecular_integrals/basis_set.py:imports_base}}
 ```
@@ -86,7 +86,7 @@ molecular integrals between them. Therefore, we shall define the
 
 ```admonish info
 Currently, this class can only calculate overlap integrals. We will extend 
-this class with other molecular integrals in the comming lectures.
+this class with other molecular integrals in the coming lectures.
 ```
 
 We can now construct the `BasisSet` class. It should be able to read 

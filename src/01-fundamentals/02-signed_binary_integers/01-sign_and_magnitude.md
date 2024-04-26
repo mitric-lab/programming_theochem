@@ -1,9 +1,9 @@
 ### Sign and Magnitude
 
 The most significant bit (MSB) determines if the number is positive 
-(MSB is 0) or negative (MSB is 1). All the other bits are the so called
-magnitude bits. This means that a 8 bit signed integer can represent all
-numbers from -127 to 127 (\\(-2^6\\) to \\(2^6\\)). Except for the MSB,
+(MSB is 0) or negative (MSB is 1). All the other bits are the so-called
+magnitude bits. This means that an 8-bit signed integer can represent all
+numbers from -127 to 127 ($-2^6$ to $2^6$). Except for the MSB,
 all positive and negative numbers share the same representation.
 
 <p align="center"> <img src="../../assets/figures/01-fundamentals/sam_1.svg" alt="Sign and Magnitude 1"/> </p>
@@ -50,9 +50,9 @@ bit (the MSB) is inverted, as shown in the following Scheme.
 number -31*
 
 Although this representation seems very intimate and simple, several 
-problems asscociated to the sign bit arise:
+problems associated with the sign bit arise:
 - There are two ways to represent zero, `0000 0000` and `1000 0000`.
-- Addition and subtraction require different behaviors depending
+- Addition and subtraction require different behaviours depending
   on the sign bit.
 - Comparisons (e.g. greater, less, ...) also require inspection of 
   the sign bit.

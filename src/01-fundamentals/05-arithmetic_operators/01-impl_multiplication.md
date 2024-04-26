@@ -4,11 +4,11 @@ All arithmetic operators can be implemented using bitwise operators.
 While addition and subtraction are implemented through hardware, 
 the other operators are often realized via software. In this section, we shall 
 implement multiplication and division for positive integers using addition, 
-subtraction and bitwise operators.
+subtraction, and bitwise operators.
 
 ### Implementation: Multiplication
 
-The multiplication of integers may be thought as repeated addition; 
+The multiplication of integers may be thought of as repeated addition; 
 that is, the multiplication of two numbers is equivalent to the following
 sum:
 $$
@@ -22,13 +22,13 @@ Following this idea, we can implement a na&iuml;ve multiplication:
 Although we could be smart and reduce the number of loops by choosing the 
 smaller one to be the multiplier, the number of additions always 
 grows linearly with the size of the multiplier. Ignoring the effect of the
-multiplicand, this behavior is called linear-scaling, which is often denoted 
+multiplicand, this behavior is called linear scaling, which is often denoted 
 as \\(\mathcal{O}(n)\\). 
 
 #### Can we do better?
 
 We have learned that multiplication by powers of 2 can be easily realized by
-the left shift operator `<<`. Since every integer can be written as sum of 
+the left shift operator `<<`. Since every integer can be written as a sum of 
 powers of 2, we may try to compute the necessary products of the multiplicand 
 with powers of 2 and sum them up. We shall do an example: `11 * 3`.
 ```python
@@ -41,9 +41,9 @@ least-significant-bit (LSB) of the multiplier (`a`). If the LSB is 1, this
 power of 2 is present in `a`, and `b` will be added to the result. If 
 the LSB is 0, this power is 
 not present in `a` and nothing will be done. In order to check the second LSB of `a` 
-and perhaps add `2 * b`, we can just right shift `a`. In this way the second LSB
+and perhaps add `2 * b`, we can just right-shift `a`. In this way, the second LSB
 will become the new LSB and `b` needs to be multiplied by 2 (left shift).
-This algorithm is illustrated for the example above as: <br>
+This algorithm is illustrated in the example above: <br>
 
 |Iteration | `a`    | `b`       | `r`      | Action                          |
 |----------|:------:|:---------:|:--------:|---------------------------------|
@@ -64,12 +64,12 @@ the multiplier, which grows logarithmically with its size. This is denoted as
 
 To show the difference between these two algorithms, we can write a function 
 to time their executions. The following example uses the function 
-`perf_counter` from `time` module:
+`perf_counter` from the `time` module:
 ```python
 {{#include ../../codes/01-fundamentals/multiplication.py:timing}}
 ```
 
-The execution time per execution for different sizes are listed below:
+The execution time per execution for different sizes is listed below:
 
 | `n`       | `naive_mul` / &#956;s | `mul` / &#956;s |
 |----------:|-----------------:|-----------:|

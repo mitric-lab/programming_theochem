@@ -15,7 +15,7 @@ The Bohr radius is denoted by \\( a\\) and \\( L_{n-l-1}^{2l+1} \\) is
 the associated/generalized Laguerre polynomial of degree \\( n - l
 -1\\). We will work with atomic units in the following, so that \\( a  =
 1\\).
-With this we start by defining the radial function:
+With this, we start by defining the radial function:
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:radial}} 
 ```
@@ -24,14 +24,14 @@ with the three symbols
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:check_radial}} 
 ```
-In the next step we can define the wave function by building the
+In the next step, we can define the wave function by building the
 product of the radial function and the spherical harmonics.
 
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:wavefunction}} 
 ```
-With this in hand,  we have everything we need and we can start playing 
-with wave functions of the Hydrogen atom. Let us begin with the simplest
+With this in hand, we have everything we need and we can start playing 
+with wave the functions of the Hydrogen atom. Let us begin with the simplest
 one, the 1s function \\( \psi_{100} \\). 
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:1s_function}} 
@@ -50,7 +50,7 @@ the following holds:
 $$
 \int_{0}^{+\infty} \mathrm{d}r \int_{0}^{\pi} \mathrm{d}\theta \int_{0}^{2\pi} \mathrm{d}\phi \  r^2 \sin(\theta)\ \left| \psi_{100}(r,\theta,\phi) \right|^2 = 1
 $$
-We can easily check this, since we already learned how to calculate 
+We can easily check this since we already learned how to calculate 
 definite integrals.
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:1s_is_normalized}} 
@@ -63,7 +63,7 @@ finite grid.
 
 #### Radial part of wave function. 
 
-For this example we will examine the radial part of the first 4 
+For this, we will examine the radial part of the first 4 
 s-functions. We start by defining them:
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:radial_parts}}
@@ -82,7 +82,7 @@ the values with Matplotlib.
 
 In the next step, we want to graph the spherical harmonics. To do
 this, we first import all the necessary modules and then define first the
-symbolic spherical harmoncis, `Ylm_sym`, and then the numerical function `Ylm`.  
+symbolic spherical harmonics, `Ylm_sym``, and then the numerical function `Ylm`.  
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:define_Ylm}}
 ``` 
@@ -105,10 +105,10 @@ This can be implemented as follows:
 ```
 
 To be able to display the function graphically,
-however, we have to evaluate the function not only at one point, but on a
-two-dimensional grid (\\(\theta, \phi\\)) and then display the values on this
-grid. Therefore, we define the grid for \\(\theta\\) and \\(\phi\\) and evaluate
-the \\(Y_{lm} \\) for each point on this grid. 
+however, we have to evaluate the function not only at one point but on a
+two-dimensional grid ($\theta, \phi$) and then display the values on this
+grid. Therefore, we define the grid for $\theta$ and $\phi$ and evaluate
+the $Y_{lm}$ for each point on this grid. 
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:calculate_Ylm}}
 ```
@@ -120,12 +120,12 @@ transformation reads:
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:convert_to_cartesian}}
 ```
-We took the absolute value of the real spherical harmonics to make sure that
-we have a positive real number. 
+We took the absolute value of the real spherical harmonics to make sure that 
+we had a positive real number. 
 Now we have everything we need to represent the spherical harmonics in 3
 dimensions. We do a little trick and map the data points to a number range from
 0 to 1 and store these values in the variable `colors`. This allows us to
-color the spherical harmonics with a [colormap](https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html)
+colour the spherical harmonics with a [colormap](https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html)
 from Matplotlib. 
 ```python 
 {{#include ../codes/02-symbolic_computation/hydrogen.py:plot_spherical_harmonics}} 

@@ -15,7 +15,7 @@ In Python (>3.5), 6 bitwise operators are defined:
 ### Left Bitshift
 
 Returns x with the bits shifted to the left by y places 
-(and new bits on the right-hand-side are zeros). 
+(and new bits on the right-hand side are zeros). 
 This is the same as multiplying \\(x\\) by \\(2^y\\).
 
 The easiest way to visualize this operation is to consider a number 
@@ -60,7 +60,7 @@ assert (11 >> 2) == 2 # ..1011 => ..0010
 ### Bitwise AND
 
 Does a "bitwise and". Each bit of the output is 1 if the corresponding 
-bit of \\(x\\) AND \\(y\\) is 1, otherwise it is 0.
+bit of \\(x\\) AND \\(y\\) is 1, otherwise, it is 0.
 
 ```python
 assert (1 & 2) == 0  # ..0001 & ..0010 => ..0000 

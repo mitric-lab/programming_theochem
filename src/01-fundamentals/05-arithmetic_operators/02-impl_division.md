@@ -10,7 +10,7 @@ The na&iuml;ve floor division can thus be implemented as:
 ```
 
 Just like na&iuml;ve multiplication, this division algorithm scales linearly with 
-the size of dividend, if the effect of the divisor is ignored.
+the size of the dividend, if the effect of the divisor is ignored.
 
 #### Can we do better?
 
@@ -18,10 +18,10 @@ In the school, we have learned to do long divisions. This can also be done
 using binary numbers. We at first left-align the divisor `b` with the 
 dividend `a` and compare the sizes of the overlapping part. If the divisor is 
 smaller, it goes once into the dividend. Therefore, the quotient at that bit 
-becomes 1 and the dividend is subtracted from the part of divisor. Otherwise, this
+becomes 1 and the dividend is subtracted from the part of the divisor. Otherwise, this
 quotient bit will be 0 and no subtraction takes place. Afterwards, 
-the dividend is right-shifted and the whole process repeated. 
-This algorithm is illustrated in the following table for the example `11 // 2`: <br>
+the dividend is right-shifted and the whole process is repeated. 
+This algorithm is illustrated in the following table for example `11 /`/ 2`: <br>
 
 |Iteration       | `a`    | `b`     | `r`    | Action                         |
 |----------------|:------:|:-------:|:------:|--------------------------------|
@@ -39,8 +39,8 @@ An example implementation is given in the following listing:
 In this implementation, rather than setting the result bitwise like described 
 in the table above, it is initialized to `0` and appended with `0` or `1`.
 Also, the divisor is shifted by the bit-length of `a` instead of the difference 
-between `a` and `b`. This may increase the number of loops, but prevents 
-negative shifts, when bit-length of `a` is smaller than that of `b`.
+between `a` and `b`. This may increase the number of loops but prevents 
+negative shifts when the bit-length of `a` is smaller than that of `b`.
 
 This algorithm is linear in the bit-length of the dividend and thus a
 \\(\mathcal{O}(\log n)\\) algorithm. Again, we want to quantify the performance 
@@ -56,7 +56,7 @@ function for timing is shown in the following listing:
 Because we cannot divide by zero, the second argument, the divisor in this case, 
 is chosen between 1 and n instead of 0 and n. 
 
-The execution time per execution for different sizes are listed below:
+The execution time per execution for different sizes is listed below:
 
 | `na`      | `naive_div` / &#956;s | `div` / &#956;s |
 |----------:|-----------------:|-----------:|

@@ -6,7 +6,7 @@ In the 21st century, programming is a skill that is becoming increasingly
 important. This is not only true for computer scientists, but also for
 chemists, physicists, biologists, and many other scientists. The knowledge
 of programming languages can help you to solve a wide range of problems more 
-efficiently and to automate repetitive tasks. In addition, programming languages
+efficiently and automate repetitive tasks. In addition, programming languages
 can be used to visualise and analyse data, which is an important part of
 scientific work.
 
@@ -45,7 +45,7 @@ code is compiled into machine code. The compiler can perform many optimizations 
 code, which leads to a shorter runtime. 
 
 ~~~admonish example collapsible=true
-This behavior can be shown with a simple example:
+This behaviour can be shown with a simple example:
 A naive implementation that sums all odd numbers up to 100 million.
 This could look like this:
 
@@ -81,7 +81,7 @@ there are usually many more concepts to learn in compiled languages.
 #### Python can be very performant
 
 During this course, we will often use Python libraries like NumPy or SciPy for mathematical
-algorithms and especially linear algebra. These packages bring two major advantages.
+algorithms, especially linear algebra. These packages bring two major advantages.
 On the one hand, they allow the very easy use of complicated algorithms and, on the other
 hand, these packages are written in compiled languages like C or Fortran. This way, we can
 benefit from the performance advantages without having to learn a potentially more complicated
