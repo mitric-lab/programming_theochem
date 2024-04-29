@@ -5,16 +5,16 @@ wavefunction of the hydrogen atom has the following form:
 $$
 \psi_{nlm}(\mathbf{r})=\psi(r, \theta, \phi)=R_{n l}(r) Y_{l m}(\theta, \phi)
 $$
-where \\(R_{n l}(r) \\) is the radial function and \\(Y_{l m}\\) are the 
+where $R_{n l}(r) $ is the radial function and $Y_{l m}$ are the 
 spherical harmonics. The radial functions are given by
 $$
 R_{n l}(r)=\sqrt{\left(\frac{2}{n a}\right)^{3} \frac{(n-l-1) !}{2 n[(n+l) !]}} e^{-r / n a}\left(\frac{2 r}{n a}\right)^{l}\left[L_{n-l-1}^{2 l+1}(2 r / n a)\right]
 $$
-Here \\(n, l\\) are the principal and azimuthal quantum number. 
-The Bohr radius is denoted by \\( a\\) and \\( L_{n-l-1}^{2l+1} \\) is
-the associated/generalized Laguerre polynomial of degree \\( n - l
--1\\). We will work with atomic units in the following, so that \\( a  =
-1\\).
+Here $n, l$ are the principal and azimuthal quantum number. 
+The Bohr radius is denoted by $ a$ and $ L_{n-l-1}^{2l+1} $ is
+the associated/generalized Laguerre polynomial of degree $ n - l
+-1$. We will work with atomic units in the following, so that $ a  =
+1$.
 With this, we start by defining the radial function:
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:radial}} 
@@ -32,12 +32,12 @@ product of the radial function and the spherical harmonics.
 ```
 With this in hand, we have everything we need and we can start playing 
 with wave the functions of the Hydrogen atom. Let us begin with the simplest
-one, the 1s function \\( \psi_{100} \\). 
+one, the 1s function $ \psi_{100} $. 
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:1s_function}} 
 ```
 We can now use what we learned in the previous chapter and evaluate for
-example the wavefunction in the limit of \\(\infty\\)
+example the wavefunction in the limit of $\infty$
 $$
 \lim_{r\to \infty} \psi_{100}(r, \theta, \phi)
 $$
@@ -69,8 +69,8 @@ s-functions. We start by defining them:
 {{#include ../codes/02-symbolic_computation/hydrogen.py:radial_parts}}
 ```
 This gives us 4 functions that will return numeric values of the
-radial part at some radius \\(r\\). 
-The radial electron probability is given by \\(r^2 |R(r)|^2\\). We will use
+radial part at some radius $r$. 
+The radial electron probability is given by $r^2 |R(r)|^2$. We will use
 these functions to evaluate the wave functions on a grid and plot
 the values with Matplotlib.
 ```python
@@ -82,7 +82,7 @@ the values with Matplotlib.
 
 In the next step, we want to graph the spherical harmonics. To do
 this, we first import all the necessary modules and then define first the
-symbolic spherical harmonics, `Ylm_sym``, and then the numerical function `Ylm`.  
+symbolic spherical harmonics, `Ylm_sym`, and then the numerical function `Ylm`.  
 ```python
 {{#include ../codes/02-symbolic_computation/hydrogen.py:define_Ylm}}
 ``` 
@@ -130,5 +130,5 @@ from Matplotlib.
 ```python 
 {{#include ../codes/02-symbolic_computation/hydrogen.py:plot_spherical_harmonics}} 
 ```
-For the above example with \\( Y_{30}\\), the graph should look like 
+For the above example with $ Y_{30}$, the graph should look like 
 ![Y30](../assets/figures/02-symbolic_computation/hydrogen_Y30.png)

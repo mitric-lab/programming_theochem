@@ -61,7 +61,7 @@ are parsed to the optional argument `facecolors` of the function
 ```
 Because the phase is cyclic, i.e. a phase of $\pi$ equals a phase 
 of $-\pi$, a cyclic colourmap should be chosen to reflect this. In 
-Matplotlib 3.8, three cyclic colourmaps are available, `twilight, 
+Matplotlib 3.8, three cyclic colourmaps are available, `twilight`, 
 `twilight_shifted`, and `hsv`. We have used `hsv` in this example.
 
 The following figure is obtained for `l = 3` and `m = 1`:
@@ -132,7 +132,7 @@ obtain a more precise result by utilizing the `time.time()` or
 `time.perf_counter()` function from the `time` module. If you work with 
 IPython (e.g. Jupyter Notebook), you can also use the 
 [magic commands](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
-`%time`, `%`%time`, or `%timeit``. 
+`%time`, `%%time`, or `%timeit`. 
 
 The `lru_cache` (least recently used cache) decorator is a built-in 
 function in Python's `functools` module that provides a memoization 
