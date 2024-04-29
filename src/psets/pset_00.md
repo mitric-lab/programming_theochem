@@ -21,7 +21,7 @@ eigenfunctions of the Schrödinger equation. The complex functions can be
 plotted without loss of information. A common practice is to plot the 
 magnitude as usual and use colours to indicate the phase.
 
-**Write a program to plot complex spherical harmonics with phases indicated by 
+**Write a programme to plot complex spherical harmonics with phases indicated by 
 colours. Choose an appropriate 
 [colormap](https://matplotlib.org/stable/tutorials/colors/colormaps.html).**
 
@@ -68,7 +68,7 @@ following manner:
 ```
 For every recursive function, a termination condition is needed. Otherwise, 
 the function will go on until it is stopped by some safety mechanism or the 
-program crashes. In this case, the recursion stops at `n = 0` if only nonnegative 
+programme crashes. In this case, the recursion stops at `n = 0` if only nonnegative 
 integers are used as the argument. If `n` is not zero, this function calls 
 itself with `n` decreased by 1, until the termination condition is met.
 
