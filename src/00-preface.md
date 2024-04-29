@@ -43,8 +43,8 @@ updated throughout the semester according to the progress of the lecture.
 |  2  | Mon.  | April 22 |              |                 |
 |  2  | Thur. | April 25 |              |                 |
 |  3  | Mon.  | April 29 | Exercise     | Exercise 0      
-|  3  | Thur. | May 2    | Lecture      | Molecular Integrals I |
-|  4  | Mon.  | May 6    |              |                 |
+|  3  | Thur. | May 2    |              |                 |
+|  4  | Mon.  | May 6    | Lecture      | Molecular Integrals I |
 |~~4~~| ~~Thur.~~ | ~~May 9~~ | Holiday | Ascension Day   |
 |  5  | Mon.  | May 13   |              |                 |
 |  5  | Thur. | May 16   |              |                 |
