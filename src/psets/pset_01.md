@@ -171,6 +171,12 @@ $E^{\mathrm{elec}} = -6.5207\ \mathrm{a.u.}$
 
 ### Problem 2
 
+```admonish tip
+You can download the current version of the `Atom`, `Molecule`, `Gaussian`,
+and `BasisSet` classes from chapter [3.0](../03-molecular_integrals/00-current_classes.md).
+```
+
+
 A kinetic energy integral between two centres $A$ and $B$ is 
 defined as
 $$

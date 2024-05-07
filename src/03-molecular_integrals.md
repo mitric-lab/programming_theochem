@@ -1,5 +1,7 @@
 # Molecular Integrals
 
+<!-- ch0 -->
+
 In quantum chemistry, the very well-known Hartree-Fock (HF) method is used to 
 approximate the ground-state electronic structure of a molecule. The method 
 involves solving the HF equation, which is given by

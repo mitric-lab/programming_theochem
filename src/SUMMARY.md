@@ -31,13 +31,13 @@
 
 
 - [Molecular Integrals](03-molecular_integrals.md)
+    - [Current Classes](03-molecular_integrals/00-current_classes.md)
     - [Gaussian Type Orbitals](03-molecular_integrals/01-gaussian_orbitals.md)
     - [Hermite Gaussians](03-molecular_integrals/02-hermite_gaussians.md)
     - [Overlap Integrals](03-molecular_integrals/03-overlap_integrals.md)
     - [Testing on Molecules](03-molecular_integrals/04-testing_on_molecules.md)
     - [Nuclear Attraction Integrals](03-molecular_integrals/05-nuclear_attraction_integrals.md)
     - [Electron Repulsion Integrals](03-molecular_integrals/06-electron_repulsion_integrals.md)
-    - [Complete Classes]()
 
 - [Hartree Fock Approximation]()
 - [Configuration Interaction]()
