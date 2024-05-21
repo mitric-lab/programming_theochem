@@ -113,8 +113,9 @@ secular equation
 $$
   \bm{H} \vec{c}_i = \epsilon_i \vec{c}_i
 $$
-with the Hamiltonian $\bm{H}$ defined in {{eqref: eq:eht_hamiltonian}} and
-under the approximation of unit overlap, i.e. $\mathbf{S} = \identity$.
+with the Hamiltonian $\bm{H}$ defined in {{eqref: eq:eht_hamiltonian}}.
+Note that for this specific equation, the approximation of unit overlap,
+i.e. $\mathbf{S} = \identity$, was applied.
 The orbital energies $\epsilon_i$ can thus be calculated as
 eigenvalues of $\mathbf{H}$, while the eigenvectors $\vec{c}_i$ are the
 expansion coefficients of the MOs in the basis of AOs (MO coefficients).
@@ -204,7 +205,7 @@ integral between the two basis functions $g_i$ and $g_j$
 centered at $A$ and $B$, respectively, with $i$ and $j$ 
 denoting their angular momenta.
 
-**(a) Show that the 1-dimensional kinetic energy integral 
+**(a) Show (by hand) that the 1-dimensional kinetic energy integral 
 $T_{ij}^{AB}$ can be written as a linear combination of up to 
 3 overlap integrals like**
 $$
