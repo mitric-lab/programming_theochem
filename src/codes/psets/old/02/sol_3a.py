@@ -14,14 +14,14 @@ def double_well(q, q0, delta, e_ts):
 ### ANCHOR_END: def_double_well
 
 
-### ANCHOR: optimise_double_well
+### ANCHOR: optimize_double_well
 from scipy.optimize import minimize
 
 args = (2.0, 1.0, 2.0)
 q_init = [3.0]
 res = minimize(double_well, q_init, args=args, method='BFGS')
 print('q_opt: ', res.x)
-### ANCHOR_END: optimise_double_well
+### ANCHOR_END: optimize_double_well
 
 plot_x = np.linspace(-5.0, 5.0, 1000)
 plot_y = double_well(plot_x, *args)
