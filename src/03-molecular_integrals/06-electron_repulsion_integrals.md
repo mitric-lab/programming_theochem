@@ -20,7 +20,7 @@ abbreviated as $ (g_{ijk} g_{lmn} | g_{opq} g_{rst}) $. The ERI is
 also known as the two-electron integral.
 
 ### Evaluation of $G_{000,000,000,000}^{A,B,C,D}$
-You should now know the game: we will first calculate the ERI between 
+You should know the game by now: we will first calculate the ERI between 
 4 s-orbitals, 
 i.e. $(i, j, k) = (l, m, n) = (o, p, q) = (r, s, t) = (0, 0, 0)$, 
 and then apply recursive relations of Hermite Gaussians to obtain 

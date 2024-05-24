@@ -350,10 +350,17 @@ This should give you the following plot:
   <img src="../assets/figures/03-molecular_integrals/ethene_kinetic.svg"/>
 </p>
 
-~~~admonish info
-If you have [PySCF](https://pyscf.org/) installed, you can use the following 
-code to calculate the nuclear attraction integrals using PySCF and compare 
-them with our results:
+~~~admonish info title="Information for quantum chemistry enthusiasts" collapsible=true
+You can install the open-source quantum chemistry package
+[PySCF](https://pyscf.org/) on your PC, which provides a Python interface
+for molecular integrals, as well as Python implementations of many quantum
+chemical methods. Unfortunately, PySCF does not support Windows natively,
+so you have to use *Windows Subsystem for Linux* if you are a Windows user.
+
+The installation and usage of PySCF is not neccessary for this lecture, 
+you can but do not have to do it. But once you have installed PySCF, you can 
+use the following code to calculate the nuclear attraction integrals using 
+PySCF and compare them with our results:
 ```python
 {{#include ../codes/03-molecular_integrals/nuclear_attraction_ethene.py:pyscf_nuclear_attractions}}
 ```
