@@ -171,8 +171,8 @@ $E^{\mathrm{elec}} = -6.5207\ \mathrm{a.u.}$
 ### Problem 2
 
 ```admonish tip
-You can download the current version of the `Atom`, `Molecule`, `Gaussian`,
-and `BasisSet` classes from chapter [3.0](../03-molecular_integrals/00-current_classes.md).
+You can download the latest version of the `Atom`, `Molecule`, `Gaussian`,
+and `BasisSet` classes from chapter [3.0](../03-molecular_integrals/00-latest_scripts.md).
 ```
 
 
@@ -231,7 +231,7 @@ kinetic energy matrix.**
 
 We now take a look again at the water molecule from the last problem set:
 ```python
-{{#include ../codes/psets/02/sol_1cd.py:atoms_in_water}}
+{{#include ../codes/psets/01/sol_2cd.py:atoms_in_water}}
 ```
 **(d) Calculate the kinetic energy matrix for this water molecule using 
 the standard STO-3G basis set.**
