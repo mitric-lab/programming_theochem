@@ -1,7 +1,7 @@
 ## Test Functions
 
 Before diving into specific optimization algorithms, we will first take a 
-look at some test functions which can help us check how well our algorithms 
+look at some test functions that can help us check how well our algorithms 
 are performing. There are lots of 
 [Test functions for optimization](https://en.wikipedia.org/wiki/Test_functions_for_optimization)
 out there, serving different purposes. Because we want to visualize the test 
@@ -51,7 +51,7 @@ $$
 $$
 where \\(a\\) and \\(b\\) are parameters. The function has a global minimum 
 at \\(x = (a, a^2)\\) with \\(f(x^{\*}) = 0\\). This global 
-minimum lies in a long, narrow and relatively flat valley, which makes it 
+minimum lies in a long, narrow, and relatively flat valley, which makes it 
 difficult to find.
 ```python
 {{#include ../codes/04-numerical_optimisation/objective_function.py:rosenbrock_function}}

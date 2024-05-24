@@ -21,7 +21,7 @@ can be formulated as a (generalized) eigenvalue problem, rather than
 the pseudo eigenvalue problem in the case of HF.
 
 This simplification, however, does not capture the repulsion between 
-electrons associated with different atomic centers. One way to include this 
+electrons associated with different atomic centres. One way to include this 
 interaction (empirically) would be to assume that the electron-electron 
 repulsion energy can be partitioned into pair-wise contributions of atoms, 
 i.e.
@@ -89,11 +89,11 @@ $$
 This formula has a very similar structure to the electron-electron repulsion 
 energy, with the scaling factor $V_0$, the number of valence electrons 
 $z_A$ and $z_B$, and the internuclear distance $r_{AB}$ which 
-should be inserted in the unit of &#8491;. The differences are the exakt 
+should be inserted in the unit of &#8491;. The differences are the exact 
 $1/r$ part without extra summands in the denominator, as well as the 
 parameters $\delta_{A/B}$ and $\epsilon_{A/B}$, which have the same 
-functionaliy as $a_{A/B}$ and $b_{A/B}$, respectively, but are 
-different in values. These parameters for H, C, N and O are listed in the 
+functionality as $a_{A/B}$ and $b_{A/B}$, respectively, but are 
+different in values. These parameters for H, C, N, and O are listed in the 
 table above.
 
 **(b) Calculate the nuclei-nuclei repulsion energy for the water molecule 
@@ -127,9 +127,9 @@ in (a).**
 ### Problem 2
 The steepest descent method is simple, but plagued by several problems, one 
 of which is its oscillatory behavior. If the objective function has a minimum 
-located in a elongated valley, even if we choose a sufficiently small step 
+located in an elongated valley, even if we choose a sufficiently small step 
 size (which means painfully slow convergence), steepest descent will still 
-zig-zag towards the solution. If the step size is too large, the method will 
+zig-zag toward the solution. If the step size is too large, the method will 
 either oscillate around the minimum or towards infinity.
 
 An oscillation in numerical algorithms can often be fixed by introducing 
@@ -166,7 +166,7 @@ $$
 `OptimiserBase`, which implements the conjugate gradient method described 
 above. Use the method `_check_convergence_grad()` to check convergence.**
 
-*Hint: Since there are several variables that need to be updated in each 
+*Hint: Since several variables need to be updated in each 
 iteration, it is recommended to define them in the constructor, for example 
 like this:*
 ```python
@@ -177,7 +177,7 @@ like this:*
 
 **(b) Use `SimpleSteepestDescent` and `SimpleConjugateGradient` to optimize 
 the Rosenbrock function with $a = 1$ and $b = 100$. Start from 
-$x_0 = (0, 0)$, choose a step size of $\alpha=0.005$ and set the 
+$x_0 = (0, 0)$, choose a step size of $\alpha=0.005$, and set the 
 maximum iteration to 10000. Plot the optimization trajectory.**
 
 *Hint: `SimpleSteepestDescent` is expected to diverge, while 
@@ -211,25 +211,25 @@ $$
 \end{align}
 $$
 
-We shall at first define a Python function to obtain the objective function. 
+We shall first define a Python function to obtain the objective function. 
 For $V(q)$, it could look like this:
 ```python
 {{#include ../codes/psets/02/sol_3a.py:def_double_well}}
 ```
 
-Note that we have set the indepentent variable `q` as the first argument 
+Note that we have set the independent variable `q` as the first argument 
 of this function. This is necessary because we want to use 
 the SciPy function 
 [`optimize.minimize`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html), 
 which requires the objective function to have the independent variable as 
-its first argument. We now call of `minimize` on our example function in 
+its first argument. We now call `minimize` on our example function in 
 combination with the 
 [BFGS](https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm)
 optimization algorithm:
 ```python
 {{#include ../codes/psets/02/sol_3a.py:optimise_double_well}}
 ```
-The function `minimize` calculates numerical gradient of the objective 
+The function `minimize` calculates the numerical gradient of the objective 
 function automatically, so you do not need to provide it. 
 The optimised value $q^{*}$ is stored in the attribute `x` 
 of the object `res`.
@@ -249,16 +249,16 @@ the water molecule from problem 1:
 ```python
 {{#include ../codes/psets/02/sol_3bc.py:atoms_in_water}}
 ```
-You may have notices that the bond angle $\angle_{\mathrm{HOH}}$ is 
+You may have noticed that the bond angle $\angle_{\mathrm{HOH}}$ is 
 $90^{\circ}$ in this geometry, which is certainly not optimal.
 
 **(b) Optimise the geometry of the water molecule listed above
 using the total energy as the objective function.**
 
-_Hint: Start by defining a function which takes the 
+_Hint: Start by defining a function that takes the 
 [flattened](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flatten.html) 
 coordinate array (which should have 9 elements) as its first argument and 
-everything else you need to construct a molecule as remaining arguments. 
+everything else you need to construct a molecule as the remaining arguments. 
 This function should construct a molecule using the coordinates you provide 
 and calculate the total energy as its return value. Afterwards, call 
 `minimize` on this function using the coordinates given in problem 1 as an initial guess._

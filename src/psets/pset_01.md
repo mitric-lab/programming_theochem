@@ -136,8 +136,8 @@ Expected result:
 
 &nbsp;
 
-The total electronic energy of the molecule is simply the sum of energies of 
-all occupied (spatial) MOs multiplied by 2, assuming the 
+The total electronic energy of the molecule is simply the sum of the energies 
+of all occupied (spatial) MOs multiplied by 2, assuming the 
 $\epsilon$'s are in ascending order, i.e.
 $$
 E^{\mathrm{elec}} = 2 \sum_{i=1}^{N_\mathrm{occ}} \epsilon_i
@@ -171,7 +171,7 @@ $E^{\mathrm{elec}} = -6.5207\ \mathrm{a.u.}$
 ### Problem 2
 
 ```admonish tip
-You can download the latest version of the `Atom`, `Molecule`, `Gaussian`,
+You can download the latest versions of the `Atom`, `Molecule`, `Gaussian`,
 and `BasisSet` classes from chapter [3.0](../03-molecular_integrals/00-latest_scripts.md).
 ```
 

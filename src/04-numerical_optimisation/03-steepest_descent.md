@@ -1,8 +1,8 @@
 ## Steepest Descent
 
 By noticing that the gradient of a function points to the direction of the 
-steepest ascent, we can use the negative gradient to guide us towards the 
-minimum. This method is called 
+steepest ascent, we can use the negative gradient to guide us toward 
+the minimum. This method is called 
 [steepest descent](https://en.wikipedia.org/wiki/Gradient_descent)
 or 
 [gradient descent](https://en.wikipedia.org/wiki/Gradient_descent).
@@ -16,7 +16,7 @@ We can formalise the idea above into an algorithm:
 3. Update the current point using $x_{k+1} = x_k - \alpha \cdot \nabla f(x_l)$.
 4. Repeat until the convergence criterion is met.
 
-The step size $\alpha$, also known as learning rate, determines how far
+The step size $\alpha$, also known as the learning rate, determines how far
 we move in the direction of the negative gradient. Because the gradient 
 vanishes at a stationary point, when this algorithm converges, it is 
 guaranteed to converge to a stationary point. One should check afterwards 
@@ -34,7 +34,7 @@ $$
 for all $0 \leq t \leq 1$ and all $x, y \in D$, 
 where $D$ is the domain of $f$.
 
-The right hand side of the inequality represents the straight line between
+The right-hand side of the inequality represents the straight line between
 $(x, f(x))$ and $(y, f(y))$. In English, this inequality states that this
 straight line is always above the graph of $f$.
 
@@ -128,7 +128,7 @@ This shows that for any $\epsilon > 0$, we can choose a $k$ large
 enough such that $f(x_{k+1}) - f(x^{*}) \leq \epsilon$. Therefore, 
 with the step size $\alpha \leq \frac{1}{L}$, steepest descent is 
 guaranteed to converge to the minimum of the objective function. In the 
-worst case, steepest descent converges sublinearly with order 
+worst case, steepest descent converges sublinearly with the order 
 $\mathcal{O}\left(\frac{1}{k}\right)$ for konvex functions.
 ```
 By assuming
@@ -136,15 +136,15 @@ By assuming
 Here, the objective function $f$ is assumed to be *strongly convex* and has 
 *Lipschitz continuous* gradient.
 
-A function $f$ is called *strongly convex* eith parameter $\mu > 0$ 
+A function $f$ is called *strongly convex* with parameter $\mu > 0$ 
 if and only if
 $$
   f(tx + (1-t)y) \leq tf(x) + (1-t)f(y) - \frac{1}{2} \mu t(1-t) \| x - y \|^2
 $$
 for all $0 \leq t \leq 1$ and all $x, y \in D$. This condition is just the
-convexity condition with an additional negative quadratic term on the right
-hand side. In English, this inequality states that $f$ must be more convex
-than a quadratic function.
+convexity condition with an additional negative quadratic term on the 
+right-hand side. In English, this inequality states that $f$ must be 
+more convex than a quadratic function.
 ```
 steepest descent can be shown to converge linearly in the worst case
 if a sufficiently small step size $\alpha$ is chosen. 
@@ -214,13 +214,13 @@ functions.
 ```
 
 #### Variable Step Size
-A very easy modifications we can do to improve the performance of 
+A very easy modification we can do to improve the performance of 
 the steepest descent algorithm with fixed step size is to make $\alpha$ 
 variable. We can use the gradient to determine a direction and find a minimum 
 in this direction. This is called a line search. Since we just want to obtain 
 a reasonable step size, this line search does not have to be precise. 
-This can be done by the so called 
-[backtracking line search](https://en.wikipedia.org/wiki/Backtracking_line_search). 
+This can be done by the so-called 
+[backtracking line](https://en.wikipedia.org/wiki/Backtracking_line_search) search](https://en.wikipedia.org/wiki/Backtracking_line_search). 
 
 The Armijo variant of this method can be described as follows:
 1. Choose a starting point $x$, a maximum step size $\alpha_0$, 
@@ -235,27 +235,27 @@ The Armijo variant of this method can be described as follows:
 4. Repeat until the condition above is satisfied.
 
 Let us try to gain some intuition from this cryptic description. 
-The right hand side of the condition, $\alpha_j t = c \alpha_j |m|$, 
+The right-hand side of the condition, $\alpha_j t = c \alpha_j |m|$, 
 is the expected decrease in $f$ using linear approximation scaled by 
 $c$. So we start with a large step size $\alpha_0$ and check if 
 it leads to a sufficient decrease in $f$. If not, we decrease the step
-and decrease it check again. In this way, we will almost never find the 
-minimum in the search direction, but it is good enough, because we do not 
+and decrease it check again. In this way, we will rarely find the 
+minimum in the search direction, but it is good enough because we do not 
 use line search to find the minimum, but to find a reasonable step size for 
 steepest descent.
 
-Steepest descent with backtracking line search can be summarized as follows:
+Steepest descent with the backtracking line search can be summarised as follows:
 1. Choose a starting point $x$ and a maximum step size $\alpha_0$.
 2. Calculate the gradient at the current point $\nabla f(x_k)$.
-3. Use the gradient as the direction for backtracking line search to find 
+3. Use the gradient as the direction for the backtracking line search to find 
    a step size $\alpha_k$.
 4. Update the current point using $x_{k+1} = x_k - \alpha_k \nabla f(x_k)$.
 5. Repeat until the convergence criterion is met.
 
 
 ### Implementation
-Because we aim at implementing several optimization algorithms, we will 
-at first implement a base class `OptimiserBase` which contains the common 
+Because we aim to implement several optimization algorithms, we will
+first implement a base class `OptimiserBase` which contains the common 
 methods and attributes of all optimization algorithms. 
 
 ```python
@@ -267,30 +267,30 @@ methods and attributes of all optimization algorithms.
 
 This base class implements the `_check_convergence_grad` method, which 
 checks whether the gradient norm is smaller than a given tolerance. One could 
-implement other convergence criteria, e.g. absolute of relative change of the 
+implement other convergence criteria, e.g. absolute or relative change of the 
 iterate, absolute or relative change of the objective function value, etc.
 This base class also implements 
 the `run` method which runs the optimization algorithm until convergence 
 or until a maximum number of iterations is reached. The `run` method calls 
-`next_step` method to obtain the next iterate and `check_convergence` method 
-to check whether the algorithm has converged. These two methods are abstract 
-methods which need to be implemented by subclasses.
+the `next_step` method to obtain the next iterate and the `check_convergence` 
+method to check whether the algorithm has converged. These two methods are 
+abstract methods which need to be implemented by subclasses.
 
-With this boiler plate codes in place, we can concentrate on the important 
+With these boilerplate codes in place, we can concentrate on the important 
 part: How to obtain the next iterate. For steepest descent with a fixed 
-step size, it is very straight-forward to implement.
+step size, it is very straightforward to implement.
 
 ```python
 {{#include ../codes/04-numerical_optimisation/optimiser.py:simple_steepest_descent}}
 ```
 
-For steepest descent with a variable step size, we need to incorporate a 
-line search, like Armijo line search mentioned in the theory section. 
+For steepest descent with variable step size, we need to incorporate a 
+line search, like the Armijo line search mentioned in the theory section. 
 ```python
 {{#include ../codes/04-numerical_optimisation/optimiser.py:armijo_line_search}}
 ```
-Afterwards, we can implement the steepest descent with variable step size 
-by doing only minor modifications to the steepest descent algorithm with 
+Afterwards, we can implement the steepest descent with a variable step size 
+by doing only minor modifications to the steepest descent algorithm with a
 fixed step size.
 ```python
 {{#include ../codes/04-numerical_optimisation/optimiser.py:steepest_descent}}

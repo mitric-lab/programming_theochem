@@ -1,8 +1,8 @@
-# (Quasi-)Newton Methods
+## (Quasi-)Newton Methods
 
-The steepest descent method has a garanteed linear convergence for strongly 
+The steepest descent method has a guaranteed linear convergence for strongly 
 convex functions. In order to achieve quadratic convergence, we must get more 
-information from the function. The most straight-forward approach would be to 
+information from the function. The most straightforward approach would be to 
 take the second derivative, or the Hessian $\bm{H}$ of the function. This 
 is called 
 [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method_in_optimization) 
@@ -11,9 +11,9 @@ in optimisation.
 ### Theoretical Background
 
 #### Newton's Method
-Just like the method carrying the same name for root 
+Just like the method carrying the same name for the root 
 finding, which constructs a local linear approximation of the function, 
-Newton's method in optimisation constructs a local quadratic approximation 
+Newton's method of optimisation constructs a local quadratic approximation 
 and updates the current point to the minimum of the parabola. The 
 corresponding algorithm would be:
 1. Choose a starting point $x_0$.
@@ -23,15 +23,15 @@ corresponding algorithm would be:
      \frac{1}{2} \langle (x - x_k), \bm{H}(x_k)\, (x - x_k) \rangle $.
 3. Update the current point using 
    $x_{k+1} = x_{k} - \bm{H}(x_k)^{-1}\, \nabla f(x_k) $.
-4. Repeat until some convergence criteria is met.
+4. Repeat until some convergence criteria are met.
 
 For a problem with a handful of independent variables, the Hessian can be 
 calculated and inverted without any problem. If we want to optimize 
 a molecule with $N$ atoms, we have about $3N$ degrees of freedom 
 and the Hessian will have $3N \times 3N$ elements, which quickly
 becomes expensive to calculate and invert as $N$ grows. In this case, we can 
-start with a guess for the initial Hessian, and use informations along the 
-iterations to update this Hessian. This leads to 
+start with a guess for the initial Hessian, and use pieces of information 
+along the iterations to update this Hessian. This leads to 
 [Quasi-Newton methods](https://en.wikipedia.org/wiki/Quasi-Newton_method). 
 One very widespread algorithm of this class is the 
 [Broyden-Fletcher-Goldfarb-Shanno algorithm](https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm), 
@@ -85,7 +85,7 @@ the update condition secant for $\bm{A}_{k + 1}$, we get
 $\alpha = \frac{1}{ \langle y_k, s_k \rangle }$ and
 $\beta = -\frac{1}{ \langle s_k, \bm{A}_k s_k \rangle }$.
 
-Finally, we arrive at a viable algorihm, which can be formulate as:
+Finally, we arrive at a viable algorithm, which can be formulated as:
 1. Choose a starting point $x_0$ and a starting Hessian $\bm{A}_0$.
 2. Obtain a direction by solving$\bm{A}_k d_k = -\nabla f(x_k)$.
 3. Perform a line search along $d_k$ to find an appropriate step size $\alpha_k$.
@@ -130,7 +130,7 @@ An easy and practical choice of the initial Hessian is the identity matrix,
 whose inversion is also an identity matrix.
 
 ### Implementation
-Even though the formulas for the BFGS algorithm look indimidating, the 
+Even though the formulas for the BFGS algorithm look intimidating, the 
 implementation is actually quite simple. We just have to pay attention not 
 to mistype the very long formula for the update of the inverted Hessian and 
 make sure to use the correct multiplication.

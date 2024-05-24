@@ -120,7 +120,7 @@ would be the difference between the function value of the $k$-th
 iteration and the optimal value $f(x^{*})$, i.e. 
 $|f(x_{k+1})-f(x^{*})|$.
 
-These two measures, however, are only useful for theorectical analysis and 
+These two measures, however, are only useful for theoretical analysis and 
 cannot be used in practice. The reason is that we do not know the optimal 
 solution $x^{*}$ in advance. Some of the alternative, heuristic but 
 more practical convergence measures are listed below.
