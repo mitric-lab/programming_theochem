@@ -98,6 +98,104 @@ class Gaussian:
                 overlap += ci * cj * normi * normj * a * b * c
         return overlap
     ### ANCHOR_END: gaussian_overlap
+    ### ANCHOR: gaussian_kinetic
+    def T(self, other):
+        t_x, t_y, t_z = 0.0, 0.0, 0.0
+        for ci, alphai, normi in zip(self.coefs, self.exps, 
+                                     self.norm_const):
+            for cj, alphaj, normj in zip(other.coefs, other.exps, 
+                                         other.norm_const):
+                a = T.t_ij(self.ijk[0], other.ijk[0], alphai, alphaj, 
+                           self.A[0], other.A[0])
+                b = S.s_ij(self.ijk[1], other.ijk[1], alphai, alphaj,
+                           self.A[1], other.A[1])
+                c = S.s_ij(self.ijk[2], other.ijk[2], alphai, alphaj,
+                           self.A[2], other.A[2])
+                t_x += ci * cj * normi * normj * a * b * c
+        for ci, alphai, normi in zip(self.coefs, self.exps, 
+                                     self.norm_const):
+            for cj, alphaj, normj in zip(other.coefs, other.exps, 
+                                         other.norm_const):
+                a = S.s_ij(self.ijk[0], other.ijk[0], alphai, alphaj,
+                           self.A[0], other.A[0])
+                b = T.t_ij(self.ijk[1], other.ijk[1], alphai, alphaj,
+                           self.A[1], other.A[1])
+                c = S.s_ij(self.ijk[2], other.ijk[2], alphai, alphaj,
+                           self.A[2], other.A[2])
+                t_y += ci * cj * normi * normj * a * b * c
+        for ci, alphai, normi in zip(self.coefs, self.exps, 
+                                     self.norm_const):
+            for cj, alphaj, normj in zip(other.coefs, other.exps, 
+                                         other.norm_const):
+                a = S.s_ij(self.ijk[0], other.ijk[0], alphai, alphaj,
+                           self.A[0], other.A[0])
+                b = S.s_ij(self.ijk[1], other.ijk[1], alphai, alphaj,
+                           self.A[1], other.A[1])
+                c = T.t_ij(self.ijk[2], other.ijk[2], alphai, alphaj,
+                           self.A[2], other.A[2])
+                t_z += ci * cj * normi * normj * a * b * c
+        return t_x + t_y + t_z
+    ### ANCHOR_END: gaussian_kinetic
+    ### ANCHOR: gaussian_nuclear_attraction
+    def VC(self, other, RC):
+        """
+        Calculate the nuclear attraction integral between this Gaussian and 
+        another Gaussian function.
+
+        Parameters:
+       
+        other (Gaussian): Another Gaussian function.
+        RC (array-like): The coordinates of the nucleus.
+
+        Returns:
+        float: The nuclear attraction integral value.
+        """
+        v_en = 0.0
+        for ci, alphai, normi in zip(self.coefs, self.exps, 
+                                     self.norm_const):
+            for cj, alphaj, normj in zip(other.coefs, other.exps, 
+                                         other.norm_const):
+                v_en += ci * cj * normi * normj * V.v_ij(
+                    self.ijk[0], self.ijk[1], self.ijk[2],
+                    other.ijk[0], other.ijk[1], other.ijk[2],
+                    alphai, alphaj, self.A, other.A, RC,
+                )
+        return v_en
+    ### ANCHOR_END: gaussian_nuclear_attraction
+    ### ANCHOR: gaussian_electron_repulsion 
+    def twoel(self, other1, other2, other3):
+        """
+        Calculate the two-electron repulsion integral between this Gaussian 
+        and three other Gaussian functions.
+
+        Parameters:
+        other1 (Gaussian): The first Gaussian function.
+        other2 (Gaussian): The second Gaussian function.
+        other3 (Gaussian): The third Gaussian function.
+
+        Returns:
+        float: The two-electron repulsion integral value.
+        """
+        v_ee = 0.0
+        for ci, alphai, normi in zip(self.coefs, self.exps, 
+                                     self.norm_const):
+            for cj, alphaj, normj in zip(other1.coefs, other1.exps,
+                                         other1.norm_const):
+                for ck, alphak, normk in zip(other2.coefs, other2.exps,
+                                             other2.norm_const):
+                    for cl, alphal, norml in zip(other3.coefs, other3.exps,
+                                                 other3.norm_const):
+                        v_ee += ci * cj * ck * cl \
+                            * normi * normj * normk * norml * ERI.g_ijkl(
+                                self.ijk[0], self.ijk[1], self.ijk[2],
+                                other1.ijk[0], other1.ijk[1], other1.ijk[2],
+                                other2.ijk[0], other2.ijk[1], other2.ijk[2],
+                                other3.ijk[0], other3.ijk[1], other3.ijk[2],
+                                alphai, alphaj, alphak, alphal, 
+                                self.A, other1.A, other2.A, other3.A,
+                            )
+        return v_ee
+    ### ANCHOR_END: gaussian_electron_repulsion
 
 
 ### ANCHOR: basis_set_class

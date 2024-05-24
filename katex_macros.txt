@@ -4,6 +4,7 @@
 \R:{\mathbb{R}^{#1 \times #2}}
 \C:{\mathbb{C}^{#1 \times #2}}
 \argmin:{\underset{#1}{\mathrm{arg\,min\,}}}
+\argmax:{\underset{#1}{\mathrm{arg\,max\,}}}
 \equalhat:{\ \mathrel{\widehat{=}}\ }
 \identity:{1\kern-0.25em\text{l}}
 

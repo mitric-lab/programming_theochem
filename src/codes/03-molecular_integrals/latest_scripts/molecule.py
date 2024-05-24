@@ -131,4 +131,44 @@ class Molecule:
                 self.S[i,j] = self.basisfunctions[i].S(self.basisfunctions[j])
                 self.S[j,i] = self.S[i,j]
     ### ANCHOR_END: molecule_overlap
+    ### ANCHOR: molecule_kinetic
+    def get_T(self) -> None:
+        nbf = len(self.basisfunctions)
+        self.T = np.zeros((nbf, nbf))
+        for i in np.arange(0, nbf):
+            for j in np.arange(i, nbf):
+                self.T[i,j] = self.basisfunctions[i].T(self.basisfunctions[j])
+                self.T[j,i] = self.T[i,j]
+    ### ANCHOR_END: molecule_kinetic
+    ### ANCHOR: molecule_nuclear_attraction
+    def get_Vij(self, i, j) -> float:
+        v_int = 0.0
+        for at in self.atomlist:
+            v_int -= at.atnum \
+                * self.basisfunctions[i].VC(self.basisfunctions[j], at.coord)
+        return v_int
+
+    def get_V(self) -> None:
+        nbf = len(self.basisfunctions)
+        self.Ven = np.zeros((nbf, nbf))
+        for i in np.arange(nbf):
+            for j in np.arange(i, nbf):
+                self.Ven[i, j] = self.get_Vij(i, j)
+                self.Ven[j, i] = self.Ven[i, j]
+    ### ANCHOR_END: molecule_nuclear_attraction
+    ### ANCHOR: molecule_electron_repulsion
+    def get_twoel(self):
+        nbf = len(self.basisfunctions)
+        self.twoel = np.zeros((nbf, nbf, nbf, nbf))
+        for i in np.arange(nbf):
+            for j in np.arange(nbf):
+                for k in np.arange(nbf):
+                    for l in np.arange(nbf):
+                        self.twoel[i, j, k, l] \
+                            = self.basisfunctions[i].twoel(
+                                self.basisfunctions[j],
+                                self.basisfunctions[k],
+                                self.basisfunctions[l]
+                            )   
+    ### ANCHOR_END: molecule_electron_repulsion
 

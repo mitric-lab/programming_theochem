@@ -29,9 +29,8 @@
     - [Hydrogen Atom](02-symbolic_computation/03-hydrogen_atom.md)
     - [Harmonic Oscillator](02-symbolic_computation/04-harmonic_oscillator.md)
 
-
 - [Molecular Integrals](03-molecular_integrals.md)
-    - [Current Classes](03-molecular_integrals/00-current_classes.md)
+    - [Latest Scripts](03-molecular_integrals/00-latest_scripts.md)
     - [Gaussian Type Orbitals](03-molecular_integrals/01-gaussian_orbitals.md)
     - [Hermite Gaussians](03-molecular_integrals/02-hermite_gaussians.md)
     - [Overlap Integrals](03-molecular_integrals/03-overlap_integrals.md)
@@ -39,6 +38,12 @@
     - [Nuclear Attraction Integrals](03-molecular_integrals/05-nuclear_attraction_integrals.md)
     - [Electron Repulsion Integrals](03-molecular_integrals/06-electron_repulsion_integrals.md)
 
+- [Numerical Optimisation](04-numerical_optimisation.md)
+    - [Convergence](04-numerical_optimisation/01-convergence.md)
+    - [Test Functions](04-numerical_optimisation/02-test_functions.md)
+    - [Steepest Descent](04-numerical_optimisation/03-steepest_descent.md)
+    - [(Quasi-)Newton Methods](04-numerical_optimisation/04-newton_methods.md)
+    - [Desired Properties](04-numerical_optimisation/desirable_properties.md)
 - [Hartree Fock Approximation]()
 - [Configuration Interaction]()
 
@@ -46,13 +51,9 @@
 
 [Problem Set 0](psets/pset_00.md)
 [Problem Set 1](psets/pset_01.md)
-[Problem Set 2]()
+[Problem Set 2](psets/pset_02.md)
 [Problem Set 3]()
 [Problem Set 4]()
 
 [Solution to Problem Set 0](psets/sol_pset_00.md)
-[Solution to Problem Set 1]()
-[Solution to Problem Set 2]()
-[Solution to Problem Set 3]()
-[Solution to Problem Set 4]()
 

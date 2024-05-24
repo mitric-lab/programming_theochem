@@ -50,7 +50,7 @@ updated throughout the semester according to the progress of the lecture.
 |  5  | Thur. | May 16   |              |                 |
 |~~6~~| ~~Mon.~~ | ~~May 20~~ | Holiday | Whit Monday     |
 |  6  | Thur. | May 23   | Exercise     | Exercise 1      |
-|  7  | Mon.  | May 27   | Lecture      | Molecular Integrals II |
+|  7  | Mon.  | May 27   | Lecture      | Molecular Integrals II & <br> Numerical Optimization |
 |~~7~~| ~~Thur.~~ | ~~May 30~~ | Holiday | Corpus Christi |
 |  8  | Mon.  | June 3   |              |                 |
 |  8  | Thur. | June 6   |              |                 |
