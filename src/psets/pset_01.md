@@ -161,11 +161,11 @@ $E^{\mathrm{elec}} = -6.5207\ \mathrm{a.u.}$
 
 [^stewart_expansion]: R. F. Stewart, _J. Chem. Phys._, **1970**, 52, 431&ndash;438.
 
+[^anderson_alpha]: A. B. Anderson, R. Hoffmann, _J. Chem. Phys._, *1974*, 60, 4271&ndash;4273.
+
 [^mulliken_hij]: R. S. Mulliken, _J. Chim. Phys._, **1949**, 46, 497&ndash;542.
 
 [^wolfsberg_hij]: M. A. X. Wolfsberg, L. Helmholz, _J. Chem. Phys._, **1952**, 20, 837&ndash;843.
-
-[^anderson_alpha]: A. B. Anderson, R. Hoffmann, _J. Chem. Phys._, *1974*, 60, 4271&ndash;4273.
 
 ---
 &nbsp;
