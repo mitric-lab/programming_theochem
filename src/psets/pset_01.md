@@ -43,6 +43,8 @@ Expected result:
 | 0.2152 | 0.4014 | 0.0000 | 0.0000 | 1.0000 | 0.1515 |
 | 0.2152 | 0.0000 | 0.4014 | 0.0000 | 0.1515 | 1.0000 |
 
+&nbsp;
+
 The Hamiltonian of our modified EHT is defined as 
 $$
 H_{ij} := 
@@ -102,6 +104,8 @@ Expected result:
 | -0.2054|  -0.2143|   0.0000|   0.0000|  -0.4998 |  -0.0676 |
 | -0.2054|   0.0000|  -0.2143|   0.0000|  -0.0676 |  -0.4998 |
 
+&nbsp;
+
 The energies of molecular orbitals (MOs) are obtained as solutions of the 
 secular equation
 $$
@@ -130,6 +134,8 @@ Expected result:
 
 (The indices are 1-based.)
 
+&nbsp;
+
 The total electronic energy of the molecule is simply the sum of energies of 
 all occupied (spatial) MOs multiplied by 2, assuming the 
 $\epsilon$'s are in ascending order, i.e.
@@ -145,6 +151,7 @@ Expected result:
 
 $E^{\mathrm{elec}} = -6.5207\ \mathrm{a.u.}$
 
+
 [^hoffmann_eht]: R. Hoffmann, _J. Chem. Phys._, **1963**, 39, 1397&ndash;1412.
 
 [^dixon_params]: S. L. Dixon, P. C. Jurs, _J. Comput. Chem._, **1993**, 15, 733&ndash;746.
@@ -156,6 +163,7 @@ $E^{\mathrm{elec}} = -6.5207\ \mathrm{a.u.}$
 [^mulliken_hij]: R. S. Mulliken, _J. Chim. Phys._, **1949**, 46, 497&ndash;542.
 
 [^wolfsberg_hij]: M. A. X. Wolfsberg, L. Helmholz, _J. Chem. Phys._, **1952**, 20, 837&ndash;843.
+
 
 ---
 &nbsp;
@@ -205,12 +213,16 @@ T_{ij}^{AB} =
   \frac{1}{2} j (j - 1) S_{i,j-2}^{A,B}
 $$
 
+&nbsp;
+
 **(b) Generate symbolic expressions for the 1-dimensional kinetic energy 
 integrals $T_{ij}^{AB}$ for $s$ and $p$ orbitals using SymPy. 
 Wrap the expressions into a function called `t_ij` and write it **into a **Python** file called** `T.py`, just like we did for the overlap integrals in the 
 lecture.**
 
 *Hint: $S_{ij}^{AB} = 0$ for $i < 0$ or $j < 0$.*
+
+&nbsp;
 
 **(c) Extend the `Gaussian` class with the method `T` to calculate the 
 kinetic energy integrals between two Gaussian basis functions. Also, 
