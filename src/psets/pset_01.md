@@ -43,9 +43,6 @@ Expected result:
 | 0.2152 | 0.4014 | 0.0000 | 0.0000 | 1.0000 | 0.1515 |
 | 0.2152 | 0.0000 | 0.4014 | 0.0000 | 0.1515 | 1.0000 |
 
----
-&nbsp;
-
 The Hamiltonian of our modified EHT is defined as 
 $$
 H_{ij} := 
@@ -105,9 +102,6 @@ Expected result:
 | -0.2054|  -0.2143|   0.0000|   0.0000|  -0.4998 |  -0.0676 |
 | -0.2054|   0.0000|  -0.2143|   0.0000|  -0.0676 |  -0.4998 |
 
----
-&nbsp;
-
 The energies of molecular orbitals (MOs) are obtained as solutions of the 
 secular equation
 $$
@@ -136,9 +130,6 @@ Expected result:
 
 (The indices are 1-based.)
 
----
-&nbsp;
-
 The total electronic energy of the molecule is simply the sum of energies of 
 all occupied (spatial) MOs multiplied by 2, assuming the 
 $\epsilon$'s are in ascending order, i.e.
@@ -153,7 +144,6 @@ using the orbital energies obtained in (c).**
 Expected result:
 
 $E^{\mathrm{elec}} = -6.5207\ \mathrm{a.u.}$
-
 
 [^hoffmann_eht]: R. Hoffmann, _J. Chem. Phys._, **1963**, 39, 1397&ndash;1412.
 
