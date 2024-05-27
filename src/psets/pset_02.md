@@ -305,6 +305,8 @@ $Q_{\mathrm{min}} = 0.05$ and compare the results with that from the
 `get_twoel` method by adjusting the `atol` argument of 
 [`np.allclose`](https://numpy.org/doc/stable/reference/generated/numpy.allclose.html).*
 
+&nbsp;
+
 ```admonish note
 These two tricks mentioned above can be combined to further 
 speed up the calculation of two-electron integrals. You do not have to
