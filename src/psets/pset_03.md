@@ -191,122 +191,84 @@ Expected result:
 
 ### Problem 3
 
-We have implemented the two-electron integrals in the lecture and you may 
-have noticed that the evaluation is quite time-consuming. This is because 
-of the $\mathcal{O}(N^4)$ scaling for calculating these integrals. 
-Thankfully, there are some tricks we can use to speed up the calculation and 
-we will implement two (easy) ones in this problem.
+In problem 1, you have calculated the total molecular energy 
+using the extended Hückel method. Now we can use optimisation 
+algorithms to minimize the molecular energy with respect to the nuclear 
+coordinates to obtain (in the best case) a relaxed geometry. 
 
-To test your implementation, you can use the water molecule, this time 
-with a saner geometry:
+For this purpose, we shall at first optimise a model function:
+$$
+V(q) = \frac{\Delta}{2 q_0} (q - q_0) + 
+  \frac{E^{\mathrm{TS}} - \Delta / 2}{q_0^4} (q - q_0)^2 (q + q_0)^2
+$$
+
+As an example, we shall use the following parameters
+$$
+\begin{align}
+  q_0 &= 2 \\
+  \Delta &= 1 \\
+  E^{\mathrm{TS}} &= 2
+\end{align}
+$$
+
+We shall first define a Python function to obtain the objective function. 
+For $V(q)$, it could look like this:
 ```python
-{{#include ../codes/psets/02/sol_3.py:water_molecule}}
+{{#include ../codes/psets/02/sol_3a.py:def_double_well}}
 ```
-The first trick is to exploit the 8-fold symmetry of two-electron integrals 
-when real-valued basis functions are used, namely
-$$
-  (ij|kl) = (kl|ij) = (ji|lk) = (lk|ji) = (ji|kl) = (lk|ij) = (ij|lk) = (kl|ji)
-$$
-where the chemists' notation for two-electron integrals
-$$
-  (ij|kl) = \iint
-  g_i (\vec{r}_1) g_j (\vec{r}_1)\ \frac{1}{r_{12}}\  
-  g_k (\vec{r}_2) g_l (\vec{r}_2)\ 
-  \mathrm{d}^3 \vec{r}_1 \mathrm{d}^3 \vec{r}_2\ 
-$$
-is used.
 
-This way, we only have to calculate about 1/8 of all possible two-electron 
-integrals when the number of basis functions is large.
+Note that we have set the independent variable `q` as the first argument 
+of this function. This is necessary because we want to use 
+the SciPy function 
+[`optimize.minimize`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html), 
+which requires the objective function to have the independent variable as 
+its first argument. We now call `minimize` on our example function in 
+combination with the 
+[BFGS](https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm)
+optimization algorithm:
+```python
+{{#include ../codes/psets/02/sol_3a.py:optimise_double_well}}
+```
+The function `minimize` calculates the numerical gradient of the objective 
+function automatically, so you do not need to provide it. 
+The optimised value $q^{*}$ is stored in the attribute `x` 
+of the object `res`.
 
-**(a) Extend the `Molecule` class with the method `get_twoel_symm`, 
-which calculates the two-electron integrals exploiting the 8-fold symmetry.**
+**(a) Run the code for optimising `double_well` above yourself to find 
+one local minimum. Adjust the initial guess `q_init` to find another 
+local minimum.**
 
-*Hint: You can apply the `get_twoel` method from the lecture on the water 
-molecule (or just the O atom) and check if the result is the same as that 
-from your implementation of `get_twoel_symm`.*
+Expected results:
+
+$q^{*}_1 = 1.9108;\quad q^{*}_2 = -2.0706$
 
 &nbsp;
 
-The second trick is called *integral screening*. 
-Its idea is based on the 
-[Cauchy-Bunyakovsky-Schwarz inequality](https://en.wikipedia.org/wiki/Cauchy–Schwarz_inequality),
-which gives an upper bound on the inner product of two vectors.
-Suppose we have vectors $u, v \in \mathbb{R}^n$. The inner product 
-between then is bounded by
-$$
-\left| \langle u, v \rangle \right|^2 \leq \langle u, u \rangle \cdot \langle v, v \rangle\,,
-$$
-as first shown by Cauchy in 1821. 
+After playing around with the model function, we shall take a look at 
+the water molecule from problem 1:
+```python
+{{#include ../codes/psets/02/sol_3bc.py:atoms_in_water}}
+```
+You may have noticed that the bond angle $\angle_{\mathrm{HOH}}$ is 
+$90^{\circ}$ in this geometry, which is certainly not optimal.
 
-**(b) Prove the Cauchy-Bunyakovsky-Schwarz inequality 
-for arbitrary vectors $u, v \in \mathbb{R}^n$ (by hand).**
+**(b) Optimise the geometry of the water molecule listed above
+using the total energy as the objective function.**
 
-*Hint: Consider the following quadratic function in $\lambda$*
-$$
-  f(\lambda) := \langle \lambda u + v, \lambda u + v \rangle 
-    = \langle u, u \rangle \lambda^2 + 2 \langle u, v \rangle \lambda + \langle v, v \rangle
-    \geq 0
-$$
-*and insert* 
-$\lambda = -\frac{\langle u, v \rangle}{\langle u, u \rangle}$
-*into it.*
+_Hint: Start by defining a function that takes the 
+[flattened](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flatten.html) 
+coordinate array (which should have 9 elements) as its first argument and 
+everything else you need to construct a molecule as the remaining arguments. 
+This function should construct a molecule using the coordinates you provide 
+and calculate the total energy as its return value. Afterwards, call 
+`minimize` on this function using the coordinates given in problem 1 as an initial guess._
 
 &nbsp;
 
-The Cauchy-Bunyakovsky-Schwarz inequality also applies to other vector spaces,
-such as the space of square-integrable functions $L^2(\mathbb{R}^n)$. In this
-case, the inequality states that
-$$
-\left| \int_{\mathbb{R}^n} f^*(x) g(x)\ \mathrm{d} x \right|^2
-\leq
-\int_{\mathbb{R}^n} |f(x)|^2\ \mathrm{d} x \cdot 
-\int_{\mathbb{R}^n} |g(x)|^2\ \mathrm{d} x
-$$
-for $f, g \in L^2(\mathbb{R}^n)$, as first shown by Bunyakovsky in 1859.
+**(c) Calculate the bond length $r_{\mathrm{OH}}$ and the bond angle 
+$\angle_{\mathrm{HOH}}$ of the optimised geometry.**
 
-By appling the inequality above to the two-electron integrals, we can derive
-$$
-\left| (ij|kl) \right|^2 \leq Q_{ij} Q_{kl}
-$$
-with $Q_{ij} = (ij|ij)^{1/2}$ and $Q_{kl} = (kl|kl)^{1/2}$ 
-using some simple algebra.
+Expected results:
 
-This means that we can approximate the two-electron integral 
-$(ij|kl)$ by zero if $Q_{ij} Q_{kl}$ is smaller than some 
-threshold $Q_{\mathrm{min}}$. Since the integrals involved in 
-$Q_{ij}$ and $Q_{kl}$ are integrals we have to calculate 
-anyway, this screening does not cost us any additional evaluation 
-of two-electron integrals. On the contrary, by choosing a suitable 
-threshold $Q_{\mathrm{min}}$, we can save a lot of time by 
-skiping the evaluation of integrals that are close to zero anyway. 
+$r_{\mathrm{OH}} = 0.9819\ \mathrm{\AA};\quad \angle_{\mathrm{HOH}} = 102.4^\circ$
 
-It should be mentioned that the integral screening is an approximation, 
-so we will obtain slightly different results. However, by making the 
-threshold $Q_{\mathrm{min}}$ smaller, we can make the approximation 
-as accurate as we want. In practice, a threshold smaller than the SCF 
-convergence threshold is usually sufficient.
-
-The inequality above suggests that we should at first calculate two-electron 
-integrals of the type $(ij|ij)$. Afterwards, we evaluating the remaining 
-integrals, we can check if the product of the corresponding $Q$ values 
-is smaller than $Q_{\mathrm{min}}$. If this is the case, the absolute 
-value of the integral must be smaller than $Q_{\mathrm{min}}$ and be 
-set to zero. Otherwise, we calculate the integral as usual.
-
-**(c) Extend the `Molecule` class with the method `get_twoel_screening`, 
-which calculates the two-electron integrals using integral screening.**
-
-*Hint: This approximation can greatly speed up the calculation of 
-two-electron integrals if lots of atom pairs are far away from each other. 
-The water molecule is too small for this method to be effective. For testing 
-purposes, you can set the threshold to be a relatively large value, e.g. 
-$Q_{\mathrm{min}} = 0.05$ and compare the results with that from the 
-`get_twoel` method by adjusting the `atol` argument of 
-[`np.allclose`](https://numpy.org/doc/stable/reference/generated/numpy.allclose.html).*
-
-```admonish note
-These two tricks mentioned above can be combined to further 
-speed up the calculation of two-electron integrals. You do not have to
-implement this combined method.
-```
