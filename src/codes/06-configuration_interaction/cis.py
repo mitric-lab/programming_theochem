@@ -1,10 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-sys.path.append( 
-    '/Users/xmiao/WORK/teaching/Programmierkurs_Master_SS23/'
-    'python-course-master/code/ch03'
-)
+sys.path.append('../05-hartree_fock')
 
 ### ANCHOR: imports_and_constants
 import numpy as np
@@ -27,13 +24,13 @@ class CIS(HartreeFock):
         eri_mo = np.einsum('pQRS, pP -> PQRS',
                  np.einsum('pqRS, qQ -> pQRS',
                  np.einsum('pqrS, rR -> pqRS',
-                 np.einsum('pqrs, sS -> pqrS', self.twoel, 
+                 np.einsum('pqrs, sS -> pqrS', self.mol.twoel, 
                            self.mo_coeff, optimize=True), 
                            self.mo_coeff, optimize=True), 
                            self.mo_coeff, optimize=True), 
                            self.mo_coeff, optimize=True)
         
-        # Transform to spin-orbit basis
+        # Transform to spin-orbital basis
         norb = len(self.mo_energy) * 2
         nocc = self.nocc * 2
         nvirt = norb - nocc
@@ -102,19 +99,24 @@ class CIS(HartreeFock):
 ### ANCHOR_END: cis_class
 
 if __name__ == '__main__':
+    sys.path.append('../03-molecular_integrals')
+
     ### ANCHOR: cis_water
     from atom import Atom
+    from molecule import Molecule
     
     # Coordinates are in the unit of Angstrom.
     o1 = Atom('O', [ 0.000,  0.000,  0.000], unit='A')
     h1 = Atom('H', [ 0.758,  0.587,  0.000], unit='A')
     h2 = Atom('H', [-0.758,  0.587,  0.000], unit='A')
     
-    water = CIS()
+    water = Molecule()
     water.set_atomlist([o1, h1, h2])
     water.get_basis('sto-3g')
     
-    water.initialize()
-    water.run_cis(nprint=20)
+    cis = CIS(water)
+    cis.initialize()
+
+    cis.run_cis(nprint=20)
     ### ANCHOR_END: cis_water
 

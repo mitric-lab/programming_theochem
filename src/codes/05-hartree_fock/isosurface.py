@@ -51,14 +51,14 @@ def build_grid(xlim, ylim, zlim, nx, ny, nz):
 
 
 ### ANCHOR: evaluate_mo_grid_function
-def evaluate_mo_grid(mol, grid):
+def evaluate_mo_grid(mol, grid, mo_energy, mo_coeff):
     x, y, z = grid
     
-    # Build MO coefficient matrix in spin-orbit basis
-    n_spatial_orb = len(mol.mo_energy)
+    # Build MO coefficient matrix in spin-orbital basis
+    n_spatial_orb = len(mo_energy)
     c_spin = np.zeros((n_spatial_orb * 2, n_spatial_orb * 2))
-    c_spin[:n_spatial_orb:, ::2] = mol.mo_coeff
-    c_spin[n_spatial_orb:, 1::2] = mol.mo_coeff
+    c_spin[:n_spatial_orb:, ::2] = mo_coeff
+    c_spin[n_spatial_orb:, 1::2] = mo_coeff
     
     # Evaluate AOs on the grid
     ao_grid = np.zeros((n_spatial_orb * 2, 
@@ -111,3 +111,4 @@ def visualize_cube(mol, grid, density, isovalues, colors, figure, **kwargs):
     
     return p
 ### ANCHOR_END: visualize_cube_function
+

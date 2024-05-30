@@ -1,199 +1,10 @@
-# Problem Set 2
+## Problem Set 3
 
 ### Problem 1
 
-```admonish tip
-You will need an implementation of the Extended Hückel Theory from 
-problem set 1. If you did not manage to solve that problem, or if you are 
-unsure about your solution, you can download an object-oriented implementation
-from
-<a href="../codes/psets/02/eht_calculator_pset_01.py" download>here</a>.
-Its constructor takes an instance of the `Molecule` class and you can
-use the method `get_electronic_energy()` to obtain the electronic energy.
-```
-
-As you may have already realised, the secular equation of Extended Hückel
-Theory (EHT) as stated in problem set 1 was not solved iteratively, 
-like in the case of HF. This is because EHT does not explicitly 
-include any two-electron terms, which causes the Fock operator to depend on 
-its eigenvectors. By only using a parametrised one-electron operator, EHT 
-can be formulated as a (generalized) eigenvalue problem, rather than 
-the pseudo eigenvalue problem in the case of HF.
-
-This simplification, however, does not capture the repulsion between 
-electrons associated with different atomic centres. One way to include this 
-interaction (empirically) would be to assume that the electron-electron 
-repulsion energy can be partitioned into pair-wise contributions of atoms, 
-i.e.
-$$
-  E^{\mathrm{elec}}_{\mathrm{rep}} = \sum_{A < B} E^{\mathrm{elec}}_{AB}
-$$
-
-The empirical two-body expression found by Klopman[^klopman_repulsion] can 
-be modified for our purpose as:[^dixon_params]
-
-$$
-  E^{\mathrm{elec}}_{AB} = V_0\ 
-    \frac{z_A z_B}{\frac{r_{AB}}{1\ \mathrm{\AA}} + c_A + c_B}
-    \exp\left[ -(a_A + a_B) \left( \frac{r_{AB}}{1\ \mathrm{\AA}} \right)^{b_A + b_B} \right]
-$$
-
-By construction of this formula, it should be obvious that the internuclear 
-distance $ r_{AB} = \| \vec{R}_A - \vec{R}_B \| $ should be inserted 
-in the unit of &#8491;. The scaling factor $V_0 = 0.52917721\ \mathrm{a.u.}$ 
-compensates for this deviation from the use of atomic units. 
-While $z_A$ and $z_B$ are the numbers of 
-**valence** electrons on atoms $A$ and $B$, respectively, 
-$a_{A/B}$, $b_{A/B}$ and $c_{A/B}$ are atom-specific parameters. 
-
-For the given orbital parameters used in problem set 1, Dixon and Jurs 
-optimized these electron-repulsion parameters (as well as the 
-nuclear repulsion parameters $\delta$ and $\epsilon$ required in (b)), 
-which are listed here:[^dixon_params]
-
-|            | H        | C        | N        | O        |
-|------------|----------|----------|----------|----------|
-| $a$        | 0.70485  | 0.64786  | 0.60722  | 0.64781  |
-| $b$        | 0.83541  | 0.94928  | 1.0975   | 1.0510   |
-| $c$        | 0.29684  | 0.71224  | 2.0093   | 3.0455   |
-| $\delta$   | 3.8163   | 1.1130   | 2.1880   | 2.2954   |
-| $\epsilon$ | 1.2612   | 3.7686   | 2.5854   | 1.2897   |
-
-We shall use the water molecule from problem set 1 again as an example:
-```python
-{{#include ../codes/psets/02/sol_3bc.py:atoms_in_water}}
-```
-for which the
-<a href="https://codinginchemistry.com/files_SS23/pset_01/vsto-3g.json" download>VSTO-3G</a> 
-basis set from the same problem set should be applied.
-
-**(a) Calculate the electron-electron repulsion energy for this water molecule
-using the empirical formula given above.**
-
-Expected result:
-
-$E^{\mathrm{elec}}_{\mathrm{rep}} = 0.3994\ \mathrm{a.u.}$
-
-&nbsp;
-
-We are now only missing one last ingredient for the total molecular energy: 
-the nuclear repulsion energy. Because we only included valence electrons 
-and parametrized the two-electron interaction, the usual formula for nuclear 
-repulsion will not be accurate. Therefore, a parametrized version is needed:
-$$
-  E^{\mathrm{nuc}}_{AB} = V_0\ 
-    \frac{z_A z_B}{\frac{r_{AB}}{1\ \mathrm{\AA}}}\ 
-    \exp\left[ -(\delta_A + \delta_B) \left( \frac{r_{AB}}{1\ \mathrm{\AA}} \right)^{\epsilon_A + \epsilon_B} \right]
-$$
-
-This formula has a very similar structure to the electron-electron repulsion 
-energy, with the scaling factor $V_0$, the number of valence electrons 
-$z_A$ and $z_B$, and the internuclear distance $r_{AB}$ which 
-should be inserted in the unit of &#8491;. The differences are the exact 
-$1/r$ part without extra summands in the denominator, as well as the 
-parameters $\delta_{A/B}$ and $\epsilon_{A/B}$, which have the same 
-functionality as $a_{A/B}$ and $b_{A/B}$, respectively, but are 
-different in values. These parameters for H, C, N, and O are listed in the 
-table above.
-
-**(b) Calculate the nuclei-nuclei repulsion energy for the water molecule 
-constructed in (a) using the empirical formula given above.**
-
-Expected result:
-
-$E^{\mathrm{nuc}}_{\mathrm{rep}} = 0.0141\ \mathrm{a.u.}$
-
-&nbsp;
-
-The total energy of the molecule is then given by
-$$
-  E^{\mathrm{tot}} 
-  = E^{\mathrm{elec}} + E^{\mathrm{elec}}_{\mathrm{rep}} 
-    + E^{\mathrm{nuc}}_{\mathrm{rep}} 
-  = E^{\mathrm{elec}} 
-    + \sum_{A < B} \left( E^{\mathrm{elec}}_{AB} + E^{\mathrm{nuc}}_{AB} \right)
-$$
-
-**(c) Calculate the total energy for the water molecule constructed 
-in (a).**
-
-[^klopman_repulsion]: G. Klopman, _J. Am. Chem. Soc._, *1964*, 86, 4550&ndash;4557.
-
-[^dixon_params]: S. L. Dixon, P. C. Jurs, _J. Comput. Chem._, **1993**, 15, 733&ndash;746.
-
----
-&nbsp;
-
-### Problem 2
-The steepest descent method is simple, but plagued by several problems, one 
-of which is its oscillatory behavior. If the objective function has a minimum 
-located in an elongated valley, even if we choose a sufficiently small step 
-size (which means painfully slow convergence), steepest descent will still 
-zig-zag toward the solution. If the step size is too large, the method will 
-either oscillate around the minimum or towards infinity.
-
-An oscillation in numerical algorithms can often be fixed by introducing 
-damping. In the case of steepest descent, we can combine the gradient 
-descent direction with the previous descent direction to obtain an 
-averaged direction, which should dampen the oscillations. This method is 
-called conjugate gradient.
-
-<span class="comment">
-The conjugate gradient method is often combined with a line search 
-to determine the optimal step size. We will use a fixed step size here 
-for simplicity. 
-</span>
-
-The conjugate gradient algorithm can be described as follows:
-1. Choose a starting point $x_0$ and a step size $\alpha$.
-2. In the first iteration, perform a steepest descent step and save the 
-   gradient $\nabla f(x_0)$. Set $s_0 = -\nabla f(x_0)$.
-3. In the following iterations, calculate $\beta_k$.
-4. If $\beta_k < 0$, set it to 0.
-5. Calculate $s_{k} = \frac{-\nabla f(x_k) + \beta_k s_{k - 1}}{1 + \beta_k}$
-6. Update the current point using $x_{k+1} = x_k + \alpha \cdot s_k$.
-7. Repeat until the convergence criterion is met.
-
-There are several ways to calculate $\beta_k$. We will use the 
-Fletcher-Reeves formula:
-$$
-\beta_k = 
-  \frac{\langle \nabla f(x_k), \nabla f(x_k) \rangle}
-       {\langle \nabla f(x_{k-1}), \nabla f(x_{k-1}) \rangle}
-$$
-
-**(a) Implement the class `SimpleConjugateGradient` as a child class of 
-`OptimiserBase`, which implements the conjugate gradient method described 
-above. Use the method `_check_convergence_grad()` to check convergence.**
-
-*Hint: Since several variables need to be updated in each 
-iteration, it is recommended to define them in the constructor, for example 
-like this:*
-```python
-{{#include ../codes/psets/02/sol_2.py:simple_conjugate_gradient_init}}
-```
-
-&nbsp;
-
-**(b) Use `SimpleSteepestDescent` and `SimpleConjugateGradient` to optimize 
-the Rosenbrock function with $a = 1$ and $b = 100$. Start from 
-$x_0 = (0, 0)$, choose a step size of $\alpha=0.005$, and set the 
-maximum iteration to 10000. Plot the optimization trajectory.**
-
-*Hint: `SimpleSteepestDescent` is expected to diverge, while 
-`SimpleConjugateGradient` should converge.*
-
-Expected result:
-![](../assets/figures/psets/02/conjugate_gradient.svg)
-
----
-&nbsp;
-
-### Problem 3
-
-In problem 1, you have calculated the total molecular energy 
+In problem set 2, you have calculated the total molecular energy 
 using the extended Hückel method. Now we can use optimisation 
-algorithms to minimize the molecular energy with respect to the nuclear 
+algorithms to minimise the molecular energy with respect to the nuclear 
 coordinates to obtain (in the best case) a relaxed geometry. 
 
 For this purpose, we shall at first optimise a model function:
@@ -214,7 +25,7 @@ $$
 We shall first define a Python function to obtain the objective function. 
 For $V(q)$, it could look like this:
 ```python
-{{#include ../codes/psets/02/sol_3a.py:def_double_well}}
+{{#include ../codes/psets/03/sol_1a.py:def_double_well}}
 ```
 
 Note that we have set the independent variable `q` as the first argument 
@@ -223,11 +34,9 @@ the SciPy function
 [`optimize.minimize`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html), 
 which requires the objective function to have the independent variable as 
 its first argument. We now call `minimize` on our example function in 
-combination with the 
-[BFGS](https://en.wikipedia.org/wiki/Broyden–Fletcher–Goldfarb–Shanno_algorithm)
-optimization algorithm:
+combination with the BFGS optimization algorithm:
 ```python
-{{#include ../codes/psets/02/sol_3a.py:optimise_double_well}}
+{{#include ../codes/psets/03/sol_1a.py:optimise_double_well}}
 ```
 The function `minimize` calculates the numerical gradient of the objective 
 function automatically, so you do not need to provide it. 
@@ -247,7 +56,7 @@ $q^{*}_1 = 1.9108;\quad q^{*}_2 = -2.0706$
 After playing around with the model function, we shall take a look at 
 the water molecule from problem 1:
 ```python
-{{#include ../codes/psets/02/sol_3bc.py:atoms_in_water}}
+{{#include ../codes/psets/03/sol_1bc.py:atoms_in_water}}
 ```
 You may have noticed that the bond angle $\angle_{\mathrm{HOH}}$ is 
 $90^{\circ}$ in this geometry, which is certainly not optimal.
@@ -271,4 +80,308 @@ $\angle_{\mathrm{HOH}}$ of the optimised geometry.**
 Expected results:
 
 $r_{\mathrm{OH}} = 0.9819\ \mathrm{\AA};\quad \angle_{\mathrm{HOH}} = 102.4^\circ$
+
+&nbsp;
+
+---
+
+
+### Problem 2
+
+We have implemented the Hartree-Fock method in the lecture, which leads to 
+convergence for the example molecules we tested. However, the convergence 
+is not guaranteed in general. Apart from "difficult" molecules, the HF 
+routine can also have convergence problems for distorted geometries of 
+"easy" molecules. In this problem, we shall investigate the convergence 
+behavior of the HF method for the stretched water molecule and implement 
+a simple trick to improve the convergence.
+
+The stretched water molecule is constructed using the following atoms:
+```python
+{{#include ../codes/psets/03/sol_2.py:stretched_water_molecule}}
+```
+```admonish tip
+You will have to make slight modifications to the `HartreeFock` class 
+for this problem.
+```
+```admonish note
+If not mentioned otherwise, use the STO-3G basis set and perform a 
+maximum of 100 iterations with a convergence 
+threshold of \\(10^{-6}\ \mathrm{a.u.}\\) for the energy difference 
+for all calculations in this problem.
+```
+
+**(a) Perform a HF calculation for the stretched water molecule.
+Plot the SCF energy as a function of the iteration number.**
+
+Expected result:
+![](../assets/figures/psets/03/energy_no_damping.svg)
+
+&nbsp;
+
+The SCF procedure clearly oscillates and fails to converge. To mitigate 
+this problem, we can use a damping scheme. The simplest of which is 
+the linear damping, where the density matrix from each iteration is 
+replaced with a linear combination of the density matrix from the 
+previous iteration and the current iteration
+via the damping parameter \\(\alpha\\):
+$$
+  P_n \leftarrow \alpha P_{n-1} + (1 - \alpha) P_n
+$$
+
+**(b) Implement the linear damping scheme in the `HartreeFock` class. 
+Perform a HF calculation for the stretched water molecule using 
+linear damping with \\(\alpha = 0.5\\). Plot the SCF energy as a 
+function of the iteration number.**
+
+*Hint: When setting a variable to an `np.array`, you have to explicitly 
+copy the array, e.g. `p_old = np.copy(p)`.*
+
+Expected result:
+![](../assets/figures/psets/03/energy_damping_0.5.svg)
+
+```admonish note
+Depending on the position in the SCF procedure where the damping 
+is applied, the precise energy values and the number of iterations 
+can vary slightly. You do not have to tweak your implementation to 
+match the expected result exactly, as long as the general behavior 
+is the same.
+```
+&nbsp;
+
+**(c) Perform HF calculations of the stretched water molecule using 
+linear damping with \\(\alpha = 0.00, 0.02, 0.04, \ldots, 0.98\\). 
+Set the maximum number of iterations to 200 and plot the number of 
+iterations performed as a function of \\(\alpha\\).**
+
+Expected result:
+![](../assets/figures/psets/03/niter_alpha.svg)
+
+```admonish note
+> Again, the precise number of iterations can vary slightly. You do 
+> not have to tweak your implementation to match the expected result 
+> exactly, as long as the general behavior is the same.
+```
+
+```admonish info
+The linear damping scheme is a very simple method to improve the 
+convergence of the SCF procedure. More sophisticated damping schemes, e.g. 
+[Anderson acceleration](https://en.wikipedia.org/wiki/Anderson_acceleration), 
+can be used to further improve the convergence behavior.
+</span>
+```
+
+&nbsp;
+
+---
+
+### Problem 3
+
+We have performed the CIS calculation for the water molecule in the lecture,
+which gave us the energy as well as the character of the excited states. From
+the orbital contributions, we could see that many excited states are mixtures
+of singly excited determinants. Although for water with a minimal basis set,
+this mixture is "enforced" by the spin symmetry, when we use a reasonably
+sized basis set, mixed excitations that are not due to spin symmetry are very
+often found. In this problem, we shall investigate one of such mixed 
+excitations and learn a concept that may lead to a simpler description of
+these states.
+
+Let us condiser a trimer of hydrogen molecules:
+```python
+{{#include ../codes/psets/03/sol_3.py:h6_molecule}}
+```
+
+**(a) Perform a CIS calculation for this molecule using the STO-3G basis set.**
+
+&nbsp;
+
+The first 3 excited singlet states of this molecule are states 10, 11, and 12
+from the above calculation and should have the following console output:
+```txt
+Excited State  10: E_exc =    26.9541 eV
+1a   -> 3a      -0.473982 (22.5 %)
+1b   -> 3b      -0.473982 (22.5 %)
+2a   -> 4a      -0.447552 (20.0 %)
+2b   -> 4b      -0.447552 (20.0 %)
+
+Excited State  11: E_exc =    27.0500 eV
+1a   -> 4a      -0.471472 (22.2 %)
+1b   -> 4b      -0.471472 (22.2 %)
+2a   -> 3a      -0.453249 (20.5 %)
+2b   -> 3b      -0.453249 (20.5 %)
+
+Excited State  12: E_exc =    27.2722 eV
+2a   -> 5a       0.636639 (40.5 %)
+2b   -> 5b       0.636639 (40.5 %)
+```
+```admonish tip
+The absolute sign of the coefficients is not important, as long as their
+relative signs within one state are correct.
+```
+
+**(b) Plot the 2. and 5. MO (0-based index of spatial orbitals).**
+
+Expected results:
+
+<style>
+  .row {
+    display: flex;
+  }
+
+  .column {
+    flex: 50%;
+    padding: 5px;
+  }
+</style>
+
+<div class="row">
+  <div class="column">
+    <p style="text-align:center">
+      <img src="../assets/figures/psets/03/h6_mo2.png" alt="MO 2" style="width:90%">
+      <br>
+      MO 2
+    </p>
+  </div>
+  <div class="column">
+    <p style="text-align:center">
+      <img src="../assets/figures/psets/03/h6_mo5.png" alt="MO 5" style="width:90%">
+      <br>
+      MO 5
+    </p>
+  </div>
+</div>
+
+```admonish tip
+The sign of the MOs does not matter.
+```
+
+&nbsp;
+
+The orbital contributions can be better organised in a matrix, the so called
+transition density matrix $\bm{T^{n}}$, with $n$ being the excited state number.
+Let $i$ denote the index of the occupied orbitals and $a$ the index of the
+virtual orbitals. The matrix element $T^{n}_ {ia}$ is the coefficient of the 
+determinant corresponding to the excitation $i \to a$, i.e.
+$$
+  T^{n}_{ia} = \braket{\Phi_0 | \Phi_i^a}\,.
+$$
+Because the number of occupied and virtual orbitals are usually different, the
+transition density matrix is in general not square.
+
+
+**(c) Construct the transition density matrices for state 12 ($\bm{T}^{12}$).**
+
+*Hint: All the information you need is stored in the attributes `cis_states`.*
+
+Expected results:
+
+Plotting the squared elements of the transition density matrix using
+[matshow](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.matshow.html)
+yields
+<p style="text-align: center;">
+  <img src="../assets/figures/psets/03/h6_tdm_12.svg">
+</p>
+
+&nbsp;
+
+There are clearly two distinct regions in the transition density matrix with
+non-zero elements, indicating that this excited state is a mixture of 2
+spin-adapted singly excited determinants (or 4 "primitive" determinants).
+Because the MOs are optimised for the ground state, they are not necessarily
+optimal for the description of the excited states. Knowing the transition 
+density matrix, we can construct a new set of orbitals as linear combinations
+of the original MOs. Usually, we would diagonalise the transition density 
+matrix, just like we would do for the Fock matrix in the SCF procedure or the
+CIS matrix in the CIS calculation. However, because the transition density
+matrix is not square, we cannot directly diagonalise it. Instead, we can do
+the next best thing: 
+[singular value decomposition](https://en.wikipedia.org/wiki/Singular_value_decomposition)
+(SVD). This procedure decomposes the transition density matrix into 3
+matrices:
+$$
+  \bm{T^{n}} = \bm{U} \bm{\Sigma} \bm{V}^T\,,
+$$
+where $\bm{U}\in \R{N_{\mathrm{occ}}}{N_{\mathrm{occ}}}$ and 
+$\bm{V}\in \R{N_{\mathrm{virt}}}{N_{\mathrm{virt}}}$ are orthogonal matrices,
+and $\bm{\Sigma}\in \R{N_{\mathrm{occ}}}{N_{\mathrm{virt}}}$ is a rectangular
+matrix with the square root of singular values on its diagonal. 
+The columns of $\bm{U}$ and $\bm{V}$ are called the left and right singular
+vectors, respectively, corresponding to the singular values on the diagonal of
+$\bm{\Sigma}$.
+
+**(d) Perform the SVD on $\bm{T}^{12}$ and inspect the singular values.**
+
+*Hint: The function
+[np.linalg.svd](https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html)
+could be helpful.*
+
+Expected results:
+
+Singular values:
+|        |        |        |        |        |        |
+|--------|--------|--------|--------|--------|--------|
+| 0.7071 | 0.7071 | 0.0000 | 0.0000 | 0.0000 | 0.0000 |
+
+&nbsp;
+
+
+We now define a new set of orbitals as
+$$
+  \begin{align}
+    \phi_j^{\mathrm{occ}}(x) &= \sum_i \phi_i(x)\ U_{ij} \\
+    \phi_b^{\mathrm{virt}}(x) &= \sum_a \phi_a(x)\ V_{ab}\,,
+  \end{align}
+$$
+where $i$ and $a$ run over the occupied and virtual orbitals, respectively.
+The new orbitals are called the natural transition orbitals (NTOs), with 
+$\phi_j^{\mathrm{occ}}$ being called the hole NTOs and $\phi_b^{\mathrm{virt}}$
+being called the particle NTOs. 
+The hole and particle NTOs come in pairs. The corresponding squared 
+singular value of each NTO pair is its weight in the excited state.
+
+Because our MOs are ordered with alternating spins, the NTOs will also be
+ordered in this way. Therefore, the singular value of $1/\sqrt{2}$ for the
+first two NTO pairs indicates that the excited state can be described as a 
+mixture of the first 2 NTO pairs, which have the same spatial shape but 
+different spins. This excited state is thus, ignoring the spin, a pure state 
+in the NTO basis, although it is a mixed state in the MO basis.
+
+**(e) Calculate the NTOs for excited state 12 and plot the 0. NTO pair. 
+Interpret the result.**
+
+Expected results:
+
+<style>
+  .row {
+    display: flex;
+  }
+
+  .column {
+    flex: 50%;
+    padding: 5px;
+  }
+</style>
+
+<div class="row">
+  <div class="column">
+    <p style="text-align:center">
+      <img src="../assets/figures/psets/03/h6_nto_occ0.png" alt="NTO 0 (hole)" style="width:90%">
+      <br>
+      NTO 0 (hole)
+    </p>
+  </div>
+  <div class="column">
+    <p style="text-align:center">
+      <img src="../assets/figures/psets/03/h6_nto_virt0.png" alt="NTO 0 (particle)" style="width:90%">
+      <br>
+      NTO 0 (particle)
+    </p>
+  </div>
+</div>
+
+
+```admonish tip
+The sign of the NTOs does not matter.
+```
 

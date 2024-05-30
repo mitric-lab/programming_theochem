@@ -1,40 +1,41 @@
 #!/usr/bin/env python
 
-import sys
-sys.path.append( 
-    '/Users/xmiao/WORK/teaching/Programmierkurs_Master_SS23/'
-    'python-course-master/code/ch03'
-)
 
 ### ANCHOR: imports
 import numpy as np
-
-from molecule import Molecule
 ### ANCHOR_END: imports
 
-from fast_molecule import Molecule
 
 ### ANCHOR: hartree_fock_class
-class HartreeFock(Molecule):
+class HartreeFock:
+
+    def __init__(self, molecule, charge=0):
+        self.mol = molecule
+        self.charge = charge
 
     def initialize(self):
         self.nel = np.array([
-            self.atomlist[i].atnum for i in range(0, len(self.atomlist))
-        ]).sum()
+            self.mol.atomlist[i].atnum 
+            for i in range(0, len(self.mol.atomlist))
+        ]).sum() - self.charge
+
+        # Only restricted Hartree-Fock is implemented
+        assert self.nel % 2 == 0, \
+            "Only even number of electrons is supported!"
         self.nocc = self.nel // 2
         
         # precalculate integrals 
-        self.get_S()
-        self.get_T()
-        self.get_V()
-        self.get_twoel()
+        self.mol.get_S()
+        self.mol.get_T()
+        self.mol.get_V()
+        self.mol.get_twoel()
         
         # orthogonalize AO
-        eigval, eigvec = np.linalg.eigh(self.S)
+        eigval, eigvec = np.linalg.eigh(self.mol.S)
         self.X = eigvec @ np.diag(1.0 / np.sqrt(eigval))
 
         # core hamiltonian + initialize density matrix
-        self.hcore = self.T + self.Ven
+        self.hcore = self.mol.T + self.mol.Ven
         orb_en, orb = np.linalg.eigh(self.hcore)
         
         c = orb[:, :self.nocc]
@@ -43,7 +44,7 @@ class HartreeFock(Molecule):
     def get_fock(self, p):
         g = np.einsum(
             'kl, ijkl -> ij', p, 
-            2.0 * self.twoel - self.twoel.transpose(0, 2, 1, 3),
+            2.0 * self.mol.twoel - self.mol.twoel.transpose(0, 2, 1, 3),
         )
         return self.hcore + g
     
@@ -56,9 +57,9 @@ class HartreeFock(Molecule):
             # orthogonalize Fock-Matrix
             f_ortho = self.X.T @ f @ self.X
             # diagonalize Fock-Matrix
-            eigvals, eigvect = np.linalg.eigh(f_ortho)
+            eigvals, eigvecs = np.linalg.eigh(f_ortho)
             # get new density matrix 
-            c = eigvect[:, :self.nocc]
+            c = eigvecs[:, :self.nocc]
             self.p = c @ c.T
             self.p = self.X @ self.p @ self.X.T
             # calculate energy 
@@ -74,7 +75,7 @@ class HartreeFock(Molecule):
             energy_last_iteration = energy
         
         self.mo_energy = eigvals
-        self.mo_coeff = self.X @ eigvect
+        self.mo_coeff = self.X @ eigvecs
         self.energy = energy
 
         return energy
@@ -82,20 +83,28 @@ class HartreeFock(Molecule):
 
 
 if __name__ == '__main__':
+    import sys
+    
+    sys.path.append( 
+        '../03-molecular_integrals'
+    )
+
     ### ANCHOR: hartree_fock_water
     from atom import Atom
+    from molecule import Molecule
     
     # Coordinates are in the unit of Angstrom.
     o1 = Atom('O', [ 0.000,  0.000,  0.000], unit='A')
     h1 = Atom('H', [ 0.758,  0.587,  0.000], unit='A')
     h2 = Atom('H', [-0.758,  0.587,  0.000], unit='A')
     
-    water = HartreeFock()
+    water = Molecule()
     water.set_atomlist([o1, h1, h2])
     water.get_basis('sto-3g')
     
-    water.initialize()
-    e_scf = water.run_hf()
+    rhf = HartreeFock(water)
+    rhf.initialize()
+    e_scf = rhf.run_hf()
     print(f"SCF energy: {e_scf} Hartree")
     ### ANCHOR_END: hartree_fock_water
     

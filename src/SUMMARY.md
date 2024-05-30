@@ -44,15 +44,26 @@
     - [Steepest Descent](04-numerical_optimisation/03-steepest_descent.md)
     - [(Quasi-)Newton Methods](04-numerical_optimisation/04-newton_methods.md)
     - [Desired Properties](04-numerical_optimisation/desirable_properties.md)
-- [Hartree Fock Approximation]()
-- [Configuration Interaction]()
+
+- [The Hartree Fock Approximation](05-hartree_fock.md)
+    - [The SCF Procedure](05-hartree_fock/01-scf_procedure.md)
+    - [Plot Grid Data](05-hartree_fock/02-plot_grid_data.md)
+
+- [Configuration Interaction](06-configuration_interaction.md)
+    - [Configuration Interaction Singles](06-configuration_interaction/01-cis.md)
+    - [Second Quantisation](06-configuration_interaction/02-second_quantisation.md)
+        - [Introduction](06-configuration_interaction/02-second_quantisation/01-introduction.md)
+        - [Matrix Elements](06-configuration_interaction/02-second_quantisation/02-matrix_elements.md)
+        - [CIS Revisited](06-configuration_interaction/02-second_quantisation/03-cis_revisited.md)
+        - [Representation of Ladder Operators](06-configuration_interaction/02-second_quantisation/04-repr_ladder_operators.md)
+    - [Full Configuration Interaction](06-configuration_interaction/03-full_ci.md)
 
 ---
 
 [Problem Set 0](psets/pset_00.md)
 [Problem Set 1](psets/pset_01.md)
 [Problem Set 2](psets/pset_02.md)
-[Problem Set 3]()
+[Problem Set 3](psets/pset_03.md)
 [Problem Set 4]()
 
 [Solution to Problem Set 0](psets/sol_pset_00.md)
