@@ -55,3 +55,5 @@ icon = "./src/assets/icons/scroll-solid.svg"
 color = "#24ab38"
 aliases = ["proof", "herleitung", "beweis"]
 
+[preprocessor.shiftinclude]
+
