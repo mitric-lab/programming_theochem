@@ -34,7 +34,7 @@ $$
 ### Theoretical Background
 
 We shall assume for simplicity that the reference determinant is the 
-Hartree-Fock determinant. This makes our calculation easier, because 
+Hartree-Fock determinant. This makes our calculation easier because 
 the Brillouin condition is satisfied and the reference determinant does 
 not interact with singly excited determinants, i.e. 
 $\langle \Phi_0 | \hat{H} | \Phi_i^a \rangle = 0$. This makes our CIS 
@@ -77,11 +77,11 @@ from the `HartreeFock` class.
 ```
 
 The method `get_cis_hamiltonian` is the centerpiece of the CIS class. It 
-ar first transforms the ERIs to the MO basis, spin-blocks them, and the 
+at first transforms the ERIs to the MO basis, spin-blocks them, and then 
 enumerates all singly excited determinants. The CIS Hamiltonian is then 
 constructed from the transformed ERIs and the MO energies. 
  
-The spin-blocking is useful, since we can obtain excited states with all 
+The spin-blocking is useful since we can obtain excited states with all 
 possible spin multiplicities. Although it is not necessary for CIS, since 
 only singlets and triplets are obtainable from a singlet reference, it 
 will become very useful when higher excitations are included.
@@ -98,10 +98,10 @@ in the CI expansion. This will reduced the size of the CI matrix greatly
 when higher excitations are present.
 ```
 
-The method `run_cis` takes the CIS hamiltonian and diagonalizes it. The 
+The method `run_cis` takes the CIS Hamiltonian and diagonalizes it. The 
 eigenvalues are the excitation energies, and the eigenvectors are the 
 coefficients of the excited determinants in the CIS wavefunction. This method 
-also prints details about the loewest excited states.
+also prints details about the lowest excited states.
 
 Now we can test our implementation on the water molecule. 
 ```python
@@ -143,12 +143,12 @@ $$
 So we have two different wavefunctions in the integral, one for the 
 initial state $\Psi_i$ and one for the final state $\Psi_f$, instead 
 of just one in the case of the density. This makes the transition density 
-technically not a density, since it is not positive definite. 
+technically not a density since it is not positive definite. 
 
 For a transition density from the ground state to a singly excited state, 
 we can simplify the expression to
 $$
-  \rho_{fi}(r) = \sum_{i,a} c_{ia} \int \phi_a^{*}(x) \phi_i(x)\ \mathrm{d}\sigma
+  \rho_{fi}(r) = \sum_{i, a} c_{ia} \int \phi_a^{*}(x) \phi_i(x)\ \mathrm{d}\sigma
 $$
 
 Using the functions we have written in section [5.1.1](ch04-01a-plot_grid_data.md), 

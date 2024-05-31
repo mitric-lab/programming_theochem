@@ -1,6 +1,6 @@
 ## The SCF Procedure
 
-Because the Fock operator itself depends on its own solutions, the
+Because the Fock operator itself depends on its solutions, the
 Hartree-Fock equation, or rather the Rothaan-Hall equation, cannot
 be solved using conventional eigenvalue solvers. 
 

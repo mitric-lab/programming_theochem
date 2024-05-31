@@ -111,7 +111,7 @@ threshold of \\(10^{-6}\ \mathrm{a.u.}\\) for the energy difference
 for all calculations in this problem.
 ```
 
-**(a) Perform a HF calculation for the stretched water molecule.
+**(a) Perform an HF calculation for the stretched water molecule.
 Plot the SCF energy as a function of the iteration number.**
 
 Expected result:
@@ -119,9 +119,9 @@ Expected result:
 
 &nbsp;
 
-The SCF procedure clearly oscillates and fails to converge. To mitigate 
+The SCF procedure oscillates and fails to converge. To mitigate 
 this problem, we can use a damping scheme. The simplest of which is 
-the linear damping, where the density matrix from each iteration is 
+linear damping, where the density matrix from each iteration is 
 replaced with a linear combination of the density matrix from the 
 previous iteration and the current iteration
 via the damping parameter \\(\alpha\\):
@@ -130,7 +130,7 @@ $$
 $$
 
 **(b) Implement the linear damping scheme in the `HartreeFock` class. 
-Perform a HF calculation for the stretched water molecule using 
+Perform an HF calculation for the stretched water molecule using 
 linear damping with \\(\alpha = 0.5\\). Plot the SCF energy as a 
 function of the iteration number.**
 
@@ -177,7 +177,7 @@ can be used to further improve the convergence behavior.
 
 ### Problem 3
 
-We have performed the CIS calculation for the water molecule in the lecture,
+We performed the CIS calculation for the water molecule in the lecture,
 which gave us the energy as well as the character of the excited states. From
 the orbital contributions, we could see that many excited states are mixtures
 of singly excited determinants. Although for water with a minimal basis set,
@@ -187,7 +187,7 @@ often found. In this problem, we shall investigate one of such mixed
 excitations and learn a concept that may lead to a simpler description of
 these states.
 
-Let us condiser a trimer of hydrogen molecules:
+Let us consider a trimer of hydrogen molecules:
 ```python
 {{#include ../codes/psets/03/sol_3.py:h6_molecule}}
 ```
@@ -258,7 +258,7 @@ The sign of the MOs does not matter.
 
 &nbsp;
 
-The orbital contributions can be better organised in a matrix, the so called
+The orbital contributions can be better organised in a matrix, the so-called
 transition density matrix $\bm{T^{n}}$, with $n$ being the excited state number.
 Let $i$ denote the index of the occupied orbitals and $a$ the index of the
 virtual orbitals. The matrix element $T^{n}_ {ia}$ is the coefficient of the 
@@ -285,7 +285,7 @@ yields
 
 &nbsp;
 
-There are clearly two distinct regions in the transition density matrix with
+There are two distinct regions in the transition density matrix with
 non-zero elements, indicating that this excited state is a mixture of 2
 spin-adapted singly excited determinants (or 4 "primitive" determinants).
 Because the MOs are optimised for the ground state, they are not necessarily

@@ -3,7 +3,7 @@
 In the previous sections, we have implemented the Hartree-Fock method, which
 delivers the molecular orbitals. These, as well as some other quantities 
 derived from them, are functions of 3 spatial coordinates. In this section,
-we will show how to visualise these functions in 3D-space.
+we will show how to visualise these functions in 3D space.
 
 ~~~admonish note
 We will use the 
@@ -42,7 +42,7 @@ Notebook initialized with ipy backend.
 
 Molecular orbitals are one-electron wavefunctions. In our HF calculations, 
 we represent them in the basis of atomic orbitals, which are themselves 
-one-electron wavefunctions. To visualize them in 3D-space, we need to 
+one-electron wavefunctions. To visualize them in 3D space, we need to 
 evaluate them on a spatial grid. We shall at first define a function 
 to evaluate a contracted Gaussian basis function in space:
 ```python
@@ -71,7 +71,7 @@ atoms and bonds for reference:
 ```
 
 ### Visualizing Molecular Orbitals
-Now, we can take a HF calculation of water
+Now, we can take an HF calculation of water
 ```python
 {{#include ../codes/05-hartree_fock/mo_and_density.py:water_hf}}
 ```
