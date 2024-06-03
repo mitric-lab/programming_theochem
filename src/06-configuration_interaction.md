@@ -40,6 +40,6 @@ for such systems with current computational resources.
 One very simple way to reduce the number of determinants is to only consider 
 excitations up to a certain level. This is often referred to as truncated CI. 
 In this section, we will at first implement Configuration Interaction Singles 
-(CIS) and use second quantization techniques to derive the CIS equations, 
+(CIS) and use second quantisation techniques to derive the CIS equations, 
 as well as the Full CI equations. 
 

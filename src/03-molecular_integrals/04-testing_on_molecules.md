@@ -106,7 +106,7 @@ You can also download some common basis sets from the list
 - <a href="../assets/basis_sets/6-31g.json" download>6-31G</a>: 
   A Pople basis set.
 - <a href="../assets/basis_sets/6-31g_st.json" download>6-31G*</a>: 
-  A Pople basis set with polarization functions.
+  A Pople basis set with polarisation functions.
 - <a href="../assets/basis_sets/cc-pvdz.json" download>cc-pVDZ</a>:
-  A Dunning basis set (with polarization functions).
+  A Dunning basis set (with polarisation functions).
 

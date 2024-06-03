@@ -36,7 +36,7 @@ properly describe the fall-off of the wavefunction. For a medium-sized molecule,
 e.g. porphin, which is around 10 Å across, a box of the dimension 
 15 Å × 15 Å × 5 Å would be appropriate, which translates to 60 × 60 × 20 = 72000 
 grid points. This is far from practical. If we wish for a finer granulated grid or 
-calculations for larger molecules, discretization will become infeasible rather quickly.
+calculations for larger molecules, discretisation will become infeasible rather quickly.
 
 So, the spatial grid is a very inefficient basis for the HF equation. Because 
 the molecule consists of atoms, it should be possible to represent the 
