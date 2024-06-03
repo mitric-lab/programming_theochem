@@ -4,6 +4,7 @@ Because the Fock operator itself depends on its solutions, the
 Hartree-Fock equation, or rather the Rothaan-Hall equation, cannot
 be solved using conventional eigenvalue solvers. 
 
+### Summary of the Procedure
 
 The SCF procedure in the Hartree-Fock approximation can be 
 summarised as follows:
@@ -30,6 +31,8 @@ summarised as follows:
 11. Check for convergence. If not, return to step 5 with the new density matrix.
 12. If the procedure has converged, calculate the quantities of interest 
     (e.g. total energy, dipole moment, etc.) from the converged solution.
+
+### Implementation
 
 We can implement the Hartree-Fock procedure in a Python class. Since we want 
 to access lots of properties of the molecule, it is convenient to pass the
