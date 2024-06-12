@@ -61,7 +61,7 @@ which are listed here:[^dixon_params]
 
 We shall use the water molecule from problem set 1 again as an example:
 ```python
-{{#include ../codes/psets/02/sol_3bc.py:atoms_in_water}}
+{{#include ../codes/psets/01/sol_2cd.py:atoms_in_water}}
 ```
 for which the
 <a href="https://codinginchemistry.com/files_SS23/pset_01/vsto-3g.json" download>VSTO-3G</a> 
