@@ -10,7 +10,7 @@ from the bachelor course on theoretical chemistry, we will only briefly
 summarise the algorithm in this lecture. A detailed derivation of the 
 Hartree-Fock equation has been or will be covered in the master courses on 
 quantum chemistry, and can alternatively be found 
-<a href="../assets/misc/Derivation_of_the_Hartree_Fock_Equation.pdf" target="_blank">here</a>.
+<a href="assets/misc/Derivation_of_the_Hartree_Fock_Equation.pdf" target="_blank">here</a>.
 
 The terms "Hartree-Fock equation" and "Roothaan-Hall equation" are often used
 interchangeably, although there is a subtle difference:

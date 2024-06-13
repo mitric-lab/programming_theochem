@@ -49,7 +49,7 @@ $$
 
 Now we test our HF implementation on the water molecule using the STO-3G basis set.
 ```python
-{{#include ../codes/05-hartree_fock/hartree_fock.py:hartree_fock_water}}
+{{#shiftinclude -4:../codes/05-hartree_fock/hartree_fock.py:hartree_fock_water}}
 ```
 We get the final (electronic) energy of \\(E_\mathrm{SCF} = -84.143659\ \mathrm{a.u.}\\) 
 To obtain the total HF energy, the nuclear repulsion energy \\(E_\mathrm{ne}\\) 

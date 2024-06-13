@@ -9,7 +9,15 @@ from atomic_data import ATOMIC_NUMBER
 ### ANCHOR: imports_overlap
 import S
 ### ANCHOR_END: imports_overlap
-
+### ANCHOR: imports_kinetic
+import T
+### ANCHOR_END: imports_kinetic
+### ANCHOR: imports_nuclear_attraction
+import V
+### ANCHOR_END: imports_nuclear_attraction
+### ANCHOR: imports_electron_repulsion
+import ERI
+### ANCHOR_END: imports_electron_repulsion
 
 ### ANCHOR: gaussian_base
 class Gaussian:
