@@ -64,6 +64,6 @@ updated throughout the semester according to the progress of the lecture.
 | 12  | Thur. | July 4   | Lecture      | Full CI         |
 | 13  | Mon.  | July 8   |              |                 |
 | 13  | Thur. | July 11  |              |                 |
-| 14  | Mon.  | July 15  |              |                 |
-| 14  | Thur. | July 18  | Exercise     | Exercise 4      |
+| 14  | Mon.  | July 15  | Exercise     | Exercise 4      |
+| 14  | Thur. | July 18  |              |                 |
 
