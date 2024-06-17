@@ -41,6 +41,17 @@ molecule object to the constructor of the `HartreeFock` class.
 ```python
 {{#include ../codes/05-hartree_fock/hartree_fock.py:hartree_fock_class}}
 ```
+
+We have calculated the matrix $\bm{G}$ using the 
+[`np.einsum`](https://numpy.org/doc/stable/reference/generated/numpy.einsum.html)
+function, which can be unwieldy at first, but is very powerful for 
+implementing tensor contractions once you get the hang of it.
+```admonish tip
+You can use the free web tool
+[einsum-explainer](https://oracleofnj.github.io/einsum-explainer/)
+to explore the different ways of contracting tensors using `np.einsum`.
+```
+
 The convergence criterion is chosen as the absolute difference between the
 total SCF energy of two consecutive iterations. The total SCF energy is
 given by
