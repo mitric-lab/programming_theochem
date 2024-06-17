@@ -2,6 +2,16 @@
 
 ### Problem 1
 
+```admonish tip
+You will need an implementation of the Extended Hückel Theory from 
+problem set 2. If you did not manage to solve that problem, or if you are 
+unsure about your solution, you can download an object-oriented implementation
+from
+<a href="../codes/psets/03/eht_calculator.py" download>here</a>.
+Its constructor takes an instance of the `Molecule` class and you can
+use the method `get_total_energy()` to obtain the total energy.
+```
+
 In problem set 2, you have calculated the total molecular energy 
 using the extended Hückel method. Now we can use optimisation 
 algorithms to minimise the molecular energy with respect to the nuclear 
@@ -96,13 +106,23 @@ routine can also have convergence problems for distorted geometries of
 behavior of the HF method for the stretched water molecule and implement 
 a simple trick to improve the convergence.
 
-The stretched water molecule is constructed using the following atoms:
+In our implementation of the HF method, we have used the
+difference in the total electronic energy between two iterations as the
+convergence criterion, which utilises the formula
+$$
+  E_{\mathrm{SCF}} = \frac{1}{2} \sum_{\mu \nu} (H_{\mu \nu}^{\mathrm{core}} + F_{\mu \nu}) P_{\nu \mu}\,.
+$$
+
+**(a) Derive the formula given above from the version involving molecular
+integrals, i.e.**
+$$
+  E_{\mathrm{SCF}} = 2 \sum_{i=1}^{N_{\mathrm{occ}}} (i| \hat{h} |i) + \sum_{i=1}^{N_{\mathrm{occ}}} \sum_{j=1}^{N_{\mathrm{occ}}} \left[ 2 (ij|ij) - (ij|ji) \right]\,,
+$$
+**where $i$ and $j$ index the occupied molecular orbitals.**
+
+We shall now construct the stretched water molecule using the following atoms:
 ```python
 {{#include ../codes/psets/03/sol_2.py:stretched_water_molecule}}
-```
-```admonish tip
-You will have to make slight modifications to the `HartreeFock` class 
-for this problem.
 ```
 ```admonish note
 If not mentioned otherwise, use the STO-3G basis set and perform a 
@@ -111,8 +131,11 @@ threshold of \\(10^{-6}\ \mathrm{a.u.}\\) for the energy difference
 for all calculations in this problem.
 ```
 
-**(a) Perform an HF calculation for the stretched water molecule.
+**(b) Perform an HF calculation for the stretched water molecule.
 Plot the SCF energy as a function of the iteration number.**
+
+*Hint: You will have to make slight modifications to the `HartreeFock` class
+for this problem.*
 
 Expected result:
 ![](../assets/figures/psets/03/energy_no_damping.svg)
@@ -129,7 +152,7 @@ $$
   P_n \leftarrow \alpha P_{n-1} + (1 - \alpha) P_n
 $$
 
-**(b) Implement the linear damping scheme in the `HartreeFock` class. 
+**(c) Implement the linear damping scheme in the `HartreeFock` class. 
 Perform an HF calculation for the stretched water molecule using 
 linear damping with \\(\alpha = 0.5\\). Plot the SCF energy as a 
 function of the iteration number.**
@@ -149,7 +172,7 @@ is the same.
 ```
 &nbsp;
 
-**(c) Perform HF calculations of the stretched water molecule using 
+**(d) Perform HF calculations of the stretched water molecule using 
 linear damping with \\(\alpha = 0.00, 0.02, 0.04, \ldots, 0.98\\). 
 Set the maximum number of iterations to 200 and plot the number of 
 iterations performed as a function of \\(\alpha\\).**
@@ -158,9 +181,9 @@ Expected result:
 ![](../assets/figures/psets/03/niter_alpha.svg)
 
 ```admonish note
-> Again, the precise number of iterations can vary slightly. You do 
-> not have to tweak your implementation to match the expected result 
-> exactly, as long as the general behavior is the same.
+Again, the precise number of iterations can vary slightly. You do 
+not have to tweak your implementation to match the expected result 
+exactly, as long as the general behavior is the same.
 ```
 
 ```admonish info
@@ -197,7 +220,9 @@ Let us consider a trimer of hydrogen molecules:
 &nbsp;
 
 The first 3 excited singlet states of this molecule are states 10, 11, and 12
-from the above calculation and should have the following console output:
+(1-based index) from the above calculation and should have the following 
+console output:
+
 ```txt
 Excited State  10: E_exc =    26.9541 eV
 1a   -> 3a      -0.473982 (22.5 %)
@@ -384,4 +409,7 @@ Expected results:
 ```admonish tip
 The sign of the NTOs does not matter.
 ```
+
+**(f) Calculate the NTOs for excited state 10 and inspect the singular values.
+Interpret the result.**
 

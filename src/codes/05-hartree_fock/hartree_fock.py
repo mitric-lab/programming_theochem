@@ -13,10 +13,9 @@ class HartreeFock:
         self.mol = molecule
         self.charge = charge
 
-    def initialize(self):
+    def initialise(self):
         self.nel = np.array([
-            self.mol.atomlist[i].atnum 
-            for i in range(0, len(self.mol.atomlist))
+            atom.atnum for atom in self.mol.atomlist
         ]).sum() - self.charge
 
         # Only restricted Hartree-Fock is implemented
@@ -30,21 +29,21 @@ class HartreeFock:
         self.mol.get_V()
         self.mol.get_twoel()
         
-        # orthogonalize AO
+        # orthogonalise AO
         eigval, eigvec = np.linalg.eigh(self.mol.S)
         self.X = eigvec @ np.diag(1.0 / np.sqrt(eigval))
 
-        # core hamiltonian + initialize density matrix
+        # core hamiltonian + initialise density matrix
         self.hcore = self.mol.T + self.mol.Ven
         orb_en, orb = np.linalg.eigh(self.hcore)
         
         c = orb[:, :self.nocc]
-        self.p = c @ c.T
+        self.p = 2.0 * c @ c.T
     
     def get_fock(self, p):
         g = np.einsum(
             'kl, ijkl -> ij', p, 
-            2.0 * self.mol.twoel - self.mol.twoel.transpose(0, 2, 1, 3),
+            self.mol.twoel - 0.5 * self.mol.twoel.transpose(0, 2, 1, 3),
         )
         return self.hcore + g
     
@@ -54,16 +53,16 @@ class HartreeFock:
         for iteration in range(max_iter):
             # calculate Fock-matrix
             f = self.get_fock(self.p)
-            # orthogonalize Fock-Matrix
+            # orthogonalise Fock-Matrix
             f_ortho = self.X.T @ f @ self.X
-            # diagonalize Fock-Matrix
+            # diagonalise Fock-Matrix
             eigvals, eigvecs = np.linalg.eigh(f_ortho)
             # get new density matrix 
             c = eigvecs[:, :self.nocc]
-            self.p = c @ c.T
+            self.p = 2.0 * c @ c.T
             self.p = self.X @ self.p @ self.X.T
             # calculate energy 
-            energy = np.trace((self.hcore + f) @ self.p)
+            energy = 0.5 * np.trace((self.hcore + f) @ self.p)
             
             if verbose > 0:
                 print(f"Iteration {iteration}, Energy = {energy} Hartree")
@@ -103,7 +102,7 @@ if __name__ == '__main__':
     water.get_basis('sto-3g')
     
     rhf = HartreeFock(water)
-    rhf.initialize()
+    rhf.initialise()
     e_scf = rhf.run_hf()
     print(f"SCF energy: {e_scf} Hartree")
     ### ANCHOR_END: hartree_fock_water
