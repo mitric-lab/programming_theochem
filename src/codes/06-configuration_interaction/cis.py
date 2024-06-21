@@ -14,8 +14,8 @@ HARTREE_TO_EV = 27.211_386_245_988
 ### ANCHOR: cis_class
 class CIS(HartreeFock):
 
-    def initialize(self):
-        super().initialize()
+    def initialise(self):
+        super().initialise()
         self.run_hf(max_iter=500, threshold=1e-8, verbose=0)
         print(self.energy)
     
@@ -115,7 +115,7 @@ if __name__ == '__main__':
     water.get_basis('sto-3g')
     
     cis = CIS(water)
-    cis.initialize()
+    cis.initialise()
 
     cis.run_cis(nprint=20)
     ### ANCHOR_END: cis_water
