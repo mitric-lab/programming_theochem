@@ -267,10 +267,10 @@ for $f, g \in L^2(\mathbb{R}^n)$, as first shown by Bunyakovsky in 1859.
 
 By appling the inequality above to the two-electron integrals, we can derive
 $$
-\left| (ij|kl) \right|^2 \leq Q_{ij} Q_{kl}
+\left| (ij|kl) \right| \leq Q_{ij} Q_{kl}
 $$
 with $Q_{ij} = (ij|ij)^{1/2}$ and $Q_{kl} = (kl|kl)^{1/2}$ 
-using some simple algebra.
+using some simple algebra.[^haeser_scf]
 
 This means that we can approximate the two-electron integral 
 $(ij|kl)$ by zero if $Q_{ij} Q_{kl}$ is smaller than some 
@@ -312,3 +312,6 @@ These two tricks mentioned above can be combined to further
 speed up the calculation of two-electron integrals. You do not have to
 implement this combined method.
 ```
+
+[^haeser_scf]: M. Häser, R. Ahlrichs, _J. Comput. Chem._, **1989**, 10, 104&ndash;111.
+
