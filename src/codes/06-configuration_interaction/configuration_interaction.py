@@ -111,29 +111,29 @@ class ConfigurationInteraction(HartreeFock):
             for j, aj in enumerate(self.mol.atomlist[:i]):
                 rij = np.linalg.norm(ai.coord - aj.coord)
                 e_nuc += ai.atnum * aj.atnum / rij
-        print(e_nuc)
         return e_nuc
     ### ANCHOR_END: ci_get_nuclear_repulsion
 
     ### ANCHOR: ci_run_ci
-    def run_ci(self, nstate, projector=None):
-        hamiltonian = self.get_hamiltonian()
+    def run_ci(self, nstates, coeffs=None, projector=None, verbose=1):
+        hamiltonian = self.get_hamiltonian(coeffs)
         if projector is not None:
             # orthogonal projectors are symmetric
             hamiltonian = projector @ hamiltonian @ projector
-        eigvals, eigvecs = eigsh(hamiltonian, k=nstate, which='SA')
+        eigvals, eigvecs = eigsh(hamiltonian, k=nstates, which='SA')
         eigvals += self.get_nuclear_repulsion()
-
-        print('CI:')
-        for state in range(0, nstate):
-            print(f'State {state:3d}: E = {eigvals[state]:12.8f} a.u.')
-            for i, c in enumerate(eigvecs[:, state]):
-                contribution = np.abs(c)**2
-                if np.abs(c) > 0.1:
-                    state_str = f'|{i:0{self.nsite}b}>'
-                    print(f'  {state_str}: {c:12.8f} '
-                          f'({100.0 * contribution:.1f} %)')
-            print()
+        
+        if verbose > 0:
+            print('CI:')
+            for state in range(0, nstates):
+                print(f'State {state:3d}: E = {eigvals[state]:12.8f} a.u.')
+                for i, c in enumerate(eigvecs[:, state]):
+                    contribution = np.abs(c)**2
+                    if np.abs(c) > 0.1:
+                        state_str = f'|{i:0{self.nsite}b}>'
+                        print(f'  {state_str}: {c:12.8f} '
+                              f'({100.0 * contribution:.1f} %)')
+                print()
 
         return eigvals, eigvecs
     ### ANCHOR_END: ci_run_ci
