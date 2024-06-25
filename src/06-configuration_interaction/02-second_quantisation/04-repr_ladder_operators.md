@@ -13,11 +13,11 @@ representations as well.
 
 #### Representation for one site
 Consider a system with just one site. This can only have two possible 
-states, $|0\rangle$ and $|1\rangle$. Because these states should 
+states, $\ket{0}$ and $\ket{1}$. Because these states should 
 be orthonormal, one of the most natural representations is the following:
 $$
-|0\rangle \rightarrow \begin{pmatrix} 0 \\ 1 \end{pmatrix} \quad
-|1\rangle \rightarrow \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+\ket{0} \rightarrow \begin{pmatrix} 1 \\ 0 \end{pmatrix} \quad
+\ket{1} \rightarrow \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 $$
 
 You can check that this representation is indeed orthonormal with respect 
@@ -26,33 +26,34 @@ to the standard inner product.
 How can we represent the ladder operators in this basis? We can use the 
 properties of the creation operator:
 $$
-a^\dagger |0\rangle = |1\rangle \quad \text{and} \quad
-a^\dagger |1\rangle = 0
+a^\dagger \ket{0} = \ket{1} \quad \text{and} \quad
+a^\dagger \ket{1} = 0
 $$
 
 We can construct the matrix representation by applying the operator to 
 an arbitrary state vector $|k\rangle$ and exploiting the linearity:
 $$
 \begin{aligned}
-  a^\dagger |k\rangle 
-  &= a^\dagger \left( \lambda_0 |0\rangle + \lambda_1 |1\rangle \right) 
-    \rightarrow a^\dagger \begin{pmatrix} \lambda_1 \\ \lambda_0 \end{pmatrix} \\
-  &= \lambda_0 a^\dagger |0\rangle + \lambda_1 a^\dagger |1\rangle \\
-  &= 0 |0\rangle + \lambda_0 |1\rangle \\
-  &\rightarrow 0 \begin{pmatrix} 0 \\ 1 \end{pmatrix} + 
-    \lambda_0 \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
-  &= \begin{pmatrix} 0 + \lambda_0 \\ 0 + 0 \end{pmatrix} \\
-  &= \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} 
-    \begin{pmatrix} \lambda_1 \\ \lambda_0 \end{pmatrix}
+  a^\dagger \ket{k}
+  &= a^\dagger \left( \lambda_0 \ket{0} + \lambda_1 \ket{1} \right) 
+    \rightarrow a^\dagger \begin{pmatrix} \lambda_0 \\ \lambda_1 \end{pmatrix} \\
+  &= \lambda_0 a^\dagger \ket{0} + \lambda_1 a^\dagger \ket{1} \\
+  &= \lambda_0 \ket{1} + 0 \\
+  &= \lambda_0 \ket{1} + 0 \ket{0} \\ 
+  &\rightarrow \lambda_0 \begin{pmatrix} 0 \\ 1 \end{pmatrix} + 
+    0 \begin{pmatrix} 1 \\ 0 \end{pmatrix} \\
+  &= \begin{pmatrix} 0 + 0 \\ \lambda_0 + 0 \end{pmatrix} \\
+  &= \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} 
+    \begin{pmatrix} \lambda_0 \\ \lambda_1 \end{pmatrix}
 \end{aligned}
 $$
 Hence,
 $$
-a^\dagger \rightarrow \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+a^\dagger \rightarrow \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
 $$
 And for the annihilation operator, its Hermitian conjugate:
 $$
-a \rightarrow \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+a \rightarrow \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
 $$
 
 Since we know that a successive application of two creation or two 
@@ -91,7 +92,7 @@ operators `+` and `*`, so we can calculate the anti-commutator as follows:
 {{#include ../../codes/06-configuration_interaction/repr_sq.py:anticommutator_one_site}}
 ```
 
-This should give us the identity matrix $\mathbb{1}_2$, which is the 
+This should give us the identity matrix $\identity_2$, which is the 
 representation of one in this basis.
 
 #### Representation for two sites
@@ -102,14 +103,32 @@ $$
 $$
 Using the representation of the one-site system, we find out
 $$
-|0 0\rangle \rightarrow \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix} \quad
-|0 1\rangle \rightarrow \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix} \quad
-|1 0\rangle \rightarrow \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} \quad
-|1 1\rangle \rightarrow \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix}
+\ket{0 0} \rightarrow \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \end{pmatrix} \quad
+\ket{0 1} \rightarrow \begin{pmatrix} 0 \\ 1 \\ 0 \\ 0 \end{pmatrix} \quad
+\ket{1 0} \rightarrow \begin{pmatrix} 0 \\ 0 \\ 1 \\ 0 \end{pmatrix} \quad
+\ket{1 1} \rightarrow \begin{pmatrix} 0 \\ 0 \\ 0 \\ 1 \end{pmatrix}
 $$
-You can verify this using SymPy:
+We can verify this using SymPy:
 ```python
 {{#include ../../codes/06-configuration_interaction/repr_sq.py:two_site_basis}}
+```
+
+```admonish tip title="Relation to Binary Numbers"
+The abstract state vector ($\ket{k_1, \cdots, k_M}$) is represented by
+the occupation number of each sites. Since every site can be either
+unoccupied (0) or occupied (1) for a pure state, this abstract vector 
+can be treated as a
+binary number, e.g. $\ket{00} \rightarrow 00_2 = 0_{10}$, 
+$\ket{10} \rightarrow 10_2 = 2_{10}$, etc.
+
+The column vectors of pure states in this representation are
+standard basis vectors of the tensor product space, i.e. they have a
+single one and all other entries are zero. If we take a closer look at the
+(zero-based) index of the one in the column vector, we can see that it 
+corresponds to the binary number of the abstract state vector.
+
+Therefore, to retrieve the abstract state vector from the column vector,
+we can simply convert the index of the one to a binary number.
 ```
 
 Since the ladder operators 
@@ -118,8 +137,8 @@ one may come up with the idea to represent the ladder operators using
 a tensor product of the identity matrix and the representation for one-site 
 systems, i.e.
 $$
-a_1^{(\dagger)} \rightarrow a^{(\dagger)} \otimes \mathbb{1}_2 \quad 
-a_2^{(\dagger)} \rightarrow \mathbb{1}_2 \otimes a^{(\dagger)}
+a_1^{(\dagger)} \rightarrow a^{(\dagger)} \otimes \identity_2 \quad 
+a_2^{(\dagger)} \rightarrow \identity_2 \otimes a^{(\dagger)}
 $$
 or in SymPy:
 ```python
@@ -134,8 +153,8 @@ $ (\mathbf{A} \otimes \mathbf{B}) (\mathbf{C} \otimes \mathbf{D}) =
 see 
 $$
 \begin{aligned}
-  (a_1^{(\dagger)})^2 &= (a^{(\dagger)})^2 \otimes (\mathbb{1}_2)^2 = 0 \\ 
-  (a_2^{(\dagger)})^2 &= (\mathbb{1}_2)^2 \otimes (a^{(\dagger)})^2 = 0
+  (a_1^{(\dagger)})^2 &= (a^{(\dagger)})^2 \otimes (\identity_2)^2 = 0 \\ 
+  (a_2^{(\dagger)})^2 &= (\identity_2)^2 \otimes (a^{(\dagger)})^2 = 0
 \end{aligned}
 $$
 because the nilpotency of the one-site ladder operators. 
@@ -183,14 +202,13 @@ We now define the matrix
 $$
 \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
 $$
-Apply it of $|0\rangle$ and $|1\rangle$, we can see that it gives 
-us $-1$ and $1$, respectively, almost what we want. We can fix the 
-wrong sign by using $-\sigma_z$ instead. Since the ladder operator 
+Apply it of $\ket{0}$ and $\ket{1}$, we can see that it gives 
+us $1$ and $-1$, respectively, exactly what we want. Since the ladder operator
 should not affect the sites after it, the identity matrix should still be 
 used for sites after it. This leads to the following representation:
 $$
-a_1^{(\dagger)} \rightarrow a^{(\dagger)} \otimes \mathbb{1}_2 \quad
-a_2^{(\dagger)} \rightarrow (-\sigma_z) \otimes a^{(\dagger)} \quad
+a_1^{(\dagger)} \rightarrow a^{(\dagger)} \otimes \identity_2 \quad
+a_2^{(\dagger)} \rightarrow \sigma_z \otimes a^{(\dagger)} \quad
 $$
 or in SymPy:
 ```python
@@ -219,13 +237,13 @@ satisfied due to the nilpotency of the one-site ladder operators.
 With the idea of the representation for two sites, we can generalize it 
 to $M$ sites. The ladder operators are represented as
 $$
-a_p^{(\dagger)} \rightarrow (-\sigma_z)^{\otimes (p-1)} \otimes 
-  a^{(\dagger)} \otimes \mathbb{1}_2^{\otimes (M-p)}
+a_p^{(\dagger)} \rightarrow \sigma_z^{\otimes (p-1)} \otimes 
+  a^{(\dagger)} \otimes \identity_2^{\otimes (M-p)}
 $$
 
 In English, the ladder operator at site $p$ is represented as 
 the tensor product of $M$ $2 \times 2$ matrices, where the first 
 $p-1$ ones are $-\sigma_z$, the $p$-th one is $a^{(\dagger)}$, 
-and the last $M-p$ ones are $\mathbb{1}_2$.
+and the last $M-p$ ones are $\identity_2$.
 
 

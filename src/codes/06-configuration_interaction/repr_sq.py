@@ -6,8 +6,8 @@ from sympy.physics.quantum import TensorProduct
 ### ANCHOR_END: imports
 
 ### ANCHOR: define_ladder_operators
-a_dag = sp.Matrix([[0, 1], [0, 0]])
-a = sp.Matrix([[0, 0], [1, 0]])
+a_dag = sp.Matrix([[0, 0], [1, 0]])
+a = sp.Matrix([[0, 1], [0, 0]])
 ### ANCHOR_END: define_ladder_operators
 
 ### ANCHOR: anticommutator_one_site
@@ -16,13 +16,19 @@ print('{a_dag, a}:', a_dag * a + a * a_dag)
 ### ANCHOR_END: anticommutator_one_site
 
 ### ANCHOR: two_site_basis
-s_0 = sp.Matrix([[0], [1]])
-s_1 = sp.Matrix([[1], [0]])
+s_0 = sp.Matrix([[1], [0]])
+s_1 = sp.Matrix([[0], [1]])
 
 s_00 = TensorProduct(s_0, s_0)
 s_01 = TensorProduct(s_0, s_1)
 s_10 = TensorProduct(s_1, s_0)
 s_11 = TensorProduct(s_1, s_1)
+
+print('Basis states:')
+print('|00>:', s_00)
+print('|01>:', s_01)
+print('|10>:', s_10)
+print('|11>:', s_11)
 ### ANCHOR_END: two_site_basis
 
 ### ANCHOR: ladder_operators_two_sites_naive
