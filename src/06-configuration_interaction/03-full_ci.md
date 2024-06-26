@@ -3,7 +3,7 @@
 For the full configuration interaction, we want to implement a representation
 of the full electronic Hamiltonian in second quantisation, which is given
 in 
-chapter [6.2.1](./02-second_quantisation/01-introduction.md#operators-in-second-quantisation) 
+Chapter [6.2.1](./02-second_quantisation/01-introduction.md#operators-in-second-quantisation) 
 as 
 
 $$
@@ -13,7 +13,7 @@ $$
 with the one-electron integrals $h_{pq}$ and two-electron integrals $g_{pqrs}$.
 
 We shall utilise the Jordan-Wigner representation introduced in
-chapter [6.2.4](./02-second_quantisation/04-repr_ladder_operators.html#generalisation-to-m-sites):
+Chapter [6.2.4](./02-second_quantisation/04-repr_ladder_operators.html#generalisation-to-m-sites):
 $$
 a_p^{(\dagger)} \rightarrow \sigma_z^{\otimes (p-1)} \otimes 
   a^{(\dagger)} \otimes \identity_2^{\otimes (M-p)}\,.
@@ -28,17 +28,17 @@ of $2^{2L}$ for the Fock space. This exponential scaling produces ridiculously
 large matrices, which are infeasible to store in memory. Take the 
 water molecule with the cc-pVDZ basis set as an example, which has 24
 spin-orbitals in total. This would give us a dimension 
-of $2^{24} = 16,777,216$ for the Fock space. This might not seem too large,
+of $2^{24} = 16,777,216$ for the Fock space. This might not seem too large
 but remember that matrices have a quadratic scaling with the dimension, 
 leading to $(2^{24})^2 \approx 2.8 \times 10^{14}$ elements for
 **every** ladder operator in the expression for the Hamiltonian.
 If the elements were stored with the standard double precision, this would
 require $8 \times 2.8 \times 10^{14} \approx 2252$ TB of memory per Matrix.
-This is clearly infeasible to store in memory of any computer available today.
+This is infeasible to store in the memory of any computer available today.
 
 Thankfully, if you have looked at the matrix representations of the 
 ladder operators $a_p^{(\dagger)}$ for multiple sites, you might have noticed
-that they contain lots of zeros. Such matrices are called sparse matrices,
+that they contain many zeros. Such matrices are called sparse matrices,
 and there are specialised libraries to store them and perform operations
 on them efficiently. We will use the
 [<i><b>C</b>ompressed <b>S</b>parse <b>C</b>olumn</i>](https://en.wikipedia.org/wiki/Sparse_matrix#Compressed_sparse_column_(CSC_or_CCS))
@@ -135,7 +135,7 @@ selects the property of the eigenvalues to return. In this case, we want the
 lowest eigenvalues, so we set `which='SA'`.
 The rest of the code just deals with the printing of the results. It should 
 be noted that the binary representation of the indices with large 
-contributions are used to represent the configurations, as we have discussed
+contributions is used to represent the configurations, as we have discussed
 in chapter 
 [6.2.4](./02-second_quantisation/04-repr_ladder_operators.html##admonition-relation-to-binary-numbers).
 
@@ -214,7 +214,7 @@ State   9: E =  -1.61197081 a.u.
 The ground state (state 0) mainly consists of the configurations
 $\ket{11110000}$ and $\ket{11001100}$, which are the Hartree-Fock 
 configuration and the doubly excited configuration from HOMO to LUMO,
-respectively. The ground state thus have multi-reference character, which
+respectively. The ground state thus has a multi-reference character, which
 dictates the failure of the Hartree-Fock method to describe the system.
 
 The states 1--3 are triplets, after which two singlets follow. The states
@@ -222,12 +222,12 @@ The states 1--3 are triplets, after which two singlets follow. The states
 can we have a quartet with an even number of electrons? If we inspect the
 configurations, we see that all the contributing configurations have 3
 electrons. This is because our Hamiltonian is constructed in the basis
-of **all** 8-site-configurations, which includes among others the vacuum state 
+of **all** 8-site configurations, which includes among others the vacuum state 
 as well as the state with 8 electrons. Therefore, we will also obtain 
 all cationic and anionic states along with the electronically excited states 
 (and the ground state, of course). Although this could be seen as a benefit, 
 if only neutral states are desired, this would cost additional computational 
-resources for a calculation which is already expensive.
+resources for a calculation that is already expensive.
 
 To avoid this, we can project the Hamiltonian onto the subspace of neutral
 states with the help of a projector. 
@@ -287,10 +287,10 @@ $$
   \hat{H}_P \ket{\psi} = E \ket{\psi}\,.
 $$
 
-In order to fix the number of electrons in our CI calculation, we can project
+To fix the number of electrons in our CI calculation, we can project
 the Hamiltonian onto the subspace with the selected number of electrons. This 
 can be achieved by constructing all state vectors with the desired number of
-electrons and calculate the projector according to 
+electrons and calculating the projector according to 
 eq. {{eqref: eq:multiple_state_orhtogonal_projector}}. 
 An implementation of this is shown below:
 ```python

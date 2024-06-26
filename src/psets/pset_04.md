@@ -4,12 +4,12 @@
 
 The potential energy surface (PES) of H<sub>4</sub> is very interesting
 and feature-rich, despite the simplicity of the molecule. In this problem,
-you will calculate some slices of the PES of H<sub>4</sub> calculated
+you will calculate some slices of the PES of H<sub>4</sub>
 at the full configuration interaction (FCI) level of theory combined with
 the STO-3G basis set.
 
 ```admonish warning
-Do **NOT** use minimal basis sets in real life calculations when highly
+Do **NOT** use minimal basis sets in real-life calculations when highly
 correlated methods are used! The minimal basis set is used here to keep
 the computational cost low.
 ```
@@ -27,7 +27,7 @@ of the PES and identify at least one bounded and one dissociative state.**
 
 
 Expected results:
-Left panel of the graph below.
+The left panel of the graph below.
 
 &nbsp;
 
@@ -43,7 +43,7 @@ $r_x = 0.4, 0.5, \cdots, 2.5\ \mathrm{\AA}$ and a fixed
 $r_y = 1.4\ \mathrm{\AA}$ for the first 12 electrically neutral states.**
 
 Expected results:
-Right panel of the graph above.
+The right panel of the graph above.
 
 &nbsp;
 
@@ -57,7 +57,7 @@ W. Gerhartz, R. D. Poshusta, J. Michl, _J. Am. Chem. Soc._, **1976**, 98, 6427&n
 
 ### Problem 2
 
-In the lecture, we used the canonical HF orbitals as a orthonormal basis
+In the lecture, we used the canonical HF orbitals as an orthonormal basis
 for the FCI calculations. It was mentioned that any orthonormal basis would
 suffice, and we shall investigate this claim in this problem.
 
@@ -182,12 +182,12 @@ Expected results:
 &nbsp;
 
 The electronically excited states we have calculated so far are in the
-region of several eV, which can be convieniently measured using UV-Vis
+region of several eV, which can be conveniently measured using UV-Vis
 spectroscopy. Sometimes, however, other types of spectroscopy can be
-more informative. One such example is the X-ray absorption spectroscopy (XAS),
+more informative. One such example is X-ray absorption spectroscopy (XAS),
 which can be used to probe the core electrons of the atoms. Although these
 excitations are in principle not different from the valence excitations,
-but since their energies are much higher (hundreds to thousands of eV),
+since their energies are much higher (hundreds to thousands of eV),
 we would need to also calculate thousands, if not millions, of lower-lying 
 states to access the core excitations, which is usually not feasible.
 
@@ -219,7 +219,7 @@ Consider a lithium hydride (LiH) molecule with the following geometry:
 ```
 
 **(e) Calculate the excitation energies of the first 4 core excitations
-from Li K-edge of the LiH molecule listed above in eV.**
+from the Li K-edge of the LiH molecule listed above in eV.**
 
 *Hint: The Li 1s orbital is well separated from the valence orbitals and can
 thus be found as the 0th and 1st molecular spin-orbitals. The argument

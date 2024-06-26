@@ -51,16 +51,6 @@ class ConfigurationInteraction(ConfigurationInteractionOld):
                     projector += ket @ bra
         return projector
 
-    def get_n_electron_subspace(self, n):
-        n_electron_creators = combinations(self.creators, n)
-        projector = csc_matrix((self.ndim, self.ndim), dtype=float)
-        for ops in n_electron_creators:
-            creator = reduce(lambda x, y: x @ y, ops)
-            ket = creator @ self.vacuum
-            bra = ket.T
-            projector += ket @ bra
-        return projector
-
 
 ### ANCHOR: h4_molecule
 r = 1.0 / 2.0
