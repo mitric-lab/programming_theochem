@@ -247,7 +247,7 @@ relative signs within one state are correct.
 
 **(b) Plot the 2. and 5. MO (0-based index of spatial orbitals).**
 
-Expected results:
+Expected results (isovalue: &pm;0.05):
 
 <style>
   .row {
@@ -375,7 +375,7 @@ in the NTO basis, although it is a mixed state in the MO basis.
 **(e) Calculate the NTOs for excited state 12 and plot the 0. NTO pair. 
 Interpret the result.**
 
-Expected results:
+Expected results (isovalue: &pm;0.05):
 
 <style>
   .row {
