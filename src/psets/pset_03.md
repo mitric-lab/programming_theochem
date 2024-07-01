@@ -64,7 +64,7 @@ $q^{*}_1 = 1.9108;\quad q^{*}_2 = -2.0706$
 &nbsp;
 
 After playing around with the model function, we shall take a look at 
-the water molecule from problem 1:
+the water molecule from problem set 1:
 ```python
 {{#include ../codes/psets/03/sol_1bc.py:atoms_in_water}}
 ```
@@ -103,7 +103,7 @@ convergence for the example molecules we tested. However, the convergence
 is not guaranteed in general. Apart from "difficult" molecules, the HF 
 routine can also have convergence problems for distorted geometries of 
 "easy" molecules. In this problem, we shall investigate the convergence 
-behavior of the HF method for the stretched water molecule and implement 
+behaviour of the HF method for the stretched water molecule and implement 
 a simple trick to improve the convergence.
 
 In our implementation of the HF method, we have used the
@@ -167,7 +167,7 @@ Expected result:
 Depending on the position in the SCF procedure where the damping 
 is applied, the precise energy values and the number of iterations 
 can vary slightly. You do not have to tweak your implementation to 
-match the expected result exactly, as long as the general behavior 
+match the expected result exactly, as long as the general behaviour 
 is the same.
 ```
 &nbsp;
@@ -183,14 +183,14 @@ Expected result:
 ```admonish note
 Again, the precise number of iterations can vary slightly. You do 
 not have to tweak your implementation to match the expected result 
-exactly, as long as the general behavior is the same.
+exactly, as long as the general behaviour is the same.
 ```
 
 ```admonish info
 The linear damping scheme is a very simple method to improve the 
 convergence of the SCF procedure. More sophisticated damping schemes, e.g. 
 [Anderson acceleration](https://en.wikipedia.org/wiki/Anderson_acceleration), 
-can be used to further improve the convergence behavior.
+can be used to further improve the convergence behaviour.
 </span>
 ```
 
