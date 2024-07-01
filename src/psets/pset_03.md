@@ -59,7 +59,7 @@ local minimum.**
 
 Expected results:
 
-$q^{*}_1 = 1.9108;\quad q^{*}_2 = -2.0706$
+$q^{*}_1 = 1.9108;\quad q^{*}_2 = -2.0786$
 
 &nbsp;
 
