@@ -28,7 +28,7 @@ Now we can identify
 $$
 \begin{aligned}
   \sum_i h_{ii} + \frac{1}{2} \sum_{ij} (g_{iijj} - g_{ijji}) 
-    &= E_{\mathrm{HF}} \quad &\mathrm{HF\ energy} \\\\
+    &= E_{\mathrm{HF}} \quad &\mathrm{HF\ energy} \\
   h_{pq} + \sum_i (g_{iipq} - g_{ipqi}) 
     &= f_{pq} \quad &\mathrm{Fock\ matrix\ element}
 \end{aligned}
@@ -38,7 +38,7 @@ $$
 \begin{aligned}
 	\hat{H} &= \sum_{pq} f_{pq} :\mathrel{a_p^\dagger a_q}: +
 	\frac{1}{2} \sum_{pqrs} g_{pqrs} :\mathrel{a_p^\dagger a_r^\dagger a_s a_q}: +
-	E_{\mathrm{HF}}	\\\\
+	E_{\mathrm{HF}}	\\
 	&= \hat{F}_N + \hat{V}_N + E_{\mathrm{HF}}
 \end{aligned}
 $$

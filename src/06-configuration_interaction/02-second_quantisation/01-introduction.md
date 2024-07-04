@@ -36,7 +36,7 @@ The single-particle state is also called a *site* and can e.g. be an
 orbital.
 
 Because we do not want to do difficult calculations with state vectors 
-(excepct for the vacuum state), we must represent states by some 
+(except for the vacuum state), we must represent states by some 
 (combination of) operators, something that generate all possible states 
 in the Fock space from the vacuum state. 
 
@@ -112,60 +112,131 @@ which also holds for the case $p = q$.
 The action of Hermitian adjoints $a_p$ on $|\vec{k} \rangle$ can be 
 understood by inserting the identity
 $$
-a_p | \vec{k} \rangle = 
-  \sum_{\vec{m}} |\vec{m}\rangle \langle \vec{m} | a_p | \vec{k} \rangle
+a_p \ket{\vec{k}} = 
+  \sum_{\vec{m}} \ket{\vec{m}} \braket{\vec{m} | a_p | \vec{k}}\,.
 $$
 
-The matrix element can be evaluated as
-
+The matrix element that has occured can be evaluated as
 $$
-\langle \vec{m} | a_p | \vec{k} \rangle = 
-  \langle \vec{k} | a_p^\dagger | \vec{m} \rangle ^* = 
-  \delta_{m_p 0} \Gamma_p^{\vec{m}} \langle \vec{k} | m_1, \cdots, 1_p, \cdots \rangle^*
+\braket{\vec{m} | a_p | \vec{k}} = 
+  \braket{\vec{k} | a_p^\dagger | \vec{m}}^* = 
+  \delta_{m_p 0} \Gamma_p^{\vec{m}} \braket{\vec{k} | m_1, \cdots, 1_p, \cdots m_M}^*\,.
 $$
 
 The overlap $\langle \vec{k} | m_1, \cdots, 1_p, \cdots \rangle$ is 
 nonzero if and only if both vectors are identical, which is the case when 
 $]\vec{k} \rangle$ and $| \vec{m} \rangle$ only differ at position 
-$p$, where $k_p = 1$ and $m_p = 0$. Therefore, the matrix element 
+$p$, where $k_p = 1$ and $m_p = 0$. Therefore, this matrix element 
 can also be written as
 
 $$
-\langle \vec{m} | a_p | \vec{k} \rangle = 
-  \delta_{k_p 1} \Gamma_p^{\vec{k}} \langle \vec{m} | k_1, \cdots, 0_p, \cdots \rangle
+\begin{align}
+  \braket{\vec{m} | a_p | \vec{k}}
+    &= \delta_{m_p 0} \delta_{k_p 1} \Gamma_p^{\vec{m}}
+      \braket{ k_1, \cdots, 0_p, \cdots k_M | m_1, \cdots, 1_p, \cdots m_M}^* \\
+    &= \delta_{m_p 0} \delta_{k_p 1} \Gamma_p^{\vec{m}}
+      \braket{ m_1, \cdots, 1_p, \cdots m_M | k_1, \cdots, 1_p, \cdots k_M} \\
+    &= \delta_{m_p 0} \delta_{k_p 1} \Gamma_p^{\vec{m}}
+      \braket{ m_1, \cdots, 0_p, \cdots m_M | k_1, \cdots, 0_p, \cdots k_M} \\
+    &= \delta_{k_p 1} \Gamma_p^{\vec{m}}
+      \braket{ \vec{m} | k_1, \cdots, 0_p, \cdots k_M } \\
+    &= \delta_{k_p 1} \Gamma_p^{\vec{k}} 
+      \braket{ \vec{m} | k_1, \cdots, 0_p, \cdots k_M }\,,
+\end{align}
 $$
-
 where we used the fact $\Gamma_p^{\vec{k}} = \Gamma_p^{\vec{m}}$, which 
-follows directly from its definition. Thus only one term in the sum survives 
-and we can conclude
+follows directly from its definition. Therefore, only one term in the sum 
+survives and we can conclude
 $$
 a_p |\vec{k} \rangle = 
-  \delta_{k_p 1} \Gamma_p^{\vec{k}} | k_1, \cdots, 0_p, \cdots k_M \rangle
+  \delta_{k_p 1} \Gamma_p^{\vec{k}} | k_1, \cdots, 0_p, \cdots k_M \rangle\,.
 $$
 
 The operator $a_p$ removes the occupation at $p$ if occupied and 
 returns zero if unoccupied. Therefore, we shall call it 
 *annihilation* operator. A special case of the equation above is
 $$
-a_p |\mathrm{vac} \rangle = 0
+a_p |\mathrm{vac} \rangle = 0\,,
 $$
 which states that the annihilation operator destroys the vacuum state.
 
 Since the annihilation operator is the Hermitian adjoint of the creation 
 operator, we can follow
 $$
-  (a_p a_q + a_q a_p) | \vec{k} \rangle = 0
+  (a_p a_q + a_q a_p) | \vec{k} \rangle = 0\,.
 $$
 
 We can then examine the action of the action of one creation and one 
 annihilation operator on a state vector $| \vec{k} \rangle$. 
-After several algebraic transformations, we can show
+After several algebraic transformations, it can be shown that
 $$
-  (a_p^\dagger a_q + a_q a_p^\dagger) | \vec{k} \rangle = \delta_{pq}
+  (a_p^\dagger a_q + a_q a_p^\dagger) | \vec{k} \rangle = \delta_{pq}\,.
 $$
 
 ```admonish proof title="Proof" collapsible=true
-WIP
+For $p = q$, we have
+$$
+\begin{align}
+  a_p^\dagger a_p \ket{\cdots, k_p, \cdots} 
+    &= a_p^\dagger \delta_{k_p 1} \Gamma_p^{\vec{k}} \ket{\cdots, 0_p, \cdots} \\
+    &= \delta_{k_p 1} (\Gamma_p^{\vec{k}})^2 \ket{\cdots, 1_p, \cdots} \\
+    &= \delta_{k_p 1} \ket{\cdots, 1_p, \cdots} = \delta_{k_p 1} \ket{\vec{k}}
+\end{align}
+$$
+and
+$$
+\begin{align}
+  a_p a_p^\dagger \ket{\cdots, k_p, \cdots} 
+    &= a_p \delta_{k_p 0} \Gamma_p^{\vec{k}} \ket{\cdots, 1_p, \cdots} \\
+    &= \delta_{k_p 0} \Gamma_p^{\vec{k}} \ket{\cdots, 0_p, \cdots} \\
+    &= \delta_{k_p 0} \ket{\cdots, 0_p, \cdots} = \delta_{k_p 0} \ket{\vec{k}}\,.
+\end{align}
+$$
+Adding both equations, we obtain
+$$
+  (a_p^\dagger a_p + a_p a_p^\dagger) \ket{\vec{k}} 
+    = (\delta_{k_p 1} + \delta_{k_p 0}) \ket{\vec{k}}
+    = \ket{\vec{k}}\,,
+$$
+or, because the state vector $\ket{\vec{k}}$ is arbitrary, we can write
+$$
+  (a_p^\dagger a_p + a_p a_p^\dagger) = 1\,.
+$$
+
+For $p < q$, we have
+$$
+\begin{align}
+  a_p^\dagger a_q \ket{\cdots, k_p, \cdots, k_q, \cdots}
+   &= a_p^\dagger \delta_{k_q 1} \Gamma_q^{\vec{k}} \ket{\cdots, k_p, \cdots, 0_q, \cdots} \\
+   &= \delta_{k_p 0} \delta_{k_q 1} \Gamma_p^{\vec{k}} \Gamma_q^{\vec{k}} \ket{\cdots, 1_p, \cdots, 0_q, \cdots}
+\end{align}
+$$
+and
+$$
+\begin{align}
+  a_q a_p^\dagger \ket{\cdots, k_p, \cdots, k_q, \cdots}
+   &= a_q \delta_{k_p 0} \Gamma_p^{\vec{k}} \ket{\cdots, 1_p, \cdots, k_q, \cdots} \\
+   &= -\delta_{k_p 1} \delta_{k_q 0} \Gamma_p^{\vec{k}} \Gamma_q^{\vec{k}} \ket{\cdots, 1_p, \cdots, 0_q, \cdots}\,.
+\end{align}
+$$
+The minus sign arises because the application of $a_q$ is affected by
+the previous application of $a_p^\dagger$, which changes the occupation
+of site $p$ that comes before site $q$. Adding both equations, we obtain
+$$
+  (a_p^\dagger a_q + a_q a_p^\dagger) \ket{\vec{k}} = 0\,,
+$$
+or
+$$
+  (a_p^\dagger a_q + a_q a_p^\dagger) = 0\,.
+$$
+
+The case $p > q$ can be obtained by complex conjugation of the case $p < q$ 
+and exchanging the dummy indices $p$ and $q$.
+
+Combining all three cases, we obtain
+$$
+  (a_p^\dagger a_q + a_q a_p^\dagger) = \delta_{pq}\,.
+$$
 ```
 
 We have now worked out the action of two ladder operators (creation or 
@@ -214,8 +285,8 @@ by applying the annihilation operator $a_p$. Therefore, we can write
 the overlap as 
 $$
   \braket{\vec{k} \setminus p | \vec{k}' \setminus q} 
-    = \braket{\vec{k} | a_p a_q | \vec{k}'} 
-    = \braket{vec{k} | a_p^\dagger a_q | \vec{k}'}
+    = \braket{a_p \vec{k} | a_q \vec{k}'} 
+    = \braket{\vec{k} | a_p^\dagger a_q | \vec{k}'}
 $$
 
 Putting everything together, we obtain 
