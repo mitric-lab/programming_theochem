@@ -203,7 +203,8 @@ include the method**
         return projector
 ```
 **which returns the CI subspace spanned by determinants containing exactly
-one excitation from the (core) orbital specified by the list `exc_indices`.
+one excitation from the (core) orbital specified by the list `exc_indices`,
+as well as full CI for the valence excitations.
 The list `exc_indices` should contain the indices of the core orbitals,
 from which the excitations can be made, e.g. `[0, 1, 2, 3]` means that one
 of the 0th, 1st, 2nd, or 3rd spin-orbitals should always be unoccupied.**

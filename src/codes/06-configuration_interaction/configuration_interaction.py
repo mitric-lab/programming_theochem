@@ -58,7 +58,7 @@ class ConfigurationInteraction(HartreeFock):
         if coeffs is None:
             if not hasattr(self, 'mo_coeff'):
                 self.run_hf(threshold=1e-8, verbose=0)
-                coeffs = self.mo_coeff
+            coeffs = self.mo_coeff
         else:
             coeffs = np.array(coeffs)
         
