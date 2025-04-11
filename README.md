@@ -3,7 +3,7 @@
 [![Deploy](https://github.com/mitric-lab/programming_tc_ss24/workflows/Deploy/badge.svg)](https://github.com/mitric-lab/programming_tc_ss24/actions/workflows/deploy.yml)
 
 Repository for the master course "Programming in Theoretical Chemistry"
-in summer term 2024 at the University of Würzburg.
+in summer term 2025 at the University of Würzburg.
 
 ## Required Preprocessors
 - [mdbook-admonish](https://github.com/tommilligan/mdbook-admonish)
