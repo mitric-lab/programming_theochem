@@ -8,7 +8,7 @@ If you already have installed the
 [Anaconda](https://www.anaconda.com) distribution,
 you can also use it for this course. 
 Follow the instructions below to install Miniforge. 
-You should use a Python version of 3.9 or higher.
+You should use a Python version of 3.10 or higher.
 
 #### Installation
 1. Download the Miniforge installer according to your operating system

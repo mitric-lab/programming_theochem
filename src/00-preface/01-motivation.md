@@ -15,9 +15,9 @@ scientific work.
 Python is one of the most widely used programming languages and is particularly
 beginner-friendly. The following figure shows the popularity of some programming
 languages according to the <i>**P**opularit**Y** of **P**rogramming **L**anguage</i>
-([PYPL](https://pypl.github.io/PYPL.html)) Indexes (as of Jan. 2024). 
+([PYPL](https://pypl.github.io/PYPL.html)) Indexes (as of April 2025). 
 
-![Popularity of Programming languages](../assets/figures/00-preface/popularity_pypl_202401.svg)
+![Popularity of Programming languages](../assets/figures/00-preface/popularity_pypl_202504.svg)
 *Popularity of programming languages. Taken from the 
 [PYPL Index](https://pypl.github.io/PYPL.html).*
 
