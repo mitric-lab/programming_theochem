@@ -66,5 +66,5 @@
 [Problem Set 3]()
 [Problem Set 4]()
 
-[Solution to Problem Set 0]()
+[Solution to Problem Set 0](psets/sol_pset_00.md)
 
