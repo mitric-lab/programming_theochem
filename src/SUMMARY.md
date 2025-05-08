@@ -30,7 +30,7 @@
     - [Harmonic Oscillator](02-symbolic_computation/04-harmonic_oscillator.md)
 
 - [Molecular Integrals](03-molecular_integrals.md)
-    - [Latest Scripts](03-molecular_integrals/00-latest_scripts.md)
+    - [Latest Scripts]()
     - [Gaussian Type Orbitals](03-molecular_integrals/01-gaussian_orbitals.md)
     - [Hermite Gaussians](03-molecular_integrals/02-hermite_gaussians.md)
     - [Overlap Integrals](03-molecular_integrals/03-overlap_integrals.md)
