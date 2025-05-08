@@ -1,0 +1,671 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Testing on Molecules - Programming in Theoretical Chemistry</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+        <link rel="stylesheet" href=".././theme/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/mdbook-admonish-custom.css">
+        <link rel="stylesheet" href=".././theme/icomoon.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mocha" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../00-preface.html"><strong aria-hidden="true">0.</strong> Preface</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../00-preface/01-motivation.html"><strong aria-hidden="true">0.1.</strong> Motivation</a></li><li class="chapter-item "><a href="../00-preface/02-getting_started.html"><strong aria-hidden="true">0.2.</strong> Getting Started</a></li><li class="chapter-item "><a href="../00-preface/03-mdbook_usage.html"><strong aria-hidden="true">0.3.</strong> Usage of This Website</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../01-fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/01-unsigned_binary_integers.html"><strong aria-hidden="true">1.1.</strong> Unsigned Binary Integers</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers.html"><strong aria-hidden="true">1.2.</strong> Signed Binary Integers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/01-sign_and_magnitude.html"><strong aria-hidden="true">1.2.1.</strong> Sign and Magnitude</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/02-ones_complement.html"><strong aria-hidden="true">1.2.2.</strong> One's Complement</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/03-twos_complement.html"><strong aria-hidden="true">1.2.3.</strong> Two's Complement</a></li></ol></li><li class="chapter-item "><a href="../01-fundamentals/03-logic_gates.html"><strong aria-hidden="true">1.3.</strong> Logic Gates</a></li><li class="chapter-item "><a href="../01-fundamentals/04-bitwise_operators.html"><strong aria-hidden="true">1.4.</strong> Bitwise Operators</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators.html"><strong aria-hidden="true">1.5.</strong> Arithmetic Operators</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/01-impl_multiplication.html"><strong aria-hidden="true">1.5.1.</strong> Implementation of Multiplication</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/02-impl_division.html"><strong aria-hidden="true">1.5.2.</strong> Implementation of Division</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/03-edge_cases.html"><strong aria-hidden="true">1.5.3.</strong> Handling Edge Cases</a></li></ol></li><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests.html"><strong aria-hidden="true">1.6.</strong> Unit Tests</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests/01-example_based_tests.html"><strong aria-hidden="true">1.6.1.</strong> Example Based Tests</a></li><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests/02-property_based_tests.html"><strong aria-hidden="true">1.6.2.</strong> Property Based Tests</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../02-symbolic_computation.html"><strong aria-hidden="true">2.</strong> Symbolic Computation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../02-symbolic_computation/01-basic_operations.html"><strong aria-hidden="true">2.1.</strong> Basic Operations</a></li><li class="chapter-item "><a href="../02-symbolic_computation/02-calculus.html"><strong aria-hidden="true">2.2.</strong> Calculus</a></li><li class="chapter-item "><a href="../02-symbolic_computation/03-hydrogen_atom.html"><strong aria-hidden="true">2.3.</strong> Hydrogen Atom</a></li><li class="chapter-item "><a href="../02-symbolic_computation/04-harmonic_oscillator.html"><strong aria-hidden="true">2.4.</strong> Harmonic Oscillator</a></li></ol></li><li class="chapter-item expanded "><a href="../03-molecular_integrals.html"><strong aria-hidden="true">3.</strong> Molecular Integrals</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div><strong aria-hidden="true">3.0.</strong> Latest Scripts</div></li><li class="chapter-item "><a href="../03-molecular_integrals/01-gaussian_orbitals.html"><strong aria-hidden="true">3.1.</strong> Gaussian Type Orbitals</a></li><li class="chapter-item "><a href="../03-molecular_integrals/02-hermite_gaussians.html"><strong aria-hidden="true">3.2.</strong> Hermite Gaussians</a></li><li class="chapter-item "><a href="../03-molecular_integrals/03-overlap_integrals.html"><strong aria-hidden="true">3.3.</strong> Overlap Integrals</a></li><li class="chapter-item expanded "><a href="../03-molecular_integrals/04-testing_on_molecules.html" class="active"><strong aria-hidden="true">3.4.</strong> Testing on Molecules</a></li><li class="chapter-item "><a href="../03-molecular_integrals/05-nuclear_attraction_integrals.html"><strong aria-hidden="true">3.5.</strong> Nuclear Attraction Integrals</a></li><li class="chapter-item "><a href="../03-molecular_integrals/06-electron_repulsion_integrals.html"><strong aria-hidden="true">3.6.</strong> Electron Repulsion Integrals</a></li></ol></li><li class="chapter-item expanded "><a href="../04-numerical_optimisation.html"><strong aria-hidden="true">4.</strong> Numerical Optimisation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../04-numerical_optimisation/01-convergence.html"><strong aria-hidden="true">4.1.</strong> Convergence</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/02-test_functions.html"><strong aria-hidden="true">4.2.</strong> Test Functions</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/03-steepest_descent.html"><strong aria-hidden="true">4.3.</strong> Steepest Descent</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/04-newton_methods.html"><strong aria-hidden="true">4.4.</strong> (Quasi-)Newton Methods</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/desirable_properties.html"><strong aria-hidden="true">4.5.</strong> Desired Properties</a></li></ol></li><li class="chapter-item expanded "><a href="../05-hartree_fock.html"><strong aria-hidden="true">5.</strong> The Hartree Fock Approximation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../05-hartree_fock/01-scf_procedure.html"><strong aria-hidden="true">5.1.</strong> The SCF Procedure</a></li><li class="chapter-item "><a href="../05-hartree_fock/02-plot_grid_data.html"><strong aria-hidden="true">5.2.</strong> Plot Grid Data</a></li></ol></li><li class="chapter-item expanded "><a href="../06-configuration_interaction.html"><strong aria-hidden="true">6.</strong> Configuration Interaction</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../06-configuration_interaction/01-cis.html"><strong aria-hidden="true">6.1.</strong> Configuration Interaction Singles</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation.html"><strong aria-hidden="true">6.2.</strong> Second Quantisation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/01-introduction.html"><strong aria-hidden="true">6.2.1.</strong> Introduction</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/02-matrix_elements.html"><strong aria-hidden="true">6.2.2.</strong> Matrix Elements</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/03-cis_revisited.html"><strong aria-hidden="true">6.2.3.</strong> CIS Revisited</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/04-repr_ladder_operators.html"><strong aria-hidden="true">6.2.4.</strong> Representation of Ladder Operators</a></li></ol></li><li class="chapter-item "><a href="../06-configuration_interaction/03-full_ci.html"><strong aria-hidden="true">6.3.</strong> Full Configuration Interaction</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../psets/pset_00.html">Problem Set 0</a></li><li class="chapter-item expanded affix "><a href="../psets/pset_01.html">Problem Set 1</a></li><li class="chapter-item expanded affix "><a href="../psets/pset_02.html">Problem Set 2</a></li><li class="chapter-item expanded affix "><a href="../psets/pset_03.html">Problem Set 3</a></li><li class="chapter-item expanded affix "><a href="../psets/pset_04.html">Problem Set 4</a></li><li class="chapter-item expanded affix "><a href="../psets/sol_pset_00.html">Solution to Problem Set 0</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming in Theoretical Chemistry</h1>
+
+                    <div class="right-buttons">
+			<!--print button-->
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+
+                        <!-- WueCampus button -->
+                        <script>
+                            var wueCampusLink = "https://wuecampus.uni-wuerzburg.de/moodle/course/view.php?id=66270";
+                        </script>
+			<a href="javascript:void(0);" onclick="window.open(wueCampusLink)" target="_blank" rel="noopener noreferrer" title="Visit course on WueCampus" aria-label="Visit course on WueCampus">
+                            <i id="wuecampus-button" class="icon-uw"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h2 id="testing-on-molecules"><a class="header" href="#testing-on-molecules">Testing on molecules</a></h2>
+<blockquote>
+<p>From now on, we will define several classes to help us with the
+calculation of molecular integrals. We will start with the minimal
+structure of these classes and extend them throughout this chapter.
+The most recent version of these classes can be found in subsection
+<a href="ch03-04a-latest_classes.html">4.4.1</a>.</p>
+</blockquote>
+<p>We have written our own routine for calculating overlap integrals. To confirm
+its functionality, we shall do some testing on real molecules. For this, we
+define several <a href="https://docs.python.org/3/tutorial/classes.html">classes</a> to
+make a convenient interface for molecules and basis sets.</p>
+<h3 id="the-atom-class"><a class="header" href="#the-atom-class">The <code>Atom</code> Class</a></h3>
+<p>Chemists work often with atomic symbols, which are not intuitive for
+computers. They would prefer atomic numbers. Therefore, we first define
+a dictionary that has atomic symbols as keys and atomic numbers as values:</p>
+<pre><code class="language-python">ATOMIC_NUMBER = {
+    'H': 1, 'He': 2, 
+    'Li': 3, 'Be': 4, 'B': 5, 'C': 6, 'N': 7, 'O': 8, 'F': 9, 'Ne': 10,
+    'Na': 11, 'Mg': 12, 'Al': 13, 'Si': 14, 'P': 15, 'S': 16, 'Cl': 17, 'Ar': 18,
+    'K': 19, 'Ca': 20, 
+        'Sc': 21, 'Ti': 22, 'V': 23, 'Cr': 24, 'Mn': 25, 
+        'Fe': 26, 'Co': 27, 'Ni': 28, 'Cu': 29, 'Zn': 30,
+        'Ga': 31, 'Ge': 32, 'As': 33, 'Se': 34, 'Br': 35, 'Kr': 36,
+    'Rb': 37, 'Sr': 38,
+        'Y': 39, 'Zr': 40, 'Nb': 41, 'Mo': 42, 'Tc': 43, 
+        'Ru': 44, 'Rh': 45, 'Pd': 46, 'Ag': 47, 'Cd': 48,
+        'In': 49, 'Sn': 50, 'Sb': 51, 'Te': 52, 'I': 53, 'Xe': 54,
+    'Cs': 55, 'Ba': 56,
+        'La': 57, 'Ce': 58, 'Pr': 59, 'Nd': 60, 'Pm': 61, 'Sm': 62, 'Eu': 63, 
+        'Gd': 64, 'Tb': 65, 'Dy': 66, 'Ho': 67, 'Er': 68, 'Tm': 69, 'Yb': 70, 
+        'Lu': 71, 'Hf': 72, 'Ta': 73, 'W': 74, 'Re': 75, 
+        'Os': 76, 'Ir': 77, 'Pt': 78, 'Au': 79, 'Hg': 80,
+        'Tl': 81, 'Pb': 82, 'Bi': 83, 'Po': 84, 'At': 85, 'Rn': 86,
+    'Fr': 87, 'Ra': 88,
+        'Ac': 89, 'Th': 90, 'Pa': 91, 'U': 92, 'Np': 93, 'Pu': 94, 'Am': 95,
+        'Cm': 96, 'Bk': 97, 'Cf': 98, 'Es': 99, 'Fm': 100, 'Md': 101, 'No': 102,
+        'Lr': 103, 'Rf': 104, 'Db': 105, 'Sg': 106, 'Bh': 107, 
+        'Hs': 108, 'Mt': 109, 'Ds': 110, 'Rg': 111, 'Cn': 112, 
+        'Nh': 113, 'Fl': 114, 'Mc': 115, 'Lv': 116, 'Ts': 117, 'Og': 118,
+}
+</code></pre>
+<p>We save this dictionary in a file called <code>atomic_data.py</code>.</p>
+<p>The <code>Atom</code> class should represent an atom with a specific symbol Vand
+coordinate. The class should therefore include the following attributes:</p>
+<ul>
+<li><code>atomic_number</code>: A dictionary with keys corresponding to atomic symbols
+and values corresponding to atomic numbers.</li>
+<li><code>symbol</code>: The atomic symbol of the atom.</li>
+<li><code>coord</code>: The coordinate of the atom.</li>
+<li><code>atnum</code>: The atomic number corresponding to the symbol of the atom.</li>
+</ul>
+<p>The class includes one method, <code>__init__</code>, which initializes a new atom
+with the given symbol and coordinate. The optional argument <code>unit</code> specifies
+the unit of the given coordinates and can be either <code>A</code> (Ångström) or
+<code>B</code> (Bohr).</p>
+<pre><code class="language-python">import numpy as np
+from atomic_data import ATOMIC_NUMBER
+</code></pre>
+<pre><code class="language-python">class Atom:
+    """
+    A class representing an atom with a specific symbol and coordinate.
+
+    Attributes:
+        atomic_number (dict): A dictionary with keys corresponding to 
+            atomic symbols and values corresponding to atomic numbers.
+        symbol (str): The atomic symbol of the atom.
+        coord (list[float]): The coordinate of the atom.
+        atnum (int): The atomic number corresponding to the symbol of the atom.
+
+    Methods:
+        __init__(self, symbol: str, coord: list[float]) -&gt; None: 
+            Initializes a new atom with the given symbol and coordinate.
+    """
+
+    def __init__(self, symbol: str, coord: list[float], unit='B') -&gt; None:
+        """
+        Initializes a new `atom` object.
+
+        Parameters:
+            symbol (str): The atomic symbol of the atom.
+            coord (list): The coordinate of the atom.
+
+        Returns:
+            None
+        """
+        self.symbol = symbol
+        self.coord = np.array(coord)
+        self.unit = unit
+        self.atnum = ATOMIC_NUMBER[self.symbol]
+</code></pre>
+<p>This class is saved in a file called <code>atom.py</code>.</p>
+<p>Because we are chemists, we are not satisfied with only atoms. We want to
+combine them into molecules, hence a <code>Molecule</code> class is needed.</p>
+<h3 id="the-molecule-class"><a class="header" href="#the-molecule-class">The <code>Molecule</code> Class</a></h3>
+<p>The <code>Molecule</code> class should represent a molecule, therefore, the following
+attributes can be useful:</p>
+<ul>
+<li><code>atomlist</code>: A list of <code>Atom</code> objects representing the atoms in the molecule.</li>
+<li><code>natom</code>: The number of atoms in the molecule.</li>
+<li><code>basisfunctions</code>: A list of <code>Gaussian</code> objects representing the
+basis functions of the molecule.</li>
+<li><code>S</code>: A matrix representing the overlap integrals between basis functions.</li>
+</ul>
+<pre><code class="language-python">import numpy as np
+import copy
+from atom import Atom
+from basis_set import BasisSet
+
+a0 = 0.529177210903  # Bohr radius in angstrom
+</code></pre>
+<pre><code class="language-python">class Molecule:
+    """
+    A class representing a molecule.
+
+    Attributes:
+        atomlist (list): A list of `atom` objects representing the atoms 
+            in the molecule.
+        natom (int): The number of atoms in the molecule.
+        basisfunctions (list): A list of `Gaussian` objects representing 
+            the basis functions of the molecule.
+        S (ndarray): A matrix representing the overlap integrals between 
+            basis functions.
+
+    Methods:
+        __init__(self) -&gt; None: Initializes a new `molecule` object.
+        set_atomlist(self,a: list) -&gt; None: Sets the `atomlist` attribute 
+            to the given list of `atom` objects.
+        read_from_xyz(self,filename: str) -&gt; None: Reads the coordinates of 
+            the atoms in the molecule from an XYZ file.
+        get_basis(self, name: str = "sto-3g") -&gt; None: Computes the 
+            basis functions for the molecule using the specified basis set.
+        get_S(self) -&gt; None: Computes the overlap integrals between 
+            basis functions and sets the `S` attribute.
+    """
+
+    def __init__(self) -&gt; None:
+        """
+        Initializes a new `Molecule` object.
+
+        Returns:
+            None
+        """
+        self.atomlist = []
+        self.natom = len(self.atomlist)
+        self.basisfunctions = []
+        self.S = None
+
+    def set_atomlist(self, a: list) -&gt; None:
+        """
+        Sets the `atomlist` attribute to the given list of `Atom` objects.
+
+        Parameters:
+            a (list): A list of `Atom` objects representing the atoms 
+                in the molecule.
+
+        Returns:
+            None
+        """
+        self.atomlist = []
+        for at in a:
+            if at.unit == 'A':
+                at.coord = at.coord / a0
+            elif at.unit == 'B':
+                pass
+            else:
+                raise ValueError('Invalid unit for atom coordinates.')
+            self.atomlist.append(at)
+        self.natom = len(self.atomlist)
+
+    def read_from_xyz(self, filename: str) -&gt; None:
+        """
+        Reads the coordinates of the atoms in the molecule from an XYZ file.
+
+        Parameters:
+            filename (str): The name of the XYZ file to read.
+
+        Returns:
+            None
+        """
+        with open(filename, "r") as f:
+            for line in f:
+                tmp = line.split()
+                if len(tmp) == 4:
+                    symbol = tmp[0]
+                    coord = np.array([float(x) for x in tmp[1:]]) / a0
+                    at = Atom(symbol, coord)
+                    self.atomlist.append(at)
+        self.natom = len(self.atomlist)
+
+    def get_basis(self, name: str = "sto-3g") -&gt; None:
+        """
+        Computes the basis functions for the molecule using the 
+        specified basis set.
+
+        Parameters:
+            name (str): The name of the basis set to use. Default is "sto-3g".
+
+        Returns:
+            None
+        """
+        self.basisfunctions = []
+        # Initialize BasisSet instance
+        basis = BasisSet(name=name)
+        # Generate unique list of symbols
+        elementlist = set([at.symbol for at in self.atomlist])
+        # Return basis dictionary
+        basis = basis.get_basisfunctions(elementlist)
+        for at in self.atomlist:
+            bfunctions = basis[at.symbol]
+            for bf in bfunctions:
+                newbf = copy.deepcopy(bf)
+                newbf.set_A(at.coord)
+                self.basisfunctions.append(newbf)
+</code></pre>
+<pre><code class="language-python">    def get_S(self) -&gt; None:
+        """
+        Computes the overlap integrals between basis functions and sets 
+        the `S` attribute.
+
+        Returns:
+            None
+        """
+        nbf = len(self.basisfunctions)
+        self.S = np.zeros((nbf, nbf))
+        for i in np.arange(0, nbf):
+            for j in np.arange(i, nbf):
+                self.S[i,j] = self.basisfunctions[i].S(self.basisfunctions[j])
+                self.S[j,i] = self.S[i,j]
+</code></pre>
+<p>We have utilized the <code>BasisSet</code> class to initialize basis sets for our
+molecule, which we will define now.</p>
+<h3 id="the-basisset-class"><a class="header" href="#the-basisset-class">The <code>BasisSet</code> Class</a></h3>
+<p>The <code>BasisSet</code> class should contain a set of GTOs and be able to calculate
+molecular integrals between them. Therefore, we shall define the <code>Gaussian</code>
+class first for the integral handling.</p>
+<pre><code class="language-python">import numpy as np
+import json
+import os
+from atomic_data import ATOMIC_NUMBER
+</code></pre>
+<pre><code class="language-python">import S
+</code></pre>
+<pre><code class="language-python">class Gaussian:
+    """
+    A class representing a Cartesian Gaussian function for molecular integrals.
+    """
+
+    def __init__(self, A, exps, coefs, ijk):
+        """
+        Initialize the Gaussian function with given parameters.
+
+        Parameters:
+        A (array-like): The origin of the Gaussian function.
+        exps (array-like): A list of exponents.
+        coefs (array-like): A list of coefficients.
+        ijk (tuple): A tuple representing the angular momentum components 
+            (l, m, n).
+        """
+        self.A = np.asarray(A)
+        self.exps = np.asarray(exps)
+        self.coefs = np.asarray(coefs)
+        self.ijk = ijk
+        self.get_norm_constants()
+
+    def set_A(self, A):
+        """
+        Set the origin of the Gaussian function.
+
+        Parameters:
+        A (array-like): The origin of the Gaussian function.
+        """
+        self.A = np.asarray(A)
+
+    def get_norm_constants(self):
+        """
+        Calculate the normalization constants for the Gaussian function.
+        """
+        self.norm_const = np.zeros(self.coefs.shape)
+        for i, alpha in enumerate(self.exps):
+            a = S.s_ij(self.ijk[0], self.ijk[0], alpha, alpha, 
+                      self.A[0], self.A[0])
+            b = S.s_ij(self.ijk[1], self.ijk[1], alpha, alpha, 
+                      self.A[1], self.A[1])
+            c = S.s_ij(self.ijk[2], self.ijk[2], alpha, alpha, 
+                      self.A[2], self.A[2])
+            self.norm_const[i] = 1.0 / np.sqrt(a * b * c)
+
+    def __str__(self):
+        """
+        Generate a string representation of the Gaussian function.
+
+        Returns:
+        str: A string representation of the Gaussian function.
+        """
+        strrep = "Cartesian Gaussian function:\n"
+        strrep += "Exponents = {}\n".format(self.exps)
+        strrep += "Coefficients = {}\n".format(self.coefs)
+        strrep += "Origin = {}\n".format(self.A)
+        strrep += "Angular momentum: {}".format(self.ijk)
+        return strrep
+
+</code></pre>
+<pre><code class="language-python">    def S(self, other):
+        """
+        Calculate the overlap integral between this Gaussian and 
+        another Gaussian function.
+
+        Parameters:
+        other (Gaussian): Another Gaussian function.
+
+        Returns:
+        float: The overlap integral value.
+        """
+        overlap = 0.0
+        for ci, alphai, normi in zip(self.coefs, self.exps, 
+                                     self.norm_const):
+            for cj, alphaj, normj in zip(other.coefs, other.exps, 
+                                         other.norm_const):
+                a = S.s_ij(self.ijk[0], other.ijk[0], alphai, alphaj, 
+                           self.A[0], other.A[0])
+                b = S.s_ij(self.ijk[1], other.ijk[1], alphai, alphaj,
+                           self.A[1], other.A[1])
+                c = S.s_ij(self.ijk[2], other.ijk[2], alphai, alphaj,
+                           self.A[2], other.A[2])
+                overlap += ci * cj * normi * normj * a * b * c
+        return overlap
+</code></pre>
+<div id="admonition-info" class="admonition admonish-info">
+<div class="admonition-title">
+<p>Info</p>
+<p><a class="admonition-anchor-link" href="#admonition-info"></a></p>
+</div>
+<div>
+<p>Currently, this class can only calculate overlap integrals. We will extend
+this class with other molecular integrals in the coming lectures.</p>
+</div>
+</div>
+<p>We can now construct the <code>BasisSet</code> class. It should be able to read
+basis sets in <a href="https://en.wikipedia.org/wiki/JSON">JSON format</a> and
+instance objects from the <code>Gaussian</code> class.</p>
+<pre><code class="language-python">class BasisSet:
+    # Dictionary that maps angular momentum to a list of (i,j,k) tuples 
+    # representing the powers of x, y, and z
+    cartesian_power = {
+        0: [(0, 0, 0)],
+        1: [(1, 0, 0), (0, 1, 0), (0, 0, 1)],
+        2: [(1, 1, 0), (1, 0, 1), (0, 1, 1), (2, 0, 0), (0, 2, 0), (0, 0, 2)],
+    }
+
+    def __init__(self, name="sto-3g"):
+        """
+        Initialize a new basisSet object with the given name.
+
+        Parameters:
+        name (str): The name of the basis set to use.
+        """
+        self.name = name
+
+    def get_basisfunctions(self, elementlist, path="."):
+        """
+        Generate the basis functions for a list of elements.
+
+        Parameters:
+        elementlist (list): A list of element symbols.
+        path (str): The path to the directory containing the basis set files.
+
+        Returns:
+        dict: A dictionary mapping element symbols to lists of 
+            Gaussian basis functions.
+        """
+        try:
+            # Load the basis set data from a JSON file
+            with open(
+                os.path.join(path, f"{self.name}.json"), "r",
+            ) as basisfile:
+                basisdata = json.load(basisfile)
+        except FileNotFoundError:
+            print("Basis set file not found!")
+            return None
+
+        basis = {}  # Initialize dictionary containing basis sets
+
+        for element in elementlist:
+            basisfunctions = []
+            # Get the basis function data for the current element 
+            # from the JSON file
+            basisfunctionsdata = basisdata["elements"][
+                str(ATOMIC_NUMBER[element])
+            ]["electron_shells"]
+            for bfdata in basisfunctionsdata:
+                for i, angmom in enumerate(bfdata["angular_momentum"]):
+                    exps = [float(e) for e in bfdata["exponents"]]
+                    coefs = [float(c) for c in bfdata["coefficients"][i]]
+                    # Generate Gaussian basis functions for each 
+                    # angular momentum component
+                    for ikm in self.cartesian_power[angmom]:
+                        basisfunction = Gaussian(np.zeros(3), exps, coefs, ikm)
+                        # Normalize the basis functions using the S method 
+                        # of the Gaussian class
+                        norm = basisfunction.S(basisfunction)
+                        basisfunction.coefs = basisfunction.coefs / np.sqrt(norm)
+                        basisfunctions.append(basisfunction)
+            basis[element] = basisfunctions
+        return basis
+</code></pre>
+<p>You can download various basis sets from the
+<a href="https://www.basissetexchange.org/">Basis Set Exchange</a>
+website. Make sure to download the basis sets in the JSON format.</p>
+<p>You can also download some common basis sets from the list</p>
+<ul>
+<li><a href="../assets/basis_sets/sto-3g.json" download>STO-3G</a>:
+A minimal basis set.</li>
+<li><a href="../assets/basis_sets/6-31g.json" download>6-31G</a>:
+A Pople basis set.</li>
+<li><a href="../assets/basis_sets/6-31g_st.json" download>6-31G*</a>:
+A Pople basis set with polarisation functions.</li>
+<li><a href="../assets/basis_sets/cc-pvdz.json" download>cc-pVDZ</a>:
+A Dunning basis set (with polarisation functions).</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../03-molecular_integrals/03-overlap_integrals.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../03-molecular_integrals/05-nuclear_attraction_integrals.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../03-molecular_integrals/03-overlap_integrals.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../03-molecular_integrals/05-nuclear_attraction_integrals.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src=".././theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>

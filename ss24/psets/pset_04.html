@@ -1,0 +1,450 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Problem Set 4 - Programming in Theoretical Chemistry</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+        <link rel="stylesheet" href=".././theme/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/mdbook-admonish-custom.css">
+        <link rel="stylesheet" href=".././theme/icomoon.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mocha" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../00-preface.html"><strong aria-hidden="true">0.</strong> Preface</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../00-preface/01-motivation.html"><strong aria-hidden="true">0.1.</strong> Motivation</a></li><li class="chapter-item "><a href="../00-preface/02-getting_started.html"><strong aria-hidden="true">0.2.</strong> Getting Started</a></li><li class="chapter-item "><a href="../00-preface/03-mdbook_usage.html"><strong aria-hidden="true">0.3.</strong> Usage of This Website</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../01-fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/01-unsigned_binary_integers.html"><strong aria-hidden="true">1.1.</strong> Unsigned Binary Integers</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers.html"><strong aria-hidden="true">1.2.</strong> Signed Binary Integers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/01-sign_and_magnitude.html"><strong aria-hidden="true">1.2.1.</strong> Sign and Magnitude</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/02-ones_complement.html"><strong aria-hidden="true">1.2.2.</strong> One's Complement</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/03-twos_complement.html"><strong aria-hidden="true">1.2.3.</strong> Two's Complement</a></li></ol></li><li class="chapter-item "><a href="../01-fundamentals/03-logic_gates.html"><strong aria-hidden="true">1.3.</strong> Logic Gates</a></li><li class="chapter-item "><a href="../01-fundamentals/04-bitwise_operators.html"><strong aria-hidden="true">1.4.</strong> Bitwise Operators</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators.html"><strong aria-hidden="true">1.5.</strong> Arithmetic Operators</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/01-impl_multiplication.html"><strong aria-hidden="true">1.5.1.</strong> Implementation of Multiplication</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/02-impl_division.html"><strong aria-hidden="true">1.5.2.</strong> Implementation of Division</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/03-edge_cases.html"><strong aria-hidden="true">1.5.3.</strong> Handling Edge Cases</a></li></ol></li><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests.html"><strong aria-hidden="true">1.6.</strong> Unit Tests</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests/01-example_based_tests.html"><strong aria-hidden="true">1.6.1.</strong> Example Based Tests</a></li><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests/02-property_based_tests.html"><strong aria-hidden="true">1.6.2.</strong> Property Based Tests</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../02-symbolic_computation.html"><strong aria-hidden="true">2.</strong> Symbolic Computation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../02-symbolic_computation/01-basic_operations.html"><strong aria-hidden="true">2.1.</strong> Basic Operations</a></li><li class="chapter-item "><a href="../02-symbolic_computation/02-calculus.html"><strong aria-hidden="true">2.2.</strong> Calculus</a></li><li class="chapter-item "><a href="../02-symbolic_computation/03-hydrogen_atom.html"><strong aria-hidden="true">2.3.</strong> Hydrogen Atom</a></li><li class="chapter-item "><a href="../02-symbolic_computation/04-harmonic_oscillator.html"><strong aria-hidden="true">2.4.</strong> Harmonic Oscillator</a></li></ol></li><li class="chapter-item expanded "><a href="../03-molecular_integrals.html"><strong aria-hidden="true">3.</strong> Molecular Integrals</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div><strong aria-hidden="true">3.0.</strong> Latest Scripts</div></li><li class="chapter-item "><a href="../03-molecular_integrals/01-gaussian_orbitals.html"><strong aria-hidden="true">3.1.</strong> Gaussian Type Orbitals</a></li><li class="chapter-item "><a href="../03-molecular_integrals/02-hermite_gaussians.html"><strong aria-hidden="true">3.2.</strong> Hermite Gaussians</a></li><li class="chapter-item "><a href="../03-molecular_integrals/03-overlap_integrals.html"><strong aria-hidden="true">3.3.</strong> Overlap Integrals</a></li><li class="chapter-item "><a href="../03-molecular_integrals/04-testing_on_molecules.html"><strong aria-hidden="true">3.4.</strong> Testing on Molecules</a></li><li class="chapter-item "><a href="../03-molecular_integrals/05-nuclear_attraction_integrals.html"><strong aria-hidden="true">3.5.</strong> Nuclear Attraction Integrals</a></li><li class="chapter-item "><a href="../03-molecular_integrals/06-electron_repulsion_integrals.html"><strong aria-hidden="true">3.6.</strong> Electron Repulsion Integrals</a></li></ol></li><li class="chapter-item expanded "><a href="../04-numerical_optimisation.html"><strong aria-hidden="true">4.</strong> Numerical Optimisation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../04-numerical_optimisation/01-convergence.html"><strong aria-hidden="true">4.1.</strong> Convergence</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/02-test_functions.html"><strong aria-hidden="true">4.2.</strong> Test Functions</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/03-steepest_descent.html"><strong aria-hidden="true">4.3.</strong> Steepest Descent</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/04-newton_methods.html"><strong aria-hidden="true">4.4.</strong> (Quasi-)Newton Methods</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/desirable_properties.html"><strong aria-hidden="true">4.5.</strong> Desired Properties</a></li></ol></li><li class="chapter-item expanded "><a href="../05-hartree_fock.html"><strong aria-hidden="true">5.</strong> The Hartree Fock Approximation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../05-hartree_fock/01-scf_procedure.html"><strong aria-hidden="true">5.1.</strong> The SCF Procedure</a></li><li class="chapter-item "><a href="../05-hartree_fock/02-plot_grid_data.html"><strong aria-hidden="true">5.2.</strong> Plot Grid Data</a></li></ol></li><li class="chapter-item expanded "><a href="../06-configuration_interaction.html"><strong aria-hidden="true">6.</strong> Configuration Interaction</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../06-configuration_interaction/01-cis.html"><strong aria-hidden="true">6.1.</strong> Configuration Interaction Singles</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation.html"><strong aria-hidden="true">6.2.</strong> Second Quantisation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/01-introduction.html"><strong aria-hidden="true">6.2.1.</strong> Introduction</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/02-matrix_elements.html"><strong aria-hidden="true">6.2.2.</strong> Matrix Elements</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/03-cis_revisited.html"><strong aria-hidden="true">6.2.3.</strong> CIS Revisited</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/04-repr_ladder_operators.html"><strong aria-hidden="true">6.2.4.</strong> Representation of Ladder Operators</a></li></ol></li><li class="chapter-item "><a href="../06-configuration_interaction/03-full_ci.html"><strong aria-hidden="true">6.3.</strong> Full Configuration Interaction</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../psets/pset_00.html">Problem Set 0</a></li><li class="chapter-item expanded affix "><a href="../psets/pset_01.html">Problem Set 1</a></li><li class="chapter-item expanded affix "><a href="../psets/pset_02.html">Problem Set 2</a></li><li class="chapter-item expanded affix "><a href="../psets/pset_03.html">Problem Set 3</a></li><li class="chapter-item expanded affix "><a href="../psets/pset_04.html" class="active">Problem Set 4</a></li><li class="chapter-item expanded affix "><a href="../psets/sol_pset_00.html">Solution to Problem Set 0</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming in Theoretical Chemistry</h1>
+
+                    <div class="right-buttons">
+			<!--print button-->
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+
+                        <!-- WueCampus button -->
+                        <script>
+                            var wueCampusLink = "https://wuecampus.uni-wuerzburg.de/moodle/course/view.php?id=66270";
+                        </script>
+			<a href="javascript:void(0);" onclick="window.open(wueCampusLink)" target="_blank" rel="noopener noreferrer" title="Visit course on WueCampus" aria-label="Visit course on WueCampus">
+                            <i id="wuecampus-button" class="icon-uw"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h2 id="problem-set-4"><a class="header" href="#problem-set-4">Problem Set 4</a></h2>
+<h3 id="problem-1"><a class="header" href="#problem-1">Problem 1</a></h3>
+<p>The potential energy surface (PES) of H<sub>4</sub> is very interesting
+and feature-rich, despite the simplicity of the molecule. In this problem,
+you will calculate some slices of the PES of H<sub>4</sub>
+at the full configuration interaction (FCI) level of theory combined with
+the STO-3G basis set.</p>
+<div id="admonition-warning" class="admonition admonish-warning">
+<div class="admonition-title">
+<p>Warning</p>
+<p><a class="admonition-anchor-link" href="#admonition-warning"></a></p>
+</div>
+<div>
+<p>Do <strong>NOT</strong> use minimal basis sets in real-life calculations when highly
+correlated methods are used! The minimal basis set is used here to keep
+the computational cost low.</p>
+</div>
+</div>
+<p>Consider the H<sub>4</sub> molecule with D<sub>4h</sub> symmetry. The
+molecule has a square planar geometry with a single degree of freedom,
+which can be chosen as the distance between two adjacent hydrogen atoms
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">H</span><span class="mbin mtight">−</span><span class="mord mathrm mtight">H</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p><strong>(a) Perform FCI calculations for the H<sub>4</sub> molecule with
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span><span class="mord mathrm mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> symmetry at
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6389em;vertical-align:-0.2083em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathrm mtight">H</span><span class="mbin mtight">−</span><span class="mord mathrm mtight">H</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2083em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1412em;vertical-align:-0.1944em;"></span><span class="mord">0.6</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2.5</span><span class="mspace"> </span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathrm">A</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.375em;"><span class="mord mathrm">˚</span></span></span></span></span></span></span></span></span></span>
+for the first 8 electrically neutral states. Plot the resulting slices
+of the PES and identify at least one bounded and one dissociative state.</strong></p>
+<p>Expected results:
+The left panel of the graph below.</p>
+<p> </p>
+<p><img src="../assets/figures/psets/04/h4_d4h_d2h_scan.svg" alt="PES of H&lt;sub&gt;4&lt;/sub&gt;" /></p>
+<p>Now consider the H<sub>4</sub> molecule with D<sub>2h</sub> symmetry.
+This system has two degrees of freedom, which can be chosen as the
+side lengths of the rectangle formed by the hydrogen atoms <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p><strong>(b) Perform FCI calculations for the H<sub>4</sub> molecule with
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span><span class="mord mathrm mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> symmetry at
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1412em;vertical-align:-0.1944em;"></span><span class="mord">0.4</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">0.5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2.5</span><span class="mspace"> </span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathrm">A</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.375em;"><span class="mord mathrm">˚</span></span></span></span></span></span></span></span></span></span> and a fixed
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.9468em;"></span><span class="mord">1.4</span><span class="mspace"> </span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9468em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathrm">A</span></span><span style="top:-3.2523em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.375em;"><span class="mord mathrm">˚</span></span></span></span></span></span></span></span></span></span> for the first 12 electrically neutral states.</strong></p>
+<p>Expected results:
+The right panel of the graph above.</p>
+<p> </p>
+<div id="admonition-info" class="admonition admonish-info">
+<div class="admonition-title">
+<p>Info</p>
+<p><a class="admonition-anchor-link" href="#admonition-info"></a></p>
+</div>
+<div>
+<p>The H<sub>4</sub> molecule can be used as a (crude) model for
+photochemical [2+2] processes, as discussed in
+W. Gerhartz, R. D. Poshusta, J. Michl, <em>J. Am. Chem. Soc.</em>, <strong>1976</strong>, 98, 6427–6443.</p>
+</div>
+</div>
+<hr />
+<h3 id="problem-2"><a class="header" href="#problem-2">Problem 2</a></h3>
+<p>In the lecture, we used the canonical HF orbitals as an orthonormal basis
+for the FCI calculations. It was mentioned that any orthonormal basis would
+suffice, and we shall investigate this claim in this problem.</p>
+<p>A popular way to orthonormalise a set of basis functions in quantum chemistry
+is the Löwdin orthogonalisation, also known as the symmetric
+orthogonalisation. This method is used in our HF implementation to
+reduce the generalised eigenvalue problem to a standard one.</p>
+<p>Given the overlap matrix <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.05382em;">S</span></span></span></span></span></span>, the Löwdin orthogonalisation at first
+computes <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">X</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.964em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.05382em;">S</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.964em;"><span style="top:-3.139em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1/2</span></span></span></span></span></span></span></span></span></span></span></span> and then applies the transformation
+to the basis functions, i.e.
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord mathnormal">φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mclose">⟩</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.4638em;vertical-align:-1.4138em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.05em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.4138em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner"><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span><span class="mclose">⟩</span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ji</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span></span></span></span></span>
+where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner"><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord mathnormal">φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mclose">⟩</span></span></span></span></span> are the orthonormalised basis functions and
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="minner"><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord mathnormal">ϕ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span><span class="mclose">⟩</span></span></span></span></span> are the original basis functions.</p>
+<p><strong>(a) Show that the basis <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="minner"><span class="mord">∣</span><span class="mord"><span class="mord"><span class="mord mathnormal">φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span><span class="mclose">⟩</span></span><span class="mclose">}</span></span></span></span> is orthonormal.</strong></p>
+<p><em>Hint: Calculate the scalar product <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="minner"><span class="mopen">⟨</span><span class="mord"><span class="mord"><span class="mord mathnormal">φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">φ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span><span class="mclose">⟩</span></span></span></span></span>
+between two arbitrary transformed basis functions.</em></p>
+<p> </p>
+<p>Consider the H<sub>4</sub> molecule used in the lecture:</p>
+<pre><code class="language-python">r = 1.0 / 2.0
+h1 = Atom('H', [ r,  r,  0.0], unit='A')
+h2 = Atom('H', [-r,  r,  0.0], unit='A')
+h3 = Atom('H', [-r, -r,  0.0], unit='A')
+h4 = Atom('H', [ r, -r,  0.0], unit='A')
+</code></pre>
+<p><strong>(b) Perform FCI calculations for this molecule using the STO-3G basis set
+and the Löwdin orthogonalised basis functions instead of the HF orbitals
+for the first 6 electrically neutral states. Compare the eigenvalues
+and eigenvectors with the results obtained using the HF orbitals from the
+lecture.</strong></p>
+<p> </p>
+<p>An alternative approach to orthonormalise a basis can be achieved with the
+help of Cholesky decomposition. The Cholesky decomposition of a Hermitian
+positive-definite matrix <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">A</span></span></span></span></span></span> can be written as
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">A</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1118em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">L</span></span></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol">L</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9173em;"><span style="top:-3.139em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span></span></span></span></span>
+where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">L</span></span></span></span></span></span> is a uniquely determined lower triangular matrix with
+positive diagonal elements. The Cholesky decomposition of the overlap
+matrix <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.05382em;">S</span></span></span></span></span></span> can be used to orthonormalise the basis functions.</p>
+<p><strong>(c) Work out how to calculate the transform matrix <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.07778em;">X</span></span></span></span></span></span> using the
+Cholesky decomposition in a similar way to part (a). Perform FCI calculations
+for the H<sub>4</sub> molecule listed above using the STO-3G basis set and
+the Cholesky orthogonalised basis functions for the first 6 electrically
+neutral states.</strong></p>
+<p><em>Hint: The function
+<a href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.cholesky.html">np.linalg.cholesky</a>
+could be helpful.</em></p>
+<p> </p>
+<hr />
+<h3 id="problem-3"><a class="header" href="#problem-3">Problem 3</a></h3>
+<p>It should be known by now that the FCI method is not feasible for large
+systems due to its computational cost. Therefore, we have used projectors
+to reduce the size of the CI space by restricting the total number of
+excitations. In this problem, we shall explore more possibilities of
+using projectors.</p>
+<div id="admonition-note" class="admonition admonish-note">
+<div class="admonition-title">
+<p>Note</p>
+<p><a class="admonition-anchor-link" href="#admonition-note"></a></p>
+</div>
+<div>
+<p>If not mentioned otherwise, all the CI calculations in this problem
+should be performed using the STO-3G basis set and the HF orbitals as
+the basis functions.</p>
+</div>
+</div>
+<p>One popular way of reducing the size of the CI space is to use truncated
+CI expansions. We have already used this approach in the lecture to implement
+the CIS method for excited states. It is also possible to use projectors
+to obtain arbitrarily truncated CI expansions.</p>
+<p><strong>(a) Extend the <code>ConfigurationInteraction</code> class from the lecture to
+include the method</strong></p>
+<pre><code class="language-python">    def get_n_excitation_subspace(self, ns):
+        ...
+        return projector
+</code></pre>
+<p><strong>which returns the CI subspace spanned by determinants with the number of
+(electrically neutral) excitations specified by the list <code>ns</code>. The list
+<code>ns</code> should contain all the desired numbers of excitations, e.g. <code>[0, 1, 2]</code>
+for CISD, <code>[0, 1, 2, 3]</code> for CISDT, etc.</strong></p>
+<p> </p>
+<p><strong>(b) Calculate the ground state energy of the H<sub>4</sub> molecule
+listed in Problem 2 using the FCI, CISD, CID, and CIS methods. Compare the
+results. What is different about the ground state obtained with the CIS
+method?</strong></p>
+<p>Expected results:</p>
+<div class="table-wrapper"><table><thead><tr><th>Method</th><th>FCI</th><th>CISD</th><th>CID</th><th>CIS</th></tr></thead><tbody>
+<tr><td>Energy / a.u.</td><td>-1.91510655</td><td>-1.91046937</td><td>-1.91046936</td><td>-1.87738068</td></tr>
+</tbody></table>
+</div>
+<p> </p>
+<p><strong>(c) Calculate the excitation energies of the first 5 (electrically neutral)
+excited states of the H<sub>4</sub> listed in Problem 2 using the FCI, CISD,
+and CISDT methods in eV. Compare the results.</strong></p>
+<p>Expected results:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">State</th><th style="text-align: right">FCI / eV</th><th style="text-align: right">CISD / eV</th><th style="text-align: right">CISDT / eV</th></tr></thead><tbody>
+<tr><td style="text-align: center">1</td><td style="text-align: right">0.3899</td><td style="text-align: right">0.9004</td><td style="text-align: right">0.2637</td></tr>
+<tr><td style="text-align: center">2</td><td style="text-align: right">0.3899</td><td style="text-align: right">0.9004</td><td style="text-align: right">0.2637</td></tr>
+<tr><td style="text-align: center">3</td><td style="text-align: right">0.3899</td><td style="text-align: right">0.9004</td><td style="text-align: right">0.2637</td></tr>
+<tr><td style="text-align: center">4</td><td style="text-align: right">4.1032</td><td style="text-align: right">3.9771</td><td style="text-align: right">3.9771</td></tr>
+<tr><td style="text-align: center">5</td><td style="text-align: right">5.6170</td><td style="text-align: right">5.5730</td><td style="text-align: right">5.4908</td></tr>
+</tbody></table>
+</div>
+<p> </p>
+<p>The electronically excited states we have calculated so far are in the
+region of several eV, which can be conveniently measured using UV-Vis
+spectroscopy. Sometimes, however, other types of spectroscopy can be
+more informative. One such example is X-ray absorption spectroscopy (XAS),
+which can be used to probe the core electrons of the atoms. Although these
+excitations are in principle not different from the valence excitations,
+since their energies are much higher (hundreds to thousands of eV),
+we would need to also calculate thousands, if not millions, of lower-lying
+states to access the core excitations, which is usually not feasible.</p>
+<p>Thankfully, since these core excitations are usually well separated from
+the valence excitations, the mixing between them can be safely neglected.
+This allows us to calculate the core excitations using projectors.</p>
+<p><strong>(d) Extend the <code>ConfigurationInteraction</code> class from the lecture to
+include the method</strong></p>
+<pre><code class="language-python">    def get_xas_subspace(self, exc_indices):
+        ...
+        return projector
+</code></pre>
+<p><strong>which returns the CI subspace spanned by determinants containing exactly
+one excitation from the (core) orbital specified by the list <code>exc_indices</code>,
+as well as full CI for the valence excitations.
+The list <code>exc_indices</code> should contain the indices of the core orbitals,
+from which the excitations can be made, e.g. <code>[0, 1, 2, 3]</code> means that one
+of the 0th, 1st, 2nd, or 3rd spin-orbitals should always be unoccupied.</strong></p>
+<p><em>Hint: Including the electronic ground state in the projector can ease the
+calculation of the excitation energies for part (e).</em></p>
+<p> </p>
+<p>Consider a lithium hydride (LiH) molecule with the following geometry:</p>
+<pre><code class="language-python">li = Atom('Li', [0.000, 0.000, 0.000], unit='A')
+h1 = Atom( 'H', [0.000, 0.000, 1.595], unit='A')
+</code></pre>
+<p><strong>(e) Calculate the excitation energies of the first 4 core excitations
+from the Li K-edge of the LiH molecule listed above in eV.</strong></p>
+<p><em>Hint: The Li 1s orbital is well separated from the valence orbitals and can
+thus be found as the 0th and 1st molecular spin-orbitals. The argument
+<code>exc_indices</code> should thus be <code>[0, 1]</code>.</em></p>
+<p>Expected results:</p>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">State</th><th style="text-align: right">Energy / eV</th></tr></thead><tbody>
+<tr><td style="text-align: center">1</td><td style="text-align: right">54.6541</td></tr>
+<tr><td style="text-align: center">2</td><td style="text-align: right">54.6541</td></tr>
+<tr><td style="text-align: center">3</td><td style="text-align: right">54.6541</td></tr>
+<tr><td style="text-align: center">4</td><td style="text-align: right">55.6827</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../psets/pset_03.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../psets/sol_pset_00.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../psets/pset_03.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../psets/sol_pset_00.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src=".././theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
