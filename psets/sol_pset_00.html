@@ -1,0 +1,497 @@
+<!DOCTYPE HTML>
+<html lang="en" class="latte" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Solution to Problem Set 0 - Programming in Theoretical Chemistry</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././theme/catppuccin.css">
+        <link rel="stylesheet" href=".././theme/catppuccin-admonish.css">
+        <link rel="stylesheet" href=".././theme/mdbook-admonish.css">
+        <link rel="stylesheet" href=".././theme/mdbook-admonish-custom.css">
+        <link rel="stylesheet" href=".././theme/icomoon.css">
+        <link rel="stylesheet" href=".././theme/pagetoc.css">
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "mocha" : "latte";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('latte')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../00-preface.html"><strong aria-hidden="true">0.</strong> Preface</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../00-preface/01-motivation.html"><strong aria-hidden="true">0.1.</strong> Motivation</a></li><li class="chapter-item "><a href="../00-preface/02-getting_started.html"><strong aria-hidden="true">0.2.</strong> Getting Started</a></li><li class="chapter-item "><a href="../00-preface/03-mdbook_usage.html"><strong aria-hidden="true">0.3.</strong> Usage of This Website</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../01-fundamentals.html"><strong aria-hidden="true">1.</strong> Fundamentals</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/01-unsigned_binary_integers.html"><strong aria-hidden="true">1.1.</strong> Unsigned Binary Integers</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers.html"><strong aria-hidden="true">1.2.</strong> Signed Binary Integers</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/01-sign_and_magnitude.html"><strong aria-hidden="true">1.2.1.</strong> Sign and Magnitude</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/02-ones_complement.html"><strong aria-hidden="true">1.2.2.</strong> One's Complement</a></li><li class="chapter-item "><a href="../01-fundamentals/02-signed_binary_integers/03-twos_complement.html"><strong aria-hidden="true">1.2.3.</strong> Two's Complement</a></li></ol></li><li class="chapter-item "><a href="../01-fundamentals/03-logic_gates.html"><strong aria-hidden="true">1.3.</strong> Logic Gates</a></li><li class="chapter-item "><a href="../01-fundamentals/04-bitwise_operators.html"><strong aria-hidden="true">1.4.</strong> Bitwise Operators</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators.html"><strong aria-hidden="true">1.5.</strong> Arithmetic Operators</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/01-impl_multiplication.html"><strong aria-hidden="true">1.5.1.</strong> Implementation of Multiplication</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/02-impl_division.html"><strong aria-hidden="true">1.5.2.</strong> Implementation of Division</a></li><li class="chapter-item "><a href="../01-fundamentals/05-arithmetic_operators/03-edge_cases.html"><strong aria-hidden="true">1.5.3.</strong> Handling Edge Cases</a></li></ol></li><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests.html"><strong aria-hidden="true">1.6.</strong> Unit Tests</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests/01-example_based_tests.html"><strong aria-hidden="true">1.6.1.</strong> Example Based Tests</a></li><li class="chapter-item "><a href="../01-fundamentals/06-unit_tests/02-property_based_tests.html"><strong aria-hidden="true">1.6.2.</strong> Property Based Tests</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../02-symbolic_computation.html"><strong aria-hidden="true">2.</strong> Symbolic Computation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../02-symbolic_computation/01-basic_operations.html"><strong aria-hidden="true">2.1.</strong> Basic Operations</a></li><li class="chapter-item "><a href="../02-symbolic_computation/02-calculus.html"><strong aria-hidden="true">2.2.</strong> Calculus</a></li><li class="chapter-item "><a href="../02-symbolic_computation/03-hydrogen_atom.html"><strong aria-hidden="true">2.3.</strong> Hydrogen Atom</a></li><li class="chapter-item "><a href="../02-symbolic_computation/04-harmonic_oscillator.html"><strong aria-hidden="true">2.4.</strong> Harmonic Oscillator</a></li></ol></li><li class="chapter-item expanded "><a href="../03-molecular_integrals.html"><strong aria-hidden="true">3.</strong> Molecular Integrals</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><div><strong aria-hidden="true">3.0.</strong> Latest Scripts</div></li><li class="chapter-item "><a href="../03-molecular_integrals/01-gaussian_orbitals.html"><strong aria-hidden="true">3.1.</strong> Gaussian Type Orbitals</a></li><li class="chapter-item "><a href="../03-molecular_integrals/02-hermite_gaussians.html"><strong aria-hidden="true">3.2.</strong> Hermite Gaussians</a></li><li class="chapter-item "><a href="../03-molecular_integrals/03-overlap_integrals.html"><strong aria-hidden="true">3.3.</strong> Overlap Integrals</a></li><li class="chapter-item "><a href="../03-molecular_integrals/04-testing_on_molecules.html"><strong aria-hidden="true">3.4.</strong> Testing on Molecules</a></li><li class="chapter-item "><a href="../03-molecular_integrals/05-nuclear_attraction_integrals.html"><strong aria-hidden="true">3.5.</strong> Nuclear Attraction Integrals</a></li><li class="chapter-item "><a href="../03-molecular_integrals/06-electron_repulsion_integrals.html"><strong aria-hidden="true">3.6.</strong> Electron Repulsion Integrals</a></li></ol></li><li class="chapter-item expanded "><a href="../04-numerical_optimisation.html"><strong aria-hidden="true">4.</strong> Numerical Optimisation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../04-numerical_optimisation/01-convergence.html"><strong aria-hidden="true">4.1.</strong> Convergence</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/02-test_functions.html"><strong aria-hidden="true">4.2.</strong> Test Functions</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/03-steepest_descent.html"><strong aria-hidden="true">4.3.</strong> Steepest Descent</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/04-newton_methods.html"><strong aria-hidden="true">4.4.</strong> (Quasi-)Newton Methods</a></li><li class="chapter-item "><a href="../04-numerical_optimisation/desirable_properties.html"><strong aria-hidden="true">4.5.</strong> Desired Properties</a></li></ol></li><li class="chapter-item expanded "><a href="../05-hartree_fock.html"><strong aria-hidden="true">5.</strong> The Hartree Fock Approximation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../05-hartree_fock/01-scf_procedure.html"><strong aria-hidden="true">5.1.</strong> The SCF Procedure</a></li><li class="chapter-item "><a href="../05-hartree_fock/02-plot_grid_data.html"><strong aria-hidden="true">5.2.</strong> Plot Grid Data</a></li></ol></li><li class="chapter-item expanded "><a href="../06-configuration_interaction.html"><strong aria-hidden="true">6.</strong> Configuration Interaction</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../06-configuration_interaction/01-cis.html"><strong aria-hidden="true">6.1.</strong> Configuration Interaction Singles</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation.html"><strong aria-hidden="true">6.2.</strong> Second Quantisation</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/01-introduction.html"><strong aria-hidden="true">6.2.1.</strong> Introduction</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/02-matrix_elements.html"><strong aria-hidden="true">6.2.2.</strong> Matrix Elements</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/03-cis_revisited.html"><strong aria-hidden="true">6.2.3.</strong> CIS Revisited</a></li><li class="chapter-item "><a href="../06-configuration_interaction/02-second_quantisation/04-repr_ladder_operators.html"><strong aria-hidden="true">6.2.4.</strong> Representation of Ladder Operators</a></li></ol></li><li class="chapter-item "><a href="../06-configuration_interaction/03-full_ci.html"><strong aria-hidden="true">6.3.</strong> Full Configuration Interaction</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../psets/pset_00.html">Problem Set 0</a></li><li class="chapter-item expanded affix "><div>Problem Set 1</div></li><li class="chapter-item expanded affix "><div>Problem Set 2</div></li><li class="chapter-item expanded affix "><div>Problem Set 3</div></li><li class="chapter-item expanded affix "><div>Problem Set 4</div></li><li class="chapter-item expanded affix "><a href="../psets/sol_pset_00.html" class="active">Solution to Problem Set 0</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="latte">Latte</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="frappe">Frappé</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="macchiato">Macchiato</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mocha">Mocha</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Programming in Theoretical Chemistry</h1>
+
+                    <div class="right-buttons">
+			<!--print button-->
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+
+                        <!-- WueCampus button -->
+                        <script>
+                            var wueCampusLink = "https://wuecampus.uni-wuerzburg.de/moodle/course/view.php?id=73211";
+                        </script>
+			<a href="javascript:void(0);" onclick="window.open(wueCampusLink)" target="_blank" rel="noopener noreferrer" title="Visit course on WueCampus" aria-label="Visit course on WueCampus">
+                            <i id="wuecampus-button" class="icon-uw"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main><div class="sidetoc"><nav class="pagetoc"></nav></div>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+<h1 id="solution-to-problem-set-0"><a class="header" href="#solution-to-problem-set-0">Solution to Problem Set 0</a></h1>
+<h3 id="problem-1"><a class="header" href="#problem-1">Problem 1</a></h3>
+<p><strong>Modify the algorithms <code>naive_div</code> and <code>div</code> in chapter
+<a href="../01-fundamentals/05-arithmetic_operators/02-impl_division.html">1.5.2</a>
+to also return the remainder.</strong></p>
+<p>For <code>naive_div</code>, the remainder is given by <code>a + b</code> after the execution of
+the division:</p>
+<pre><code class="language-python">def naive_div(a, b):
+    r = -1
+    while a &gt;= 0:
+        a -= b
+        r += 1
+    return r, a + b
+</code></pre>
+<p>For <code>div</code>, the remainder is just <code>a</code>:</p>
+<pre><code class="language-python">def div(a, b):
+    n = a.bit_length()
+    tmp = b &lt;&lt; n
+    r = 0
+    for _ in range(0, n + 1):
+        r &lt;&lt;= 1
+        if tmp &lt;= a:
+            a -= tmp
+            r += 1
+        tmp &gt;&gt;= 1
+    return r, a
+</code></pre>
+<h3 id="problem-2"><a class="header" href="#problem-2">Problem 2</a></h3>
+<p><strong>Write a programme to plot complex spherical harmonics with phases indicated by
+colours. Choose an appropriate
+<a href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">colormap</a>.</strong></p>
+<p>Just like in the lecture, we import the necessary libraries</p>
+<pre><code class="language-python">from sympy.functions.special.spherical_harmonics import Ynm
+import sympy as sp
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import cm
+</code></pre>
+<p>and define the symbols, as well as the spherical harmonic as a Python function:</p>
+<pre><code class="language-python">l, m, theta, phi = sp.symbols("l m theta phi")
+Ylm_sym = Ynm(l, m, theta, phi).expand(func=True)
+Ylm = sp.lambdify((l, m, theta, phi), Ylm_sym) 
+</code></pre>
+<p>Afterwards, we create the angular grid</p>
+<pre><code class="language-python">N = 1000
+theta = np.linspace(0, np.pi, N)
+phi = np.linspace(0, 2*np.pi, N)
+theta, phi = np.meshgrid(theta, phi)
+</code></pre>
+<p>and convert it into Cartesian coordinates:</p>
+<pre><code class="language-python">l = 3
+m = 1
+
+Ylm_num = Ylm(l, m, theta, phi)
+r = np.abs(Ylm_num)
+
+x = r * np.cos(phi) * np.sin(theta)
+y = r * np.sin(phi) * np.sin(theta)
+z = r * np.cos(theta)
+</code></pre>
+<p>Note that the complex spherical harmonics are asked here, we should not add
+the complex conjugate but instead only use <code>Ylm</code> itself. The distance <code>r</code> is
+obtained directly by taking the absolute value of the complex function values
+of <code>Ylm</code>.</p>
+<p>The phases can be calculated using the NumPy function <code>angle</code>.
+Since colourmaps from Matplotlib take a number between 0 and 1 to output
+a colour, we should normalise the phases. Because <code>np.angle</code> produces values
+from <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>, we divide the phases by <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> to bring
+the range to -0.5 – 0.5 and add 0.5 to get the desired interval.
+These numbers can then be fed to the colourmap function. The produced colours
+are parsed to the optional argument <code>facecolors</code> of the function
+<code>plot_surface</code>.</p>
+<pre><code class="language-python">fig = plt.figure(figsize=(10, 10))
+ax = fig.add_subplot(111, projection="3d")
+
+colors = np.angle(Ylm_num)/(2.0*np.pi) + 0.5
+ax.plot_surface(x, y, z, facecolors=cm.hsv(colors))
+
+ax.set_xlim([-0.5, 0.5])
+ax.set_ylim([-0.5, 0.5])
+ax.set_zlim([-0.5, 0.5])
+
+plt.show()
+</code></pre>
+<p>Because the phase is cyclic, i.e. a phase of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span> equals a phase
+of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span>, a cyclic colourmap should be chosen to reflect this. In
+Matplotlib 3.8, three cyclic colourmaps are available, <code>twilight</code>,
+<code>twilight_shifted</code>, and <code>hsv</code>. We have used <code>hsv</code> in this example.</p>
+<p>The following figure is obtained for <code>l = 3</code> and <code>m = 1</code>:</p>
+<p align="center">
+  <img src="../assets/figures/psets/00/Y31_complex.svg">
+</p>
+<h3 id="problem-3"><a class="header" href="#problem-3">Problem 3</a></h3>
+<p><strong>Calculate <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> for the first 5 eigenstates
+of the harmonic oscillator and verify Heisenberg’s uncertainty principle.</strong></p>
+<p>Just like in the lecture, we first define the wavefunction after importing
+the necessary libraries:</p>
+<pre><code class="language-python">import sympy as sp
+from IPython.display import display
+
+x, z = sp.symbols('x z')
+m = sp.Symbol('m', positive=True)
+omega = sp.Symbol('omega', positive=True)
+n = sp.Symbol('n', integer=True, nonnegative=True)
+</code></pre>
+<pre><code class="language-python">def wfn(n):
+    nf = (1/sp.sqrt(2**n * sp.factorial(n))) \
+         * ((m*omega)/sp.pi)**sp.Rational(1, 4)
+    expf = sp.exp(-(m*omega*x**2)/2)
+    hp = hermite_direct(n).subs(z, sp.sqrt(m*omega)*x)
+    psi_n = sp.simplify(nf * expf * hp)
+
+    return psi_n
+</code></pre>
+<p>Since we are going to do lots of integrations, it is worth defining
+a function to do it:</p>
+<pre><code class="language-python">def integrate(expr):
+    return sp.integrate(expr, (x, -sp.oo, sp.oo))
+</code></pre>
+<p>By using the definition for <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span>, we can
+construct a function for each operator to calculate its standard deviation
+given a wavefunction:</p>
+<pre><code class="language-python">def get_sigma_x(psi):
+    x_mean = integrate(sp.conjugate(psi) * x * psi)
+    x_mean = sp.simplify(x_mean)
+    x_rms = integrate(sp.conjugate(psi) * x**2 * psi)
+    x_rms = sp.simplify(x_rms)
+    
+    var_x = x_rms - x_mean**2
+    sigma_x = sp.sqrt(var_x)
+    
+    return sigma_x, x_mean, x_rms
+</code></pre>
+<pre><code class="language-python">def get_sigma_p(psi):
+    p_mean = integrate(sp.conjugate(psi) * (-sp.I) * sp.diff(psi, x))
+    p_mean = sp.simplify(p_mean)
+    p_rms = integrate(sp.conjugate(psi) * (-sp.I)**2 * sp.diff(psi, x, x))
+    p_rms = sp.simplify(p_rms)
+
+    var_p = p_rms - p_mean**2
+    sigma_p = sp.sqrt(var_p)
+    
+    return sigma_p, p_mean, p_rms
+</code></pre>
+<p>These two functions can then be used to calculate <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7167em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span></span></span></span> for the first 5 eigenfunctions. By calculating their product,
+we can verify that they fulfill Heisenberg’s uncertainty principle.</p>
+<pre><code class="language-python">sp.init_printing()
+
+for i in range(0, 5):
+    psi = wfn(i)
+    
+    sigma_x, x_mean, x_rms = get_sigma_x(psi)
+    sigma_p, p_mean, p_rms = get_sigma_p(psi)
+    product = sp.simplify(sigma_x * sigma_p)
+    
+    display((i, (x_mean, x_rms, p_mean, p_rms), (sigma_x, sigma_p), product))
+</code></pre>
+<h3 id="problem-4"><a class="header" href="#problem-4">Problem 4</a></h3>
+<p><strong>(a) Implement the function <code>lucas_number(n)</code> which takes one argument <code>n</code>
+and generates the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>-th Lucas number recursively.</strong></p>
+<p>The function follows directly from the definition of the Lucas numbers:</p>
+<pre><code class="language-python">def lucas_number(n):
+    if n == 0:
+        return 2
+    elif n == 1:
+        return 1
+    else:
+        return lucas_number(n - 1) + lucas_number(n - 2)
+</code></pre>
+<p><strong>(b) Calculate <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">35</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> using the undecorated as well as the decorated
+function, and pay attention to the execution time. Inform yourself about this
+decorator and explain how it was able to speed up your recursive function.</strong></p>
+<p>For the speed comparison, we define the cached version of <code>lucas_number</code>:</p>
+<pre><code class="language-python">from functools import lru_cache
+
+
+@lru_cache(maxsize=4)
+def lucas_number_cache(n):
+    if n == 0:
+        return 2
+    elif n == 1:
+        return 1
+    else:
+        return lucas_number_cache(n - 1) + lucas_number_cache(n - 2)
+</code></pre>
+<p>Here, just an estimation suffices to compare the performance of both
+functions. While <code>lucas_number</code> takes several seconds to complete,
+<code>lucas_number_cache</code> finishes in the blink of an eye. Of course, you can
+obtain a more precise result by utilizing the <code>time.time()</code> or
+<code>time.perf_counter()</code> function from the <code>time</code> module. If you work with
+IPython (e.g. Jupyter Notebook), you can also use the
+<a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">magic commands</a>
+<code>%time</code>, <code>%%time</code>, or <code>%timeit</code>.</p>
+<p>The <code>lru_cache</code> (least recently used cache) decorator is a built-in
+function in Python’s <code>functools</code> module that provides a memoization
+mechanism for functions. Memoization is a technique used to cache the
+results of function calls and avoid redundant computations by storing
+the results for specific inputs.</p>
+<p>When applied to the <code>lucas_number</code> function, the <code>lru_cache</code> decorator
+stores the results of function calls in a cache, allowing subsequent calls
+with the same arguments to retrieve the result from the cache instead of
+recomputing it. This significantly improves the performance of the function,
+especially for larger values of <code>n</code>, where there would be many repeated
+computations without memoization.</p>
+<p>Here’s how the <code>lru_cache</code> decorator enhances the <code>lucas_number</code> function:</p>
+<ol>
+<li>
+<p>The first time <code>lucas_number</code> is called with a specific argument <code>n</code>,
+the decorator executes the function body and stores the result in a cache.</p>
+</li>
+<li>
+<p>If <code>lucas_number</code> is called again with the same argument <code>n</code>,
+instead of executing the function body, the decorator checks the cache.
+If the result for <code>n</code> is present in the cache, it returns the cached
+result directly without further computation.</p>
+</li>
+</ol>
+<p>By avoiding redundant recursive function calls and reusing previously
+computed results, the <code>lru_cache</code> decorator significantly reduces the number
+of function evaluations needed to compute the Lucas number for a given <code>n</code>.
+This caching mechanism provides a considerable speed boost, especially when
+dealing with larger values of <code>n</code> or when there are overlapping subproblems
+in the recursive calls.</p>
+<p>Note that when using <code>lru_cache</code>, note that the cache size is limited. If the
+cache becomes full, the least recently used results will be discarded to
+make room for new entries, therefore the name “least recently used” cache.
+You can make the cache size unlimited by supplying <code>maxsize=None</code>, or,
+with <code>Python &gt;= 3.9</code>, using <code>@cache</code> instead of <code>@lru_cache</code> to cache
+everything without a size limit.</p>
+<p><strong>(c) Implement the function <code>hermite_recursive(n)</code> which takes one argument <code>n</code>
+and symbolically generates the <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>-th Hermite polynomial with the help
+of SymPy in a recursive manner by using the recurrence relation above.</strong></p>
+<p>By following the recursion relation, it is straightforward to define the
+function we seek for:</p>
+<pre><code class="language-python">import sympy as sp
+
+
+def hermite_recursive(n, z):
+    if n == 0:
+        return sp.sympify(1)
+    elif n == 1:
+        return sp.sympify(2) * z
+    else:
+        return sp.simplify(
+            2 * z * hermite_recursive(n - 1, z) \
+            - 2 * (n - 1) * hermite_recursive(n - 2, z)
+        )
+</code></pre>
+<p>Just remember to shift <strong>all</strong> indices by 1, since the recursion relation
+given is defined for <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>, and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>, while in programming,
+<code>n</code>, <code>n </code>- 1<code>, and </code>n -<code> 2</code> are needed.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../psets/pset_00.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../psets/pset_00.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src=".././theme/pagetoc.js"></script>
+
+
+    </div>
+    </body>
+</html>
