@@ -61,7 +61,7 @@
 ---
 
 [Problem Set 0](psets/pset_00.md)
-[Problem Set 1]()
+[Problem Set 1](psets/pset_01.md)
 [Problem Set 2]()
 [Problem Set 3]()
 [Problem Set 4]()
