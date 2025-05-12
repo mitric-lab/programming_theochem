@@ -31,10 +31,21 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     env:
-      MDBOOK_VERSION: 0.4.48
+      MDBOOK_VERSION: 0.4.40
     steps:
       # get the source code
       - uses: actions/checkout@v4
+
+      # set the site-url for mdBook
+      - name: Set mdBook site-url
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
+        run: |
+          if [ "${{ github.ref_name }}" = "main" ]; then
+            echo "MDBOOK_OUTPUT__HTML__SITE_URL=/${REPO_NAME}/" >> "$GITHUB_ENV"
+          else
+            echo "MDBOOK_OUTPUT__HTML__SITE_URL=/${REPO_NAME}/${{ github.ref_name }}/" >> "$GITHUB_ENV"
+          fi
 
       # install mdBook and preprocessors
       - name: Install mdBook
@@ -44,9 +55,9 @@ jobs:
           cargo install --version ${MDBOOK_VERSION} mdbook
       - name: Install mdBook preprocessors
         run: |
-          cargo install mdbook-admonish --locked --version 1.19.0
+          cargo install mdbook-admonish --locked --version 1.16.0
           mdbook-admonish install .
-          cargo install mdbook-katex --locked --version 0.9.4
+          cargo install mdbook-katex --locked --version 0.9.0
           cargo install mdbook-numeq --locked --version 0.3.0
           cargo install mdbook-shiftinclude --locked --version 0.1.0
           cargo install mdbook-chapter-zero --locked --version 0.1.0
