@@ -315,3 +315,78 @@ implement this combined method.
 
 [^haeser_scf]: M. Häser, R. Ahlrichs, _J. Comput. Chem._, **1989**, 10, 104&ndash;111.
 
+### Problem 4
+
+The so-called spin-orbit coupling (SOC) plays a crucial role in the transition 
+between singlet and triplet states. All spin-related effects are ultimately 
+derived from the relativistic Dirac equation. Since the derivation of SOC 
+from the Dirac formalism is rather lengthy, we will not go into detail here. 
+After applying several transformations, one arrives at the following 
+additional term in the Hamiltonian:
+$$
+\frac{\hbar}{4m^2 c^2} \bm{\sigma} \cdot (\mathbf{\nabla}V) \times \mathbf{p}
+$$
+
+Here, $\bm{\sigma}$ denotes the vector of Pauli matrices, $V$ is 
+the nuclear potential, $\mathbf{p}$ is the momentum operator, and $m$ and $c$ 
+refer to the electron mass and the speed of light, respectively. 
+The potential $V$ is given by:
+$$
+\begin{align*}
+  V(\mathbf{r}) &= \sum_n \frac{Z_n}{r_n}\\
+  \mathbf{\nabla}V(\mathbf{r}) 
+    &= \sum_n \frac{Z_n}{r_n^3}(\mathbf{r}-\mathbf{C}_n)
+\end{align*}
+$$
+with $Z_n$ being the nuclear charge and $\mathbf{C}_n$ the position of the 
+$n$th nucleus. Substituting this into the SOC term leads to a 
+more compact expression:
+$$
+\frac{\hbar}{4m^2c^2} \bm{\sigma} \cdot \sum_n \frac{Z_n}{r_n^3}(\mathbf{r}-\mathbf{C}_n) \times \mathbf{p} = \frac{\hbar}{4m^2c^2} \bm{\sigma} \cdot \sum_n \frac{Z_n}{r_n^3}\mathbf{l}_n
+$$
+where $\mathbf{l}_n = (\mathbf{r}-\mathbf{C}_n) \times \mathbf{p}$ 
+is the angular momentum operator with respect to nucleus $n$. 
+We can now separate the spin and spatial parts of the SOC operator:
+$$
+\begin{align*}
+  \frac{\hbar}{4m^2c^2} \bm{\sigma} \cdot \sum_n \frac{Z_n}{r_n^3}\mathbf{l}_n = \bm{\sigma} \cdot \left( \frac{\hbar}{4m^2c^2} \sum_n \frac{Z_n}{r_n^3}\mathbf{l}_n\right)
+\end{align*}
+$$
+
+Although SOC integrals can in principle be evaluated for arbitrary 
+Gaussian orbitals, in this task we will restrict ourselves to the SOC 
+matrix element between two identical p<sub>z</sub>-type orbitals with the 
+same exponent $\alpha$. These orbitals are defined as:
+$$
+\begin{align*}
+    \phi_{i,p_z}(\mathbf{r}) &= N z \exp\left(-\alpha \left( (x - \frac{d}{2})^2 + y^2 + z^2\right)\right) \\
+    \phi_{j,p_z}(\mathbf{r}) &= N z \exp\left(-\alpha \left( (x + \frac{d}{2})^2 + y^2 + z^2\right)\right)\;\mathrm{.}
+\end{align*}
+$$
+Here, the $x$-axis is chosen as the bond axis, and $d$ is the distance between 
+the centres of the two orbitals. $N$ is the normalization factor, which will be 
+ignored in the derivation since it does not affect the structure of the SOC term.
+
+**Compute the spatial part of the SOC matrix element between the two 
+p<sub>z</sub>-orbitals:**
+$$
+\begin{align*}
+    \frac{\hbar}{4m^2c^2} \sum_n Z_n \int \du^3 {\mathbf{r}}\ \phi_{i,p_z}^*(\mathbf{r})
+     \begin{pmatrix}
+        \hat{l}_{n,x} \\
+        \hat{l}_{n,y} \\
+        \hat{l}_{n,z}
+     \end{pmatrix}
+     \frac{1}{r_n^3} \phi_{j,p_z}(\mathbf{r})
+\end{align*}
+$$
+
+*Hint:
+Since the angular momentum operator is a vector, the result of this integral 
+will also be a vector with three components. Therefore, you will need to 
+evaluate three integrals, one for each spatial component of the angular momentum. 
+Use the relevant expressions and techniques from the lecture to simplify 
+the integrals. You are encouraged to use SymPy to assist with the 
+symbolic computation of the integrals where appropriate.*
+
+
