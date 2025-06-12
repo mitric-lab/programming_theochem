@@ -260,8 +260,8 @@ case, the inequality states that
 $$
 \left| \int_{\mathbb{R}^n} f^*(x) g(x)\ \mathrm{d} x \right|^2
 \leq
-\int_{\mathbb{R}^n} |f(x)|^2\ \mathrm{d} x \cdot 
-\int_{\mathbb{R}^n} |g(x)|^2\ \mathrm{d} x
+\sqrt{ \int_{\mathbb{R}^n} |f(x)|^2\ \mathrm{d} x } \cdot 
+\sqrt{ \int_{\mathbb{R}^n} |g(x)|^2\ \mathrm{d} x }
 $$
 for $f, g \in L^2(\mathbb{R}^n)$, as first shown by Bunyakovsky in 1859.
 
