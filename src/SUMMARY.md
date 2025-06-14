@@ -30,7 +30,7 @@
     - [Harmonic Oscillator](02-symbolic_computation/04-harmonic_oscillator.md)
 
 - [Molecular Integrals](03-molecular_integrals.md)
-    - [Latest Scripts]()
+    - [Latest Scripts](03-molecular_integrals/00-latest_scripts.md)
     - [Gaussian Type Orbitals](03-molecular_integrals/01-gaussian_orbitals.md)
     - [Hermite Gaussians](03-molecular_integrals/02-hermite_gaussians.md)
     - [Overlap Integrals](03-molecular_integrals/03-overlap_integrals.md)
@@ -45,12 +45,12 @@
     - [(Quasi-)Newton Methods](04-numerical_optimisation/04-newton_methods.md)
     - [Desired Properties](04-numerical_optimisation/desirable_properties.md)
 
-- [The Hartree Fock Approximation]()
-    - [The SCF Procedure]()
-    - [Plot Grid Data]()
+- [The Hartree Fock Approximation](05-hartree_fock.md)
+    - [The SCF Procedure](05-hartree_fock/01-scf_procedure.md)
+    - [Plot Grid Data](05-hartree_fock/02-plot_grid_data.md)
 
-- [Configuration Interaction]()
-    - [Configuration Interaction Singles]()
+- [Configuration Interaction](06-configuration_interaction.md)
+    - [Configuration Interaction Singles](06-configuration_interaction/01-cis.md)
     - [Second Quantisation]()
         - [Introduction]()
         - [Matrix Elements]()
