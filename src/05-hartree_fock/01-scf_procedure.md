@@ -15,7 +15,8 @@ summarised as follows:
    kinetic energy integrals $\bm{T}$,
    nuclear attraction integrals $\bm{V}_\mathrm{ne}$,
    electron repulsion integrals $(\mu\nu|\sigma\lambda)$.
-3. Calculate the transformation matrix $\bm{X} = \bm{S}^{-1/2}$.
+3. Calculate the transformation matrix $\bm{X}$
+   which satisfies $\bm{X}^\dagger \bm{S} \bm{X} = \identity$.
 4. Obtain a guess for the density matrix $\bm{P}$.
 5. Calculate the matrix $\bm{G}$ from the density matrix using 
    $G_{\mu\nu} = \sum_{\lambda\sigma} P_{\lambda\sigma} [ (\mu\nu|\sigma\lambda) - \frac{1}{2} (\mu\lambda|\sigma\nu) ]$.
