@@ -210,13 +210,27 @@ we will show how to visualise these functions in 3D space.</p>
 <p>We will use the
 <a href="https://docs.enthought.com/mayavi/mayavi/">Mayavi</a>
 package to plot grid data.</p>
-<p>This can be installed with</p>
-<pre><code>mamba install -c conda-forge mayavi
+<p>The installation of mayavi is a bit tricky, as it requires some
+specific versions of its dependencies. The easiest way to install it is
+to install it in a fresh python 3.11 environment</p>
+<pre><code class="language-bash">mamba create -n mayavi python=3.11 mayavi
+</code></pre>
+<p>Afterwards, activate the environment with</p>
+<pre><code class="language-bash">mamba activate mayavi
+</code></pre>
+<p>Confirm that you are in the environment with</p>
+<pre><code class="language-bash">which python
+</code></pre>
+<p>Once in the environment, you can install the other dependencies like this:</p>
+<pre><code class="language-bash">mamba install numpy scipy
 </code></pre>
 <p>If you wish to use Mayavi with Jupyter notebooks, you will need to install
-the ipyevents package with</p>
-<pre><code>mamba install -c conda-forge ipyevents
+an older version of Jupyter notebooks along with some other packages:</p>
+<pre><code class="language-bash">mamba install "notebook=6.5.*" ipywidgets ipyevents
 </code></pre>
+<p>However, if you are using MacOS, this will not let you use the
+Mayavi together with Jupyter notebooks, and there is no easy way to fix it.
+Therefore, you should use Mayavi with the “classic” Python.</p>
 </div>
 </div>
 <h3 id="functions-for-isosurface-plotting"><a class="header" href="#functions-for-isosurface-plotting">Functions for Isosurface Plotting</a></h3>
@@ -231,7 +245,7 @@ from mayavi import mlab
 </div>
 <div>
 <p>If you are using Jupyter notebooks, you will need to run the following cell
-to initialize Mayavi immediately after importing it:</p>
+to initialise Mayavi immediately after importing it:</p>
 <pre><code class="language-python">mlab.init_notebook()
 </code></pre>
 <p>Make sure that you get the output</p>
@@ -356,7 +370,7 @@ mol.set_atomlist([o1, h1, h2])
 mol.get_basis('sto-3g')
 
 rhf = HartreeFock(mol)
-rhf.initialize()
+rhf.initialise()
 e_scf = rhf.run_hf(verbose=0)
 </code></pre>
 <p>construct a grid</p>
