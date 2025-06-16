@@ -14,7 +14,7 @@ to denote the elements in $D$. Just keep in mind that $x$ does not have
 to be a real number, but can e.g. also be a vector.
 
 The goal of optimisation is to find 
-$x^{\*}$ that minimises of maximises $f$, i.e., 
+$x^{*}$ that minimises of maximises $f$, i.e., 
 $$
   x^{*} = \argmin{x \in D} f(x) 
   \quad \text{or} \quad

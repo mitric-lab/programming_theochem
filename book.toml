@@ -8,7 +8,7 @@ title = "Programming in Theoretical Chemistry"
 [output.html]
 default-theme = "latte"
 preferred-dark-theme = "mocha"
-curly-quotes = true
+smart-punctuation = true
 mathjax-support = true
 additional-css = [
     "./theme/catppuccin.css", 
