@@ -10,15 +10,35 @@ We will use the
 [Mayavi](https://docs.enthought.com/mayavi/mayavi/)
 package to plot grid data.
 
-This can be installed with 
+The installation of mayavi is a bit tricky, as it requires some
+specific versions of its dependencies. The easiest way to install it is 
+to install it in a fresh python 3.11 environment
+```bash
+mamba create -n mayavi python=3.11 mayavi
 ```
-mamba install -c conda-forge mayavi
+Afterwards, activate the environment with
+```bash
+mamba activate mayavi
 ```
-If you wish to use Mayavi with Jupyter notebooks, you will need to install 
-the ipyevents package with 
+Confirm that you are in the environment with
+```bash
+which python
 ```
-mamba install -c conda-forge ipyevents
+Once in the environment, you can install the other dependencies like this:
+```bash
+mamba install numpy scipy
 ```
+
+If you wish to use Mayavi with Jupyter notebooks, you will need to install
+an older version of Jupyter notebooks along with some other packages:
+```bash
+mamba install "notebook=6.5.*" ipywidgets ipyevents
+```
+
+However, if you are using MacOS, this will not let you use the
+Mayavi together with Jupyter notebooks, and there is no easy way to fix it.
+Therefore, you should use Mayavi with the "classic" Python.
+
 ~~~
 
 ### Functions for Isosurface Plotting
@@ -30,7 +50,7 @@ We start by importing the necessary packages.
 ```
 ~~~admonish tip
 If you are using Jupyter notebooks, you will need to run the following cell
-to initialize Mayavi immediately after importing it:
+to initialise Mayavi immediately after importing it:
 ```python
 mlab.init_notebook()
 ```

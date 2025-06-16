@@ -27,7 +27,7 @@ mol.set_atomlist([o1, h1, h2])
 mol.get_basis('sto-3g')
 
 rhf = HartreeFock(mol)
-rhf.initialize()
+rhf.initialise()
 e_scf = rhf.run_hf(verbose=0)
 ### ANCHOR_END: water_hf
 
