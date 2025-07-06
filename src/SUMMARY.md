@@ -51,12 +51,12 @@
 
 - [Configuration Interaction](06-configuration_interaction.md)
     - [Configuration Interaction Singles](06-configuration_interaction/01-cis.md)
-    - [Second Quantisation]()
-        - [Introduction]()
-        - [Matrix Elements]()
-        - [CIS Revisited]()
-        - [Representation of Ladder Operators]()
-    - [Full Configuration Interaction]()
+    - [Second Quantisation](06-configuration_interaction/02-second_quantisation.md)
+        - [Introduction](06-configuration_interaction/02-second_quantisation/01-introduction.md)
+        - [Matrix Elements](06-configuration_interaction/02-second_quantisation/02-matrix_elements.md)
+        - [CIS Revisited](06-configuration_interaction/02-second_quantisation/03-cis_revisited.md)
+        - [Representation of Ladder Operators](06-configuration_interaction/02-second_quantisation/04-repr_ladder_operators.md)
+    - [Full Configuration Interaction](06-configuration_interaction/03-full_ci.md)
 
 ---
 
