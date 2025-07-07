@@ -64,7 +64,7 @@
 [Problem Set 1](psets/pset_01.md)
 [Problem Set 2](psets/pset_02.md)
 [Problem Set 3](psets/pset_03.md)
-[Problem Set 4]()
+[Problem Set 4](psets/pset_04.md)
 
 [Solution to Problem Set 0](psets/sol_pset_00.md)
 
